@@ -1,0 +1,809 @@
+
+
+*************************************************************
+ musrSim version 1.0.2 released on 20 May 2011
+      WWW:  http://lmu.web.psi.ch/simulation/index.html
+
+*************************************************************
+ Geant4 version Name: geant4-09-05-ref-00    (2-December-2011)
+                      Copyright : Geant4 Collaboration
+                      Reference : NIM A 506 (2003), 250-303
+                            WWW : http://cern.ch/geant4
+*************************************************************
+
+musrParameters::musrParameters:  steeringFileName="65_15.mac" opened.
+Visualization Manager instantiating with verbosity "warnings (3)"...
+Visualization Manager initialising...
+Registering graphics systems...
+
+You have successfully registered the following graphics systems.
+Current available graphics systems are:
+  ASCIITree (ATree)
+  DAWNFILE (DAWNFILE)
+  G4HepRep (HepRepXML)
+  G4HepRepFile (HepRepFile)
+  RayTracer (RayTracer)
+  VRML1FILE (VRML1FILE)
+  VRML2FILE (VRML2FILE)
+  gMocrenFile (gMocrenFile)
+  OpenGLStoredXm (OGL)
+  OpenGLImmediateXm (OGLI)
+  OpenGLStoredXm (OGLS)
+  OpenGLImmediateX (OGLIX)
+  OpenGLStoredX (OGLSX)
+  OpenGLImmediateXm (OGLIXm)
+  OpenGLStoredXm (OGLSXm)
+  RayTracerX (RayTracerX)
+
+Registering model factories...
+
+You have successfully registered the following model factories.
+Registered model factories:
+  generic
+  drawByCharge
+  drawByParticleID
+  drawByOriginVolume
+  drawByAttribute
+
+Registered filter factories:
+  chargeFilter
+  particleFilter
+  originVolumeFilter
+  attributeFilter
+
+Some /vis commands (optionally) take a string to specify colour.
+Available colours:
+  black, blue, cyan, gray, green, grey, magenta, red, white, yellow
+
+musrPrimaryGeneratorAction:  G4ParticleGun is going to be initialised
+Detector configuration file "65_15.mac" was opened.
+
+
+....oooOO0OOooo........oooOO0OOooo......Configuration file used for this run....oooOO0OOooo........oooOO0OOooo......
+#-----------------------------------------------------------------------
+# Macro file for the simulation of electron/positrons from the Sr decay
+# passing through the scintiallator detectors (blocks).
+# Unless specified otherwises, the default units are mm, ns, MeV, MeV/c.
+# Lines starting with star "#" are comments.
+###################################################################################
+#############################  G E O M E T R Y  ###################################
+#
+# WORLD
+#/musr/command construct box World     50 10 100 G4_AIR                0 0 0 no_logical_volume  norot dead -1	
+/musr/command construct box World     50 10 100 G4_AIR                0 0 0 no_logical_volume  norot musr/ScintSD -1
+#
+# Sr SOURCE
+#/musr/command construct sphere source   0  0.02  0 360 0 180  G4_Sr                   0 0 0 log_World       norot dead 301
+#
+# Rotation matrix
+/musr/command rotation rotX 0 90 0
+#
+# SCINTILLATOR BLOCKS
+/musr/command construct Stprd_edge scintFarAwayC1  5  1.5 45.0 40.0 0.3 0.3 G4_PLASTIC_SC_VINYLTOLUENE 0 0 5   log_World   rotX musr/ScintSD 10
+#
+# Thin air layer
+/musr/command construct Ubox_wedgeAir thinAir  1.5  2.5  0.45  Air 45. 40. 1.5 1.5 -2 3.8   log_World   norot musr/ScintSD 40
+#
+# Epoxy glass
+/musr/command construct box_wedge_epoxycase EpoxyPackage  0.95  0.95  0.425  Epoxy 45. 40. 1.5 1.5 -2. 3.775   log_World   norot musr/ScintSD 43
+#
+# Air in epoxy case (active)
+/musr/command construct bside_box Airincase  0.9  0.9  0.125  Air 45. 40. 1.5 1.5 -2. 4.025   log_World   norot musr/ScintSD 41
+#
+# APDs
+/musr/command construct bside_box APD1      0.5  0.5 0.25      G4_Cu                  45.0 40. 1.5 1.5 -2. 3.65 log_World     norot   dead 20
+#
+# Plastic holders
+#/musr/command construct box Holder1   0.75 4   4        G4_GLASS_PLATE              2.5 0  5 log_World     norot   dead 30
+#/musr/command construct box Holder2   0.75 4   4        G4_GLASS_PLATE              2.5 0 14 log_World     norot   dead 31
+#============================================================
+/musr/command visattributes log_World invisible
+/musr/command visattributes G4_AIR invisible
+#/musr/command visattributes Air invisible
+/musr/command visattributes Air yellow
+/musr/command visattributes Epoxy white
+#/musr/command visattributes Epoxy invisible
+#/musr/command visattributes log_source red
+/musr/command visattributes G4_PLASTIC_SC_VINYLTOLUENE lightblue
+/musr/command visattributes log_APD1 red
+###################################################################################
+########################## O P T I C A L    P H O T O N S #########################
+#         PhotonEnergy[nEntries] = 
+#	{ 2.695*eV,   2.75489*eV, 2.8175*eV,  2.88302*eV,                 // 460, 450, 440, 430 nm
+#	  2.95167*eV, 3.02366*eV, 3.09925*eV, 3.17872*eV, 3.26237*eV,     // 420, 410, 400, 390, 380 nm
+#	  3.30587*eV, 3.35054*eV, 3.44361*eV, 3.542*eV,   3.64618*eV };   // 375, 370, 360, 350, 340 nm
+/musr/command materialPropertiesTable optScintMPT ABSLENGTH    2   2.695e-6 3.64618e-6  800 800
+/musr/command materialPropertiesTable optScintMPT RINDEX        2   2.695e-6 3.64618e-6  1.58 1.58
+#/musr/command materialPropertiesTable optScintMPT FASTCOMPONENT 14  2.695e-6 2.75489e-6 2.8175e-6 2.88302e-6 2.95167e-6 3.02366e-6 3.09925e-6 3.17872e-6 3.26237e-6 3.30587e-6 3.35054e-6 3.44361e-6 3.542e-6 3.64618e-6  0.01 0.07 0.15 0.26 0.375 0.52 0.65 0.80 0.95 1 0.88 0.44 0.08 0.01
+#EJ-204
+/musr/command materialPropertiesTable optScintMPT FASTCOMPONENT 13  3.27e-6 3.19e-6 3.11e-6 3.03e-6 2.96e-6 2.9e-6 2.82e-6 2.76e-6 2.70e-6 2.64e-6 2.59e-6 2.54e-6 2.48e-6  0.0081 0.0746 0.2035 0.2374 0.1533 0.0733 0.0950 0.0665 0.0380 0.0231 0.0163 0.0081 0.0027  
+#EJ-212
+#/musr/command materialPropertiesTable optScintMPT FASTCOMPONENT 13  2.39e-6 2.44e-6 2.48e-6 2.53e-6 2.59e-6 2.64e-6 2.7e-6 2.76e-6 2.82e-6 2.89e-6 2.96e-6 3.03e-6 3.11e-6 0.0140 0.0187 0.0245 0.0327 0.0432 0.0572 0.0781 0.1214 0.1540 0.1774 0.2001 0.0665 0.0117
+#/musr/command materialPropertiesTable optScintMPT SLOWCOMPONENT 14   2.695e-6 2.75489e-6 2.8175e-6 2.88302e-6 2.95167e-6 3.02366e-6 3.09925e-6 3.17872e-6 3.26237e-6 3.30587e-6 3.35054e-6 3.44361e-6 3.542e-6 3.64618e-6  0.01 0.07 0.15 0.26 0.375 0.52 0.65 0.80 0.95 1 0.88 0.44 0.08 0.01
+#
+/musr/command materialPropertiesTable optScintMPT SCINTILLATIONYIELD 0 10000.
+/musr/command materialPropertiesTable optScintMPT RESOLUTIONSCALE    0 0.0
+/musr/command materialPropertiesTable optScintMPT FASTTIMECONSTANT   0 1.6
+/musr/command materialPropertiesTable optScintMPT FASTSCINTILLATIONRISETIME 0 0.35
+#/musr/command materialPropertiesTable optScintMPT SLOWTIMECONSTANT   0 1.6
+/musr/command materialPropertiesTable optScintMPT YIELDRATIO         0 1.0
+/musr/command setMaterialPropertiesTable optScintMPT G4_PLASTIC_SC_VINYLTOLUENE
+#
+#  AIR (WORLD)
+#/musr/command materialPropertiesTable    optAIR_MPT ABSLENGTH         2   2.0e-6 4.5e-6 0.001 0.001
+/musr/command materialPropertiesTable    optAIR_MPT ABSLENGTH         2   2.0e-6 4.5e-6 0.1 0.1
+/musr/command materialPropertiesTable    optAIR_MPT RINDEX            2   2.0e-6 4.5e-6 1.0003 1.0003
+/musr/command setMaterialPropertiesTable optAIR_MPT G4_AIR
+#
+#  AIR (thinAir)
+#/musr/command materialPropertiesTable    optAir_MPT ABSLENGTH         2   2.0e-6 4.5e-6 0.001 0.001
+/musr/command materialPropertiesTable    optAir_MPT ABSLENGTH         2   2.0e-6 4.5e-6 5. 5.
+/musr/command materialPropertiesTable    optAir_MPT RINDEX            2   2.0e-6 4.5e-6 1.0003 1.0003
+/musr/command setMaterialPropertiesTable optAir_MPT Air
+#
+# Epoxy
+/musr/command materialPropertiesTable    optEpoxy_MPT ABSLENGTH         2   2.0e-6 4.5e-6 9.19 9.19
+/musr/command materialPropertiesTable    optEpoxy_MPT RINDEX            2   2.0e-6 4.5e-6 1.545 1.545
+/musr/command setMaterialPropertiesTable optEpoxy_MPT Epoxy
+#
+#  OPTICAL BOUNDARY:  SCINTILLATOR -> AIR (->reflector)
+/musr/command materialPropertiesTable airWrap1 REFLECTIVITY     2  2.0e-6 4.5e-6  0.95 0.95
+/musr/command materialPropertiesTable airWrap1 EFFICIENCY       2  2.0e-6 4.5e-6  0. 0.
+/musr/command materialPropertiesTable airWrap1 SPECULARLOBECONSTANT 2  2.0e-6 4.5e-6  0.9 0.9
+/musr/command materialPropertiesTable airWrap1 SPECULARSPIKECONSTANT 2  2.0e-6 4.5e-6  0. 0.
+/musr/command materialPropertiesTable airWrap1 BACKSCATTERCONSTANT 2  2.0e-6 4.5e-6  0. 0.
+/musr/command materialPropertiesTable airWrap1 DIFFUSELOBECONSTANT 2  2.0e-6 4.5e-6  0.1 0.1
+/musr/command materialPropertiesTable airWrap1 RINDEX                2  2.0e-6 4.5e-6  1. 1.
+#/musr/command opticalSurface airBoundary1 phys_scintFarAwayC1 phys_World dielectric_dielectric polished unified airWrap1
+/musr/command opticalSurface airBoundary1 phys_scintFarAwayC1 phys_World dielectric_dielectric polishedbackpainted unified airWrap1
+#
+#  OPTICAL BOUNDARY:  AIR (reflector) -> SCINTILLATOR
+#/musr/command materialPropertiesTable airWrap2 REFLECTIVITY     2  2.0e-6 4.5e-6  0.95 0.95
+/musr/command materialPropertiesTable airWrap2 REFLECTIVITY     2  2.0e-6 4.5e-6  1. 1.
+/musr/command materialPropertiesTable airWrap2 EFFICIENCY       2  2.0e-6 4.5e-6  0. 0.
+/musr/command materialPropertiesTable airWrap2 SPECULARLOBECONSTANT 2  2.0e-6 4.5e-6  0.9 0.9
+/musr/command materialPropertiesTable airWrap2 SPECULARSPIKECONSTANT 2  2.0e-6 4.5e-6  0. 0.
+/musr/command materialPropertiesTable airWrap2 BACKSCATTERCONSTANT 2  2.0e-6 4.5e-6  0. 0.
+/musr/command materialPropertiesTable airWrap2 DIFFUSELOBECONSTANT 2  2.0e-6 4.5e-6  0.1 0.1
+/musr/command materialPropertiesTable airWrap2 RINDEX                2  2.0e-6 4.5e-6  1. 1.
+/musr/command opticalSurface airBoundary2 phys_World phys_scintFarAwayC1 dielectric_dielectric polishedbackpainted unified airWrap2
+#/musr/command opticalSurface airBoundary2 phys_World phys_scintFarAwayC1 dielectric_dielectric polished unified airWrap2
+#
+#  OPTICAL BOUNDARY:  SCINTILLATOR -> AIR (thinAir)
+/musr/command materialPropertiesTable airWrap3 REFLECTIVITY     2  2.0e-6 4.5e-6  1. 1.
+/musr/command materialPropertiesTable airWrap3 EFFICIENCY       2  2.0e-6 4.5e-6  0. 0.
+/musr/command opticalSurface airBoundary3 phys_scintFarAwayC1 phys_thinAir dielectric_dielectric polished unified airWrap3
+#
+# OPTICAL BOUNDARY : Air (thinAir) -> Epoxy
+/musr/command materialPropertiesTable air_epoxy REFLECTIVITY     2  2.0e-6 4.5e-6  1. 1.
+/musr/command materialPropertiesTable air_epoxy EFFICIENCY     2  2.0e-6 4.5e-6  0.0 0.0
+/musr/command opticalSurface AirEpoxyboundary phys_thinAir phys_EpoxyPackage dielectric_dielectric  polished unified air_epoxy
+#
+# OPTICAL BOUNDARY : Epoxy -> Air in case
+/musr/command materialPropertiesTable epoxy_airactive REFLECTIVITY     2  2.0e-6 4.5e-6  1. 1.
+/musr/command materialPropertiesTable epoxy_airactive EFFICIENCY     2  2.0e-6 4.5e-6  0.0 0.0
+/musr/command opticalSurface Epoxyairactiveboundary phys_EpoxyPackage phys_Airincase dielectric_dielectric  polished unified epoxy_airactive
+#
+# OPTICAL BOUNDARY:  Air in case  -> APD 
+/musr/command materialPropertiesTable airincasetoAPD REFLECTIVITY       2  2.0e-6 4.5e-6  0. 0.
+/musr/command materialPropertiesTable airincasetoAPD EFFICIENCY       7  2.48e-6 2.59e-6 2.70e-6 2.82e-6 2.95e-6 3.11e-6 3.27e-6  0.454 0.473 0.485 0.473 0.454 0.419 0.377
+/musr/command opticalSurface airincasetoAPDboundary phys_Airincase phys_APD1 dielectric_metal polishedlumirrorair LUT airincasetoAPD
+#
+## OPTICAL BOUNDARY:  Epoxy -> APD 1
+/musr/command materialPropertiesTable apdSurfdead REFLECTIVITY       2  2.0e-6 4.5e-6  0. 0.
+#/musr/command materialPropertiesTable apdSurf EFFICIENCY       2  2.0e-6 4.5e-6  0.3 0.3
+#/musr/command materialPropertiesTable apdSurf EFFICIENCY       7  2.48e-6 2.59e-6 2.70e-6 2.82e-6 2.95e-6 3.11e-6 3.27e-6  0.454 0.473 0.485 0.473 0.454 0.419 0.377
+/musr/command materialPropertiesTable apdSurfdead EFFICIENCY       2  2.0e-6 4.5e-6  0. 0.
+/musr/command opticalSurface APDsurface1 phys_EpoxyPackage phys_APD1 dielectric_metal polishedlumirrorair LUT apdSurfdead
+#
+# OPTICAL BOUNDARY:  Air (World) -> APD 
+/musr/command materialPropertiesTable WorldtoAPD REFLECTIVITY       2  2.0e-6 4.5e-6  0. 0.
+/musr/command materialPropertiesTable WorldtoAPD EFFICIENCY       2  2.0e-6 4.5e-6  0. 0.
+/musr/command opticalSurface WorldAPDboundary phys_World phys_APD1 dielectric_metal polishedlumirrorair LUT WorldtoAPD
+#
+# OPTICAL BOUNDARY:  thinAir  -> APD 
+/musr/command materialPropertiesTable thinairtoAPD REFLECTIVITY       2  2.0e-6 4.5e-6  0. 0.
+/musr/command materialPropertiesTable thinairtoAPD EFFICIENCY       2  2.0e-6 4.5e-6  0. 0.
+/musr/command opticalSurface thinairtoAPDboundary phys_thinAir phys_APD1 dielectric_metal polishedlumirrorair LUT thinairtoAPD
+#
+#  OPTICAL BOUNDARY:  Epoxy -> thinAir
+/musr/command materialPropertiesTable EpoxytothinAir REFLECTIVITY     2  2.0e-6 4.5e-6  0. 0.
+/musr/command materialPropertiesTable EpoxytothinAir EFFICIENCY       2  2.0e-6 4.5e-6  0. 0.
+/musr/command opticalSurface EpoxytothinAirboundary phys_EpoxyPackage phys_thinAir dielectric_dielectric polished unified EpoxytothinAir
+#
+/musr/command OPSA signalSeparationTime 1000
+#/musr/command OPSA eventsForOPSAhistos -2 0
+/musr/command OPSA OPSAhist 1000 0. 10.
+/musr/command OPSA pulseShapeArray APDpulseShapeFile_2011_1e_Z.txt
+/musr/command OPSA CFD -0.2 1.5 -1.
+#/musr/command OPSA APDcells 1 60 60 0.1 1.5 1.5
+/musr/command OPSA photonFractions 0.01 0.05 0.5 0.2
+/musr/command OPSA SetAPDcellsTimeVariationSigma 0.23
+/musr/command OPSA SetAPDcrossTalk 0.11
+###################################################################################
+#########################  P H Y S I C S      P R O C E S S E S  ##################
+###################################################################################
+# Geant 4.9.3
+/musr/command process addDiscreteProcess gamma G4PhotoElectricEffect
+/musr/command process addDiscreteProcess gamma G4ComptonScattering
+/musr/command process addDiscreteProcess gamma G4GammaConversion
+/musr/command process addDiscreteProcess gamma G4RayleighScattering
+/musr/command process addDiscreteProcess opticalphoton G4OpAbsorption
+/musr/command process addDiscreteProcess opticalphoton G4OpRayleigh
+/musr/command process addDiscreteProcess opticalphoton G4OpBoundaryProcess
+#/musr/command process addDiscreteProcess opticalphoton G4OpWLS
+#/musr/command process addProcess         e-    G4eMultipleScattering    -1  1  1
+/musr/command process addProcess         e-    G4eIonisation            -1  2  2
+#/musr/command process addProcess         e-    G4eBremsstrahlung        -1  3  3
+/musr/command process addProcess         e-    G4Scintillation           4 -1  4
+/musr/command process addProcess         e+    G4eMultipleScattering    -1  1  1
+/musr/command process addProcess         e+    G4eIonisation            -1  2  2
+/musr/command process addProcess         e+    G4eBremsstrahlung        -1  3  3
+/musr/command process addProcess         e+    G4eplusAnnihilation       0 -1  4
+/musr/command process addProcess         e+    G4Scintillation           5 -1  5
+/musr/command process addProcess         mu-   G4MuMultipleScattering   -1  1  1
+/musr/command process addProcess         mu-   G4MuIonisation           -1  2  2
+/musr/command process addProcess         mu-   G4MuBremsstrahlung       -1  3  3
+/musr/command process addProcess         mu-   G4MuPairProduction       -1  4  4
+/musr/command process addProcess         mu-   G4Scintillation           5 -1  5
+/musr/command process addProcess         mu+   G4MuMultipleScattering   -1  1  1
+/musr/command process addProcess         mu+   G4MuIonisation           -1  2  2
+/musr/command process addProcess         mu+   G4MuBremsstrahlung       -1  3  3
+/musr/command process addProcess         mu+   G4MuPairProduction       -1  4  4
+/musr/command process addProcess         mu+   G4Scintillation           5 -1  5
+/musr/command process SetLossFluctuations_OFF e- G4eIonisation
+#
+#
+#/home/install/geant4.9.3/source/processes/electromagnetic/utils/src/G4EnergyLossMessenger.cc
+######## /process/msc/StepLimit Minimal | UseDistanceToBoundary | UseSafety 
+/process/msc/StepLimit UseSafety
+#/process/msc/LateralDisplacement
+/process/msc/RangeFactor 0.04
+/process/msc/GeomFactor 2.5
+#/process/msc/FactorForAngleLimit
+/process/msc/Skin 3.0
+#/process/msc/ThetaLimit 0.2 rad
+#
+###################################################################################
+##################  S O M E   O T H E R    P A R A M E T E R S   ##################
+###################################################################################
+#/musr/command rootOutputDirectoryName /home/sedlak/simData
+# Store all events into the ROOT tree or just the interesting ones ? (true is default)
+#/musr/command storeOnlyEventsWithHits false
+#/musr/command storeOnlyEventsWithHitInDetID 11
+# Set the minimum time separation between two subsequent signals in the same detector (in ns)
+/musr/command signalSeparationTime 50
+#
+/musr/command maximumRunTimeAllowed 86000
+/musr/run/howOftenToPrintEvent 1000
+/musr/run/randomOption 2
+# Use optical photons:
+/musr/command G4OpticalPhotons true
+#/tracking/verbose 5
+#/process/verbose 5
+###################################################################################
+#########################   R O O T     O U T P U T  ##############################
+###################################################################################
+#/musr/command rootOutput runID off
+#/musr/command rootOutput eventID off
+/musr/command rootOutput weight off
+/musr/command rootOutput BFieldAtDecay off
+/musr/command rootOutput muIniPosX off
+/musr/command rootOutput muIniPosY off
+/musr/command rootOutput muIniPosZ off
+/musr/command rootOutput muIniMomX off
+/musr/command rootOutput muIniMomY off
+/musr/command rootOutput muIniMomZ off
+/musr/command rootOutput muIniPolX off
+/musr/command rootOutput muIniPolY off
+/musr/command rootOutput muIniPolZ off
+/musr/command rootOutput muIniTime off
+/musr/command rootOutput muDecayDetID off
+/musr/command rootOutput muDecayPosX off
+/musr/command rootOutput muDecayPosY off
+/musr/command rootOutput muDecayPosZ off
+/musr/command rootOutput muDecayTime off
+/musr/command rootOutput muDecayPolX off
+/musr/command rootOutput muDecayPolY off
+/musr/command rootOutput muDecayPolZ off
+/musr/command rootOutput muTargetTime off
+/musr/command rootOutput muTargetPolX off
+/musr/command rootOutput muTargetPolY off
+/musr/command rootOutput muTargetPolZ off
+/musr/command rootOutput muM0Time off
+/musr/command rootOutput muM0PolX off
+/musr/command rootOutput muM0PolY off
+/musr/command rootOutput muM0PolZ off
+/musr/command rootOutput muM1Time off
+/musr/command rootOutput muM1PolX off
+/musr/command rootOutput muM1PolY off
+/musr/command rootOutput muM1PolZ off
+/musr/command rootOutput muM2Time off
+/musr/command rootOutput muM2PolX off
+/musr/command rootOutput muM2PolY off
+/musr/command rootOutput muM2PolZ off
+/musr/command rootOutput posIniMomX off
+/musr/command rootOutput posIniMomY off
+/musr/command rootOutput posIniMomZ off
+/musr/command rootOutput fieldNomVal off
+#/musr/command rootOutput det_ID off
+#/musr/command rootOutput det_edep off
+/musr/command rootOutput det_edep_el off
+/musr/command rootOutput det_edep_pos off
+/musr/command rootOutput det_edep_gam off
+/musr/command rootOutput det_edep_mup off
+/musr/command rootOutput det_nsteps off
+#/musr/command rootOutput det_length off
+#/musr/command rootOutput det_start off
+/musr/command rootOutput det_end off
+#/musr/command rootOutput det_x off
+#/musr/command rootOutput det_y off
+#/musr/command rootOutput det_z off
+/musr/command rootOutput det_kine off
+/musr/command rootOutput det_VrtxKine off
+/musr/command rootOutput det_VrtxX off
+/musr/command rootOutput det_VrtxY off
+/musr/command rootOutput det_VrtxZ off
+/musr/command rootOutput det_VrtxVolID off
+/musr/command rootOutput det_VrtxProcID off
+/musr/command rootOutput det_VrtxTrackID off
+/musr/command rootOutput det_VrtxParticleID off
+/musr/command rootOutput det_VvvKine off
+/musr/command rootOutput det_VvvX off
+/musr/command rootOutput det_VvvY off
+/musr/command rootOutput det_VvvZ off
+/musr/command rootOutput det_VvvVolID off
+/musr/command rootOutput det_VvvProcID off
+/musr/command rootOutput det_VvvTrackID off
+/musr/command rootOutput det_VvvParticleID off
+### Root variables that are not written out by default, but can be switched on:
+#/musr/command rootOutput fieldIntegralBx on
+#/musr/command rootOutput fieldIntegralBy on
+#/musr/command rootOutput fieldIntegralBz on
+#/musr/command rootOutput fieldIntegralBz1 on
+#/musr/command rootOutput fieldIntegralBz2 on
+#/musr/command rootOutput fieldIntegralBz3 on
+/musr/command rootOutput odet_timeCFDarray on
+/musr/command rootOutput odet_timeC1 on
+###################################################################################
+#########################  V I S U A L I S A T I O N ##############################
+###################################################################################
+####/vis/disable
+####/control/execute visFromToni.mac
+####/control/execute visDawn1.mac
+####/control/execute visVRML201.mac
+###
+#### Use this open statement to create an OpenGL view:
+#
+#   /vis/open OGL 600x600-0+0
+###
+##### Use this open statement to create a .prim file suitable for
+##### viewing in DAWN:
+#####   /vis/open DAWNFILE
+####
+##### Use this open statement to create a .heprep file suitable for
+##### viewing in HepRApp:
+#####   /vis/open HepRepFile
+####
+##### Use this open statement to create a .wrl file suitable for
+##### viewing in a VRML viewer:
+#####   /vis/open VRML2FILE
+####
+##### Disable auto refresh and quieten vis messages whilst scene and
+##### trajectories are established:
+#####   /vis/viewer/set/autoRefresh false
+#####   /vis/verbose errors
+####
+##### Draw geometry:
+###
+#
+#   /vis/drawVolume
+####
+##### Specify view angle:
+#####   /vis/viewer/set/viewpointThetaPhi 90. 0.
+####
+#
+##### Specify zoom value:
+#####   /vis/viewer/zoom 8
+#####
+#/vis/viewer/set/targetPoint 22.5 0. 0. mm
+#####/vis/viewer/set/viewpointThetaPhi 90. 270.
+####
+##### Specify style (surface or wireframe):
+#####   /vis/viewer/set/style surface
+####
+##### Draw coordinate axes:
+#####   /vis/scene/add/axes 0 0 0 1 m
+####
+##### Draw smooth trajectories at end of event, showing trajectory points
+##### as markers 2 pixels wide:
+#
+###   /vis/scene/add/trajectories smooth rich
+#####   /vis/modeling/trajectories/create/drawByCharge
+#####   /vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+#####   /vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+####
+##### (if too many tracks cause core dump => /tracking/storeTrajectory 0)
+##### Draw hits at end of event:
+#####   /vis/scene/add/hits
+####
+##### To draw only gammas:
+#####   /vis/filtering/trajectories/create/particleFilter
+#####   /vis/filtering/trajectories/particleFilter-0/add gamma
+####
+##### To invert the above, drawing all particles except gammas,
+##### keep the above two lines but also add:
+#####   /vis/filtering/trajectories/particleFilter-0/invert true
+####
+##### Many other options are available with /vis/modeling and /vis/filtering.
+##### For example, to select colour by particle ID:
+#####  /vis/modeling/trajectories/create/drawByParticleID
+#####  /vis/modeling/trajectories/drawByParticleID-0/set e+ red
+####
+##### To superimpose all of the events from a given run:
+#
+###   /vis/scene/endOfEventAction accumulate
+####
+##### Re-establish auto refreshing and verbosity:
+#
+###   /vis/viewer/set/autoRefresh true
+#
+###   /vis/verbose warnings
+####
+##### For file-based drivers, use this to create an empty detector view:
+####   /vis/viewer/flush
+####
+#####  Draw of optical photons
+#####   /gem/vis/DrawOpticalPhotons false
+####   /gem/vis/DrawOpticalPhotons true
+####
+##### Minimum initial kinetic energy of a trajectory to draw
+#####   /gem/vis/DrawEnergyMin 3 eV
+####
+### viewer ON
+#   /vis/open OGL 600x600-0+0
+#   /vis/drawVolume
+#   /vis/viewer/zoom 6
+#/vis/viewer/set/targetPoint 21.5 0. 5. mm
+#/vis/viewer/set/viewpointThetaPhi 90. 270.
+#   /vis/scene/add/trajectories smooth rich
+#   /vis/scene/endOfEventAction accumulate
+#   /vis/viewer/set/autoRefresh true
+#   /vis/verbose warnings
+###################################################################################
+######################### P A R T I C L E   G U N #################################
+###################################################################################
+/gun/primaryparticle e-
+/gun/vertex 0 1.25 4 mm
+/gun/vertexsigma -22.5 -1.25 0 mm
+/gun/momentum 100. MeV
+#/gps/particle ion
+#/gps/ion 39 86
+#/gps/ion 27 57 0 0
+#/gps/ion 38 90 0 0
+#  /gps/position seems to be in cm !!!! 
+#/gps/position 0 0 0
+#/gps/energy 0 keV
+#/gps/ang/maxtheta 2 deg
+#/gps/ang/maxphi 2 deg
+########################  B E A M    O N  #######################################
+/run/beamOn 10000....oooOO0OOooo........oooOO0OOooo......End of the configuration file.....oooOO0OOooo........oooOO0OOooo......
+
+
+volumeID=-1	 non-rotated,      sensitive:   World Volume
+musrDetectorConstruction.cc:  aScintSD added: /musr/ScintSD
+volumeID=10	     rotated,      sensitive:   Checking overlaps for volume phys_scintFarAwayC1 ... OK! 
+volumeID=40	 non-rotated,      sensitive:   Checking overlaps for volume phys_thinAir ... OK! 
+volumeID=43	 non-rotated,      sensitive:   Checking overlaps for volume phys_EpoxyPackage ... OK! 
+volumeID=41	 non-rotated,      sensitive:   Checking overlaps for volume phys_Airincase ... OK! 
+volumeID=20	 non-rotated,  non-sensitive:   Checking overlaps for volume phys_APD1 ... OK! 
+Optical surface = airBoundary1, SigmaAlpha = 0.1
+Optical surface "airBoundary1" created.  OpticalType=1  OpticalFinish=2  OpticalModel=1
+Optical surface = airBoundary2, SigmaAlpha = 0.1
+Optical surface "airBoundary2" created.  OpticalType=1  OpticalFinish=2  OpticalModel=1
+Optical surface "airBoundary3" created.  OpticalType=1  OpticalFinish=0  OpticalModel=1
+Optical surface "AirEpoxyboundary" created.  OpticalType=1  OpticalFinish=0  OpticalModel=1
+Optical surface "Epoxyairactiveboundary" created.  OpticalType=1  OpticalFinish=0  OpticalModel=1
+Optical surface "airincasetoAPDboundary" created.  OpticalType=0  OpticalFinish=6  OpticalModel=2
+Optical surface "APDsurface1" created.  OpticalType=0  OpticalFinish=6  OpticalModel=2
+Optical surface "WorldAPDboundary" created.  OpticalType=0  OpticalFinish=6  OpticalModel=2
+Optical surface "thinairtoAPDboundary" created.  OpticalType=0  OpticalFinish=6  OpticalModel=2
+Optical surface "EpoxytothinAirboundary" created.  OpticalType=1  OpticalFinish=0  OpticalModel=1
+musrPhysicsList: The Physics processes are being defined:
+musrPhysicsList: Defining process G4PhotoElectricEffect for gamma
+musrPhysicsList: Defining process G4ComptonScattering for gamma
+musrPhysicsList: Defining process G4GammaConversion for gamma
+musrPhysicsList: Defining process G4RayleighScattering for gamma
+musrPhysicsList: Defining process G4OpAbsorption for opticalphoton
+musrPhysicsList: Defining process G4OpRayleigh for opticalphoton
+musrPhysicsList: Defining process G4OpBoundaryProcess for opticalphoton
+musrPhysicsList: Defining process G4eIonisation for e-
+musrPhysicsList: Defining process G4Scintillation for e-
+musrPhysicsList: Defining process G4eMultipleScattering for e+
+musrPhysicsList: Defining process G4eIonisation for e+
+musrPhysicsList: Defining process G4eBremsstrahlung for e+
+musrPhysicsList: Defining process G4eplusAnnihilation for e+
+musrPhysicsList: Defining process G4Scintillation for e+
+musrPhysicsList: Defining process G4MuMultipleScattering for mu-
+musrPhysicsList: Defining process G4MuIonisation for mu-
+musrPhysicsList: Defining process G4MuBremsstrahlung for mu-
+musrPhysicsList: Defining process G4MuPairProduction for mu-
+musrPhysicsList: Defining process G4Scintillation for mu-
+musrPhysicsList: Defining process G4MuMultipleScattering for mu+
+musrPhysicsList: Defining process G4MuIonisation for mu+
+musrPhysicsList: Defining process G4MuBremsstrahlung for mu+
+musrPhysicsList: Defining process G4MuPairProduction for mu+
+musrPhysicsList: Defining process G4Scintillation for mu+
+musrPhysicsList: Defining process G4eIonisation for e-
+musrPhysicsList.cc:  Switching off loss fluctuations for e- in G4eIonisation
+
+
+
+
+
+*******************************************
+*** Random Seed set by the event number ***
+*******************************************
+   musrPrimaryGeneratorAction::SetPrimaryParticleMuMinus():  USING e- AS PRIMARY PARTICLE!
+
+phot:   for  gamma    SubType= 12
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       PhotoElectric :  Emin=        0 eV    Emax=       10 TeV
+
+compt:   for  gamma    SubType= 13
+      Lambda tables from 100 eV  to 10 TeV in 77 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       Klein-Nishina :  Emin=        0 eV    Emax=       10 TeV
+
+conv:   for  gamma    SubType= 14
+      Lambda tables from 1.022 MeV to 10 TeV in 77 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        BetheHeitler :  Emin=        0 eV    Emax=       10 TeV
+
+Rayl:   for  gamma    SubType= 11
+      Lambda tables from 100 eV  to 10 TeV in 200 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh :  Emin=        0 eV    Emax=      100 GeV
+
+eIoni:   for  e-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 0, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha :  Emin=        0 eV    Emax=       10 TeV
+
+eIoni:   for  e+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha :  Emin=        0 eV    Emax=       10 TeV
+
+eBrem:   for  e+    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      LPM flag: 1 for E > 1 GeV
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB :  Emin=        0 eV    Emax=        1 GeV   AngularGenUrban
+            eBremLPM :  Emin=        1 GeV   Emax=       10 TeV   AngularGenUrban
+
+annihil:   for  e+    SubType= 5
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg :  Emin=        0 eV    Emax=       10 TeV
+
+msc:   for proton    SubType= 10
+      Lambda tables from 100 eV  to 10 TeV in 77 bins, spline: 1
+      RangeFactor= 0.04, stepLimitType: 1, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          UrbanMsc90 :  Emin=        0 eV    Emax=       10 TeV
+
+hIoni:   for  proton    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=       10 TeV
+
+msc:   for GenericIon    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          UrbanMsc90 :  Emin=        0 eV    Emax=       10 TeV
+
+hIoni:   for  anti_proton    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=       10 TeV
+
+msc:   for kaon+    SubType= 10
+      Lambda tables from 100 eV  to 10 TeV in 77 bins, spline: 1
+      RangeFactor= 0.04, stepLimitType: 1, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          UrbanMsc90 :  Emin=        0 eV    Emax=       10 TeV
+
+hIoni:   for  kaon+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=  1.05231 MeV
+          BetheBloch :  Emin=  1.05231 MeV   Emax=       10 TeV
+
+hIoni:   for  kaon-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=  1.05231 MeV
+          BetheBloch :  Emin=  1.05231 MeV   Emax=       10 TeV
+
+muMsc:   for mu+    SubType= 10
+      Lambda tables from 100 eV  to 10 TeV in 77 bins, spline: 1
+      RangeFactor= 0.04, step limit type: 1, lateralDisplacement: 1, polarAngleLimit(deg)= 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          UrbanMsc90 :  Emin=        0 eV    Emax=       10 TeV
+
+muIoni:   for  mu+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=      200 keV
+          BetheBloch :  Emin=      200 keV   Emax=        1 GeV
+        MuBetheBloch :  Emin=        1 GeV   Emax=       10 TeV
+
+muBrems:   for  mu+    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem :  Emin=        0 eV    Emax=       10 TeV
+
+muPairProd:   for  mu+    SubType= 4
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd :  Emin=        0 eV    Emax=       10 TeV
+
+muIoni:   for  mu-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=      200 keV
+          BetheBloch :  Emin=      200 keV   Emax=        1 GeV
+        MuBetheBloch :  Emin=        1 GeV   Emax=       10 TeV
+
+muBrems:   for  mu-    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem :  Emin=        0 eV    Emax=       10 TeV
+
+muPairProd:   for  mu-    SubType= 4
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd :  Emin=        0 eV    Emax=       10 TeV
+
+hIoni:   for  pi+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=  297.505 keV
+          BetheBloch :  Emin=  297.505 keV   Emax=       10 TeV
+
+msc:   for pi-    SubType= 10
+      Lambda tables from 100 eV  to 10 TeV in 77 bins, spline: 1
+      RangeFactor= 0.04, stepLimitType: 1, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          UrbanMsc90 :  Emin=        0 eV    Emax=       10 TeV
+
+hIoni:   for  pi-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=  297.505 keV
+          BetheBloch :  Emin=  297.505 keV   Emax=       10 TeV
+
+========= Table of registered couples ==============================
+
+Index : 0     used in the geometry : Yes     recalculation needed : No 
+ Material : G4_AIR
+ Range cuts        :  gamma  100 um     e-  100 um     e+  100 um  proton 100 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 10 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes     recalculation needed : No 
+ Material : G4_PLASTIC_SC_VINYLTOLUENE
+ Range cuts        :  gamma  100 um     e-  100 um     e+  100 um  proton 100 um 
+ Energy thresholds :  gamma  1.0034 keV    e-  86.3829 keV    e+  85.2297 keV proton 10 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes     recalculation needed : No 
+ Material : Air
+ Range cuts        :  gamma  100 um     e-  100 um     e+  100 um  proton 100 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 10 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 3     used in the geometry : Yes     recalculation needed : No 
+ Material : Epoxy
+ Range cuts        :  gamma  100 um     e-  100 um     e+  100 um  proton 100 um 
+ Energy thresholds :  gamma  1.28664 keV    e-  120.07 keV    e+  118.866 keV proton 10 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 4     used in the geometry : Yes     recalculation needed : No 
+ Material : G4_Cu
+ Range cuts        :  gamma  100 um     e-  100 um     e+  100 um  proton 100 um 
+ Energy thresholds :  gamma  7.33405 keV    e-  249.775 keV    e+  243.15 keV proton 10 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+====================================================================
+
+### Run 65
+musrRootOutput::BeginOfRunAction()  Defining the Root tree and branches:
+musrRootOutput::BeginOfRunAction()  The Root tree and branches were defined.
+WARNING: G4VisManager::IsValidView(): Attempt to draw when no graphics system
+  has been instantiated.  Use "/vis/open" or "/vis/sceneHandler/create".
+  Alternatively, to avoid this message, suppress instantiation of vis
+  manager (G4VisExecutive), possibly by setting G4VIS_NONE, and ensure
+  drawing code is executed only if G4VVisManager::GetConcreteInstance()
+  is non-zero.
+>>> Event 1000. Running already for 4157 seconds.  Present time: Sun Jun 22 19:00:03 2014
+>>> Event 2000. Running already for 8283 seconds.  Present time: Sun Jun 22 20:08:49 2014
+>>> Event 3000. Running already for 12630 seconds.  Present time: Sun Jun 22 21:21:16 2014
+>>> Event 4000. Running already for 19602 seconds.  Present time: Sun Jun 22 23:17:28 2014
+>>> Event 5000. Running already for 26844 seconds.  Present time: Mon Jun 23 01:18:10 2014
+>>> Event 6000. Running already for 34262 seconds.  Present time: Mon Jun 23 03:21:48 2014
+>>> Event 7000. Running already for 41819 seconds.  Present time: Mon Jun 23 05:27:45 2014
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : GeomNav1002
+      issued by : G4Navigator::ComputeStep()
+Track stuck or not moving.
+          Track stuck, not moving for 10 steps
+          in volume -phys_scintFarAwayC1- at point (21.135,-0.035676,5.10259)
+          direction: (0.898335,-0.069684,-0.433749).
+          Potential geometry or navigation problem !
+          Trying pushing it of 1e-07 mm ...Potential overlap in geometry!
+
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+>>> Event 8000. Running already for 49336 seconds.  Present time: Mon Jun 23 07:33:02 2014
+>>> Event 9000. Running already for 56790 seconds.  Present time: Mon Jun 23 09:37:16 2014
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : GeomNav1002
+      issued by : G4Navigator::ComputeStep()
+Track stuck or not moving.
+          Track stuck, not moving for 10 steps
+          in volume -phys_scintFarAwayC1- at point (23.4125,-2.17645,4.55601)
+          direction: (0.573356,0.13802,-0.807597).
+          Potential geometry or navigation problem !
+          Trying pushing it of 1e-07 mm ...Potential overlap in geometry!
+
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+musrRootOutput::EndOfRunAction() - Writing out the Root tree:
+musrRootOutput::EndOfRunAction() - Root tree written out.
+------   ERROR SUMMARY:  ----------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+musrRunAction::EndOfRunAction:
+    Number of events    = 10000
+    User elapsed time   = 4.94914h   = 296.948min   = 17816.9s.
+    Real elapsed time   = 17.619h   = 1057.14min   = 63428.4s.
+    System elapsed time = 0.838075h   = 50.2845min   = 3017.07s.
+Graphics systems deleted.
+Visualization Manager deleting...
+musrPrimaryGeneratorAction:   Number of Generated Events = 10000

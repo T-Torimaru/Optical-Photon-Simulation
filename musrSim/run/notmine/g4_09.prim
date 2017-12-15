@@ -1,0 +1,85 @@
+##G4.PRIM-FORMAT-2.4
+/BoundingBox       -6.84520788       -6.84520788        2.65479212        6.84520788        6.84520788        16.3452079
+!SetCamera
+!OpenDevice
+!BeginModeling
+#--------------------
+#/PVName          phys_scintFarAwayC1.0
+/ColorRGB                 0                 1                 1
+/ForceWireframe  0
+/Origin                 0                 0                 5
+/BaseVector                 1                 0                 0                 0                 1                 0
+/Box               1.5               1.5                 1
+#--------------------
+#/PVName          phys_scintFarAwayC2.0
+/ColorRGB                 0                 1                 1
+/ForceWireframe  0
+/Origin                 0                 0                14
+/BaseVector                 1                 0                 0                 0                 1                 0
+/Box               1.5               1.5                 1
+/ColorRGB                 1                 0                 0
+/Origin                 0                 0                 0
+/BaseVector                 1                 0                 0                 0                 1                 0
+/MarkCircle2DS                 0                 0                 4               0.5
+/ColorRGB                 1                 0                 0
+/Origin                 0                 0                 0
+/BaseVector                 1                 0                 0                 0                 1                 0
+/MarkCircle2DS     -0.0429019763      -0.023345776        4.67781583               0.5
+/ColorRGB                 1                 0                 0
+/Origin                 0                 0                 0
+/BaseVector                 1                 0                 0                 0                 1                 0
+/MarkCircle2DS     -0.0429019763      -0.023345776        4.67781583               0.5
+/ColorRGB                 1                 0                 1
+/ForceWireframe  0
+/Origin                 0                 0                 0
+/BaseVector                 1                 0                 0                 0                 1                 0
+/Polyline
+/PLVertex                 0                 0                 0
+/PLVertex                 0                 0                 4
+/PLVertex     -0.0429019763      -0.023345776        4.67781583
+/PLVertex       0.306585088       -0.67310048                 6
+/PLVertex        7.37299141                10         16.342454
+/EndPolyline
+/ColorRGB                 1                 0                 1
+/ForceWireframe  0
+/Origin                 0                 0                 0
+/BaseVector                 1                 0                 0                 0                 1                 0
+/Polyline
+/PLVertex     -0.0429019763      -0.023345776        4.67781583
+/PLVertex     -0.0838910407      0.0232772213        4.73370808
+/EndPolyline
+/ColorRGB                 1                 0                 1
+/ForceWireframe  0
+/Origin                 0                 0                 0
+/BaseVector                 1                 0                 0                 0                 1                 0
+/Polyline
+/PLVertex                 0                 0                 0
+/PLVertex                 0                 0                 4
+/PLVertex     -0.0429019763      -0.023345776        4.67781583
+/PLVertex       0.306585088       -0.67310048                 6
+/PLVertex        7.37299141                10         16.342454
+/EndPolyline
+/ColorRGB                 1                 0                 1
+/ForceWireframe  0
+/Origin                 0                 0                 0
+/BaseVector                 1                 0                 0                 0                 1                 0
+/Polyline
+/PLVertex     -0.0429019763      -0.023345776        4.67781583
+/PLVertex     -0.0838910407      0.0232772213        4.73370808
+/EndPolyline
+/ColorRGB                 1                 0                 0
+/Origin                 0                 0                 0
+/BaseVector                 1                 0                 0                 0                 1                 0
+/MarkCircle2DS                 0                 0                 4               0.5
+/ColorRGB                 1                 0                 0
+/Origin                 0                 0                 0
+/BaseVector                 1                 0                 0                 0                 1                 0
+/MarkCircle2DS     -0.0429019763      -0.023345776        4.67781583               0.5
+/ColorRGB                 1                 0                 0
+/Origin                 0                 0                 0
+/BaseVector                 1                 0                 0                 0                 1                 0
+/MarkCircle2DS     -0.0429019763      -0.023345776        4.67781583               0.5
+#--------------------
+!EndModeling
+!DrawAll
+!CloseDevice

@@ -1,0 +1,481 @@
+
+
+*************************************************************
+ musrSim version 1.0.2 released on 20 May 2011
+      WWW:  http://lmu.web.psi.ch/simulation/index.html
+
+*************************************************************
+ Geant4 version Name: geant4-09-05-ref-00    (2-December-2011)
+                      Copyright : Geant4 Collaboration
+                      Reference : NIM A 506 (2003), 250-303
+                            WWW : http://cern.ch/geant4
+*************************************************************
+
+musrParameters::musrParameters:  steeringFileName="102.mac" opened.
+
+========================================================================
+musrParameters.cc:  GPS (General Particle Source) requested in the macro.
+                    GPS will be used instead of the primary generator action.
+
+========================================================================
+musrParameters.cc:  GPS (General Particle Source) requested in the macro.
+                    GPS will be used instead of the primary generator action.
+
+========================================================================
+musrParameters.cc:  GPS (General Particle Source) requested in the macro.
+                    GPS will be used instead of the primary generator action.
+Visualization Manager instantiating with verbosity "warnings (3)"...
+Visualization Manager initialising...
+Registering graphics systems...
+
+You have successfully registered the following graphics systems.
+Current available graphics systems are:
+  ASCIITree (ATree)
+  DAWNFILE (DAWNFILE)
+  G4HepRep (HepRepXML)
+  G4HepRepFile (HepRepFile)
+  RayTracer (RayTracer)
+  VRML1FILE (VRML1FILE)
+  VRML2FILE (VRML2FILE)
+  gMocrenFile (gMocrenFile)
+  OpenGLStoredXm (OGL)
+  OpenGLImmediateXm (OGLI)
+  OpenGLStoredXm (OGLS)
+  OpenGLImmediateX (OGLIX)
+  OpenGLStoredX (OGLSX)
+  OpenGLImmediateXm (OGLIXm)
+  OpenGLStoredXm (OGLSXm)
+  RayTracerX (RayTracerX)
+
+Registering model factories...
+
+You have successfully registered the following model factories.
+Registered model factories:
+  generic
+  drawByCharge
+  drawByParticleID
+  drawByOriginVolume
+  drawByAttribute
+
+Registered filter factories:
+  chargeFilter
+  particleFilter
+  originVolumeFilter
+  attributeFilter
+
+Some /vis commands (optionally) take a string to specify colour.
+Available colours:
+  black, blue, cyan, gray, green, grey, magenta, red, white, yellow
+
+musrPrimaryGeneratorAction:  G4GeneralParticleSource is going to be initialised
+Detector configuration file "102.mac" was opened.
+
+
+....oooOO0OOooo........oooOO0OOooo......Configuration file used for this run....oooOO0OOooo........oooOO0OOooo......
+#-----------------------------------------------------------------------
+# Macro file for the simulation of electron/positrons from the Sr decay
+# passing through the scintiallator detectors (blocks).
+# Unless specified otherwises, the default units are mm, ns, MeV, MeV/c.
+# Lines starting with star "#" are comments.
+###################################################################################
+#############################  G E O M E T R Y  ###################################
+#
+# WORLD
+/musr/command construct box World     10 10 100 G4_AIR                0 0 0 no_logical_volume  norot dead -1
+#
+# Sr SOURCE
+/musr/command construct sphere source   0  0.02  0 360 0 180  G4_Sr                   0 0 0 log_World       norot dead 301
+#
+# SCINTILLATOR BLOCKS
+/musr/command construct box scintFarAwayC1  1.5  1.5  1  G4_PLASTIC_SC_VINYLTOLUENE 0 0 5   log_World   norot musr/ScintSD 10
+/musr/command construct box scintFarAwayC2  1.5  1.5  1  G4_PLASTIC_SC_VINYLTOLUENE 0 0 14  log_World   norot musr/ScintSD 11
+#
+#============================================================
+/musr/command visattributes log_World invisible
+/musr/command visattributes log_source red
+/musr/command visattributes G4_PLASTIC_SC_VINYLTOLUENE lightblue
+###################################################################################
+#########################  P H Y S I C S      P R O C E S S E S  ##################
+###################################################################################
+# Geant 4.9.4
+/musr/command process addDiscreteProcess gamma G4PhotoElectricEffect
+/musr/command process addDiscreteProcess gamma G4ComptonScattering
+/musr/command process addDiscreteProcess gamma G4GammaConversion
+/musr/command process addDiscreteProcess gamma G4RayleighScattering
+/musr/command process addProcess         e-    G4eMultipleScattering    -1  1  1
+/musr/command process addProcess         e-    G4eIonisation            -1  2  2
+/musr/command process addProcess         e-    G4eBremsstrahlung        -1  3  3
+/musr/command process addProcess         e+    G4eMultipleScattering    -1  1  1
+/musr/command process addProcess         e+    G4eIonisation            -1  2  2
+/musr/command process addProcess         e+    G4eBremsstrahlung        -1  3  3
+/musr/command process addProcess         e+    G4eplusAnnihilation       0 -1  4
+#/musr/command process addProcess         mu-   G4MuMultipleScattering   -1  1  1
+#/musr/command process addProcess         mu-   G4MuIonisation           -1  2  2
+#/musr/command process addProcess         mu-   G4MuBremsstrahlung       -1  3  3
+#/musr/command process addProcess         mu-   G4MuPairProduction       -1  4  4
+#/musr/command process addProcess         mu+   G4MuMultipleScattering   -1  1  1
+#/musr/command process addProcess         mu+   G4MuIonisation           -1  2  2
+#/musr/command process addProcess         mu+   G4MuBremsstrahlung       -1  3  3
+#/musr/command process addProcess         mu+   G4MuPairProduction       -1  4  4
+#
+###################################################################################
+##################  S O M E   O T H E R    P A R A M E T E R S   ##################
+###################################################################################
+# Store all events into the ROOT tree or just the interesting ones ? (true is default)
+#/musr/command storeOnlyEventsWithHits false
+/musr/command storeOnlyEventsWithHitInDetID 11
+# Set the minimum time separation between two subsequent signals in the same detector (in ns)
+/musr/command signalSeparationTime 50
+#
+/musr/run/howOftenToPrintEvent 10000
+/musr/run/randomOption 2
+###################################################################################
+#########################   R O O T     O U T P U T  ##############################
+###################################################################################
+#/musr/command rootOutput runID off
+#/musr/command rootOutput eventID off
+/musr/command rootOutput weight off
+/musr/command rootOutput BFieldAtDecay off
+/musr/command rootOutput muIniPosX off
+/musr/command rootOutput muIniPosY off
+/musr/command rootOutput muIniPosZ off
+/musr/command rootOutput muIniMomX off
+/musr/command rootOutput muIniMomY off
+/musr/command rootOutput muIniMomZ off
+/musr/command rootOutput muIniPolX off
+/musr/command rootOutput muIniPolY off
+/musr/command rootOutput muIniPolZ off
+/musr/command rootOutput muIniTime off
+/musr/command rootOutput muDecayDetID off
+/musr/command rootOutput muDecayPosX off
+/musr/command rootOutput muDecayPosY off
+/musr/command rootOutput muDecayPosZ off
+/musr/command rootOutput muDecayTime off
+/musr/command rootOutput muDecayPolX off
+/musr/command rootOutput muDecayPolY off
+/musr/command rootOutput muDecayPolZ off
+/musr/command rootOutput muTargetTime off
+/musr/command rootOutput muTargetPolX off
+/musr/command rootOutput muTargetPolY off
+/musr/command rootOutput muTargetPolZ off
+/musr/command rootOutput muM0Time off
+/musr/command rootOutput muM0PolX off
+/musr/command rootOutput muM0PolY off
+/musr/command rootOutput muM0PolZ off
+/musr/command rootOutput muM1Time off
+/musr/command rootOutput muM1PolX off
+/musr/command rootOutput muM1PolY off
+/musr/command rootOutput muM1PolZ off
+/musr/command rootOutput muM2Time off
+/musr/command rootOutput muM2PolX off
+/musr/command rootOutput muM2PolY off
+/musr/command rootOutput muM2PolZ off
+#/musr/command rootOutput posIniMomX off
+#/musr/command rootOutput posIniMomY off
+#/musr/command rootOutput posIniMomZ off
+/musr/command rootOutput fieldNomVal off
+#/musr/command rootOutput det_ID off
+#/musr/command rootOutput det_edep off
+/musr/command rootOutput det_edep_el off
+/musr/command rootOutput det_edep_pos off
+/musr/command rootOutput det_edep_gam off
+/musr/command rootOutput det_edep_mup off
+#/musr/command rootOutput det_nsteps off
+#/musr/command rootOutput det_length off
+#/musr/command rootOutput det_start off
+#/musr/command rootOutput det_end off
+#/musr/command rootOutput det_x off
+#/musr/command rootOutput det_y off
+#/musr/command rootOutput det_z off
+#/musr/command rootOutput det_kine off
+/musr/command rootOutput det_VrtxKine off
+/musr/command rootOutput det_VrtxX off
+/musr/command rootOutput det_VrtxY off
+/musr/command rootOutput det_VrtxZ off
+/musr/command rootOutput det_VrtxVolID off
+/musr/command rootOutput det_VrtxProcID off
+/musr/command rootOutput det_VrtxTrackID off
+/musr/command rootOutput det_VrtxParticleID off
+/musr/command rootOutput det_VvvKine off
+/musr/command rootOutput det_VvvX off
+/musr/command rootOutput det_VvvY off
+/musr/command rootOutput det_VvvZ off
+/musr/command rootOutput det_VvvVolID off
+/musr/command rootOutput det_VvvProcID off
+/musr/command rootOutput det_VvvTrackID off
+/musr/command rootOutput det_VvvParticleID off
+/musr/command rootOutput odet_ID           off
+/musr/command rootOutput nOptPhot          off
+/musr/command rootOutput odet_nPhot        off
+/musr/command rootOutput odet_timeFirst    off
+/musr/command rootOutput odet_timeA        off
+/musr/command rootOutput odet_timeB        off
+/musr/command rootOutput odet_timeC        off
+/musr/command rootOutput odet_timeD        off
+/musr/command rootOutput odet_timeE        off
+/musr/command rootOutput odet_timeMean     off
+/musr/command rootOutput odet_timeLast     off
+/musr/command rootOutput odet_timeCFD      off
+/musr/command rootOutput odet_amplCFD      off
+### Root variables that are not written out by default, but can be switched on:
+#/musr/command rootOutput fieldIntegralBx on
+#/musr/command rootOutput fieldIntegralBy on
+#/musr/command rootOutput fieldIntegralBz on
+#/musr/command rootOutput fieldIntegralBz1 on
+#/musr/command rootOutput fieldIntegralBz2 on
+#/musr/command rootOutput fieldIntegralBz3 on
+###################################################################################
+#########################  V I S U A L I S A T I O N ##############################
+###################################################################################
+/vis/disable
+#/control/execute visFromToni.mac
+#/control/execute visDawn102.mac
+#/control/execute visVRML.mac
+###################################################################################
+######################### P A R T I C L E   G U N #################################
+###################################################################################
+#/gps/particle ion
+#/gps/ion 39 86
+#/gps/ion 27 57 0 0
+/gps/ion 38 90 0 0
+#  /gps/position seems to be in cm !!!! 
+/gps/position 0 0 0
+/gps/energy 0 keV
+#/gps/ang/maxtheta 2 deg
+#/gps/ang/maxphi 2 deg
+########################  B E A M    O N  #######################################
+/run/beamOn 1000000
+/run/beamOn 1000000
+....oooOO0OOooo........oooOO0OOooo......End of the configuration file.....oooOO0OOooo........oooOO0OOooo......
+
+
+volumeID=-1	 non-rotated,  non-sensitive:   World Volume
+volumeID=301	 non-rotated,  non-sensitive:   Checking overlaps for volume phys_source ... OK! 
+volumeID=10	 non-rotated,      sensitive:   Checking overlaps for volume phys_scintFarAwayC1 ... OK! 
+musrDetectorConstruction.cc:  aScintSD added: /musr/ScintSD
+volumeID=11	 non-rotated,      sensitive:   Checking overlaps for volume phys_scintFarAwayC2 ... OK! 
+!!!INFO!!! musrDetectorConstruction.cc:: Only the events with at least one hit in the detector ID=11 are stored  (First time occurrence)
+musrPhysicsList: The Physics processes are being defined:
+musrPhysicsList: Defining process G4PhotoElectricEffect for gamma
+musrPhysicsList: Defining process G4ComptonScattering for gamma
+musrPhysicsList: Defining process G4GammaConversion for gamma
+musrPhysicsList: Defining process G4RayleighScattering for gamma
+musrPhysicsList: Defining process G4eMultipleScattering for e-
+musrPhysicsList: Defining process G4eIonisation for e-
+musrPhysicsList: Defining process G4eBremsstrahlung for e-
+musrPhysicsList: Defining process G4eMultipleScattering for e+
+musrPhysicsList: Defining process G4eIonisation for e+
+musrPhysicsList: Defining process G4eBremsstrahlung for e+
+musrPhysicsList: Defining process G4eplusAnnihilation for e+
+
+
+
+
+
+*******************************************
+*** Random Seed set by the event number ***
+*******************************************
+
+phot:   for  gamma    SubType= 12
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       PhotoElectric :  Emin=        0 eV    Emax=       10 TeV
+
+compt:   for  gamma    SubType= 13
+      Lambda tables from 100 eV  to 10 TeV in 77 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       Klein-Nishina :  Emin=        0 eV    Emax=       10 TeV
+
+conv:   for  gamma    SubType= 14
+      Lambda tables from 1.022 MeV to 10 TeV in 77 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        BetheHeitler :  Emin=        0 eV    Emax=       10 TeV
+
+Rayl:   for  gamma    SubType= 11
+      Lambda tables from 100 eV  to 10 TeV in 200 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh :  Emin=        0 eV    Emax=      100 GeV
+
+msc:   for e-    SubType= 10
+      Lambda tables from 100 eV  to 10 TeV in 77 bins, spline: 1
+      RangeFactor= 0.04, stepLimitType: 1, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          UrbanMsc95 :  Emin=        0 eV    Emax=       10 TeV
+
+eIoni:   for  e-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha :  Emin=        0 eV    Emax=       10 TeV
+
+eBrem:   for  e-    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      LPM flag: 1 for E > 1 GeV
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB :  Emin=        0 eV    Emax=        1 GeV   AngularGenUrban
+            eBremLPM :  Emin=        1 GeV   Emax=       10 TeV   AngularGenUrban
+
+eIoni:   for  e+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha :  Emin=        0 eV    Emax=       10 TeV
+
+eBrem:   for  e+    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      LPM flag: 1 for E > 1 GeV
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB :  Emin=        0 eV    Emax=        1 GeV   AngularGenUrban
+            eBremLPM :  Emin=        1 GeV   Emax=       10 TeV   AngularGenUrban
+
+annihil:   for  e+    SubType= 5
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg :  Emin=        0 eV    Emax=       10 TeV
+
+msc:   for proton    SubType= 10
+      Lambda tables from 100 eV  to 10 TeV in 77 bins, spline: 1
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          UrbanMsc90 :  Emin=        0 eV    Emax=       10 TeV
+
+hIoni:   for  proton    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=       10 TeV
+
+msc:   for GenericIon    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          UrbanMsc90 :  Emin=        0 eV    Emax=       10 TeV
+
+hIoni:   for  anti_proton    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=       10 TeV
+
+msc:   for kaon+    SubType= 10
+      Lambda tables from 100 eV  to 10 TeV in 77 bins, spline: 1
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          UrbanMsc90 :  Emin=        0 eV    Emax=       10 TeV
+
+hIoni:   for  kaon+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=  1.05231 MeV
+          BetheBloch :  Emin=  1.05231 MeV   Emax=       10 TeV
+
+hIoni:   for  kaon-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=  1.05231 MeV
+          BetheBloch :  Emin=  1.05231 MeV   Emax=       10 TeV
+
+hIoni:   for  pi+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=  297.505 keV
+          BetheBloch :  Emin=  297.505 keV   Emax=       10 TeV
+
+msc:   for pi-    SubType= 10
+      Lambda tables from 100 eV  to 10 TeV in 77 bins, spline: 1
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          UrbanMsc90 :  Emin=        0 eV    Emax=       10 TeV
+
+hIoni:   for  pi-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=  297.505 keV
+          BetheBloch :  Emin=  297.505 keV   Emax=       10 TeV
+
+========= Table of registered couples ==============================
+
+Index : 0     used in the geometry : Yes     recalculation needed : No 
+ Material : G4_AIR
+ Range cuts        :  gamma  100 um     e-  100 um     e+  100 um  proton 100 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 10 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes     recalculation needed : No 
+ Material : G4_Sr
+ Range cuts        :  gamma  100 um     e-  100 um     e+  100 um  proton 100 um 
+ Energy thresholds :  gamma  4.64394 keV    e-  107.83 keV    e+  105.677 keV proton 10 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes     recalculation needed : No 
+ Material : G4_PLASTIC_SC_VINYLTOLUENE
+ Range cuts        :  gamma  100 um     e-  100 um     e+  100 um  proton 100 um 
+ Energy thresholds :  gamma  1.0034 keV    e-  86.3829 keV    e+  85.2297 keV proton 10 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+====================================================================
+
+### Run 102
+musrRootOutput::BeginOfRunAction()  Defining the Root tree and branches:
+musrRootOutput::BeginOfRunAction()  The Root tree and branches were defined.
+>>> Event 10000. Running already for 2 seconds.  Present time: Thu Jan  9 22:28:27 2014
+>>> Event 20000. Running already for 5 seconds.  Present time: Thu Jan  9 22:28:30 2014
+>>> Event 30000. Running already for 8 seconds.  Present time: Thu Jan  9 22:28:33 2014
+>>> Event 40000. Running already for 10 seconds.  Present time: Thu Jan  9 22:28:35 2014
+>>> Event 50000. Running already for 13 seconds.  Present time: Thu Jan  9 22:28:38 2014
+>>> Event 60000. Running already for 15 seconds.  Present time: Thu Jan  9 22:28:40 2014
+>>> Event 70000. Running already for 18 seconds.  Present time: Thu Jan  9 22:28:43 2014
+>>> Event 80000. Running already for 20 seconds.  Present time: Thu Jan  9 22:28:45 2014
+>>> Event 90000. Running already for 23 seconds.  Present time: Thu Jan  9 22:28:48 2014
+>>> Event 100000. Running already for 26 seconds.  Present time: Thu Jan  9 22:28:51 2014
+>>> Event 110000. Running already for 28 seconds.  Present time: Thu Jan  9 22:28:53 2014
+>>> Event 120000. Running already for 31 seconds.  Present time: Thu Jan  9 22:28:56 2014
+>>> Event 130000. Running already for 33 seconds.  Present time: Thu Jan  9 22:28:58 2014
+>>> Event 140000. Running already for 36 seconds.  Present time: Thu Jan  9 22:29:01 2014
+>>> Event 150000. Running already for 39 seconds.  Present time: Thu Jan  9 22:29:04 2014
+>>> Event 160000. Running already for 41 seconds.  Present time: Thu Jan  9 22:29:06 2014
+>>> Event 170000. Running already for 44 seconds.  Present time: Thu Jan  9 22:29:09 2014
+>>> Event 180000. Running already for 46 seconds.  Present time: Thu Jan  9 22:29:11 2014
+>>> Event 190000. Running already for 49 seconds.  Present time: Thu Jan  9 22:29:14 2014
+>>> Event 200000. Running already for 52 seconds.  Present time: Thu Jan  9 22:29:17 2014
+>>> Event 210000. Running already for 54 seconds.  Present time: Thu Jan  9 22:29:19 2014
+>>> Event 220000. Running already for 57 seconds.  Present time: Thu Jan  9 22:29:22 2014
+>>> Event 230000. Running already for 59 seconds.  Present time: Thu Jan  9 22:29:24 2014
+>>> Event 240000. Running already for 62 seconds.  Present time: Thu Jan  9 22:29:27 2014
+>>> Event 250000. Running already for 65 seconds.  Present time: Thu Jan  9 22:29:30 2014
+>>> Event 260000. Running already for 67 seconds.  Present time: Thu Jan  9 22:29:32 2014
+>>> Event 270000. Running already for 70 seconds.  Present time: Thu Jan  9 22:29:35 2014
+>>> Event 280000. Running already for 72 seconds.  Present time: Thu Jan  9 22:29:37 2014
+>>> Event 290000. Running already for 75 seconds.  Present time: Thu Jan  9 22:29:40 2014
+>>> Event 300000. Running already for 77 seconds.  Present time: Thu Jan  9 22:29:42 2014
+>>> Event 310000. Running already for 80 seconds.  Present time: Thu Jan  9 22:29:45 2014
+>>> Event 320000. Running already for 83 seconds.  Present time: Thu Jan  9 22:29:48 2014
+>>> Event 330000. Running already for 85 seconds.  Present time: Thu Jan  9 22:29:50 2014
+>>> Event 340000. Running already for 88 seconds.  Present time: Thu Jan  9 22:29:53 2014
+>>> Event 350000. Running already for 90 seconds.  Present time: Thu Jan  9 22:29:55 2014
+>>> Event 360000. Running already for 93 seconds.  Present time: Thu Jan  9 22:29:58 2014
+>>> Event 370000. Running already for 95 seconds.  Present time: Thu Jan  9 22:30:00 2014
+>>> Event 380000. Running already for 98 seconds.  Present time: Thu Jan  9 22:30:03 2014
+>>> Event 390000. Running already for 101 seconds.  Present time: Thu Jan  9 22:30:06 2014
+>>> Event 400000. Running already for 103 seconds.  Present time: Thu Jan  9 22:30:08 2014
+>>> Event 410000. Running already for 106 seconds.  Present time: Thu Jan  9 22:30:11 2014
+>>> Event 420000. Running already for 108 seconds.  Present time: Thu Jan  9 22:30:13 2014
+>>> Event 430000. Running already for 111 seconds.  Present time: Thu Jan  9 22:30:16 2014
+>>> Event 440000. Running already for 113 seconds.  Present time: Thu Jan  9 22:30:18 2014
+>>> Event 450000. Running already for 116 seconds.  Present time: Thu Jan  9 22:30:21 2014

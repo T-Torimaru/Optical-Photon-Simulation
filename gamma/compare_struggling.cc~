@@ -1,0 +1,17 @@
+void compare_struggling () {
+
+   TH1F* h_angle[3];
+   TFile* ifile[3];
+   ifile[0] = new TFile("angle_2p5mm.root");
+   ifile[1] = new TFile("angle_5mm.root");
+   ifile[2] = new TFile("angle_10mm.root");
+   for (int i=0; i<3; i++) {
+      h_angle[i] = (TH1F*)ifile[i]->Get("h_theta");
+   }
+   h_angle[0]->Draw();
+   h_angle[1]->SetLineColor(2);
+   h_angle[1]->Draw("same");
+   h_angle[2]->SetLineColor(3);
+   h_angle[2]->Draw("same");
+   
+}

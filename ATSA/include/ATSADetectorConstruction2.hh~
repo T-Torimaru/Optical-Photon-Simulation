@@ -1,0 +1,263 @@
+//$Id: ATSADetectorConstruction.hh 99 2012-11-02 13:54:44Z ripiccini $
+//$Rev: 99 $
+
+#ifndef ATSADetectorConstruction2_H
+#define ATSADetectorConstruction2_H 1
+
+class G4LogicalVolume;
+class G4VPhysicalVolume;
+class G4VisAttributes;
+
+
+#include "G4VUserDetectorConstruction.hh"
+#include "G4Material.hh"
+#include "G4AssemblyVolume.hh"
+
+class ATSADetectorConstruction2 : public G4VUserDetectorConstruction
+{
+  public:
+
+  ATSADetectorConstruction2(double,bool);
+  ~ATSADetectorConstruction2();
+  G4VPhysicalVolume* Construct();
+  G4VPhysicalVolume* GetCladding1() {return physClad1;};  
+  G4VPhysicalVolume* GetCladding2() {return physClad2;};
+  G4VPhysicalVolume* GetAbsorberCore() {return physFiberCore;};
+  G4VPhysicalVolume* GetCladding1_0() {return physClad1_0;};  
+  G4VPhysicalVolume* GetCladding2_0() {return physClad2_0;};
+  G4VPhysicalVolume* GetAbsorberCore_0() {return physFiberCore_0;};
+  G4VPhysicalVolume* GetCladding1_1() {return physClad1_1;};  
+  G4VPhysicalVolume* GetCladding2_1() {return physClad2_1;};
+  G4int GetNpix(){return Npix;}
+  G4double GetFillFactor(){return ff;}
+  bool GetMuonFlag(){return muon_flag;}
+  G4VPhysicalVolume* GetAbsorberCore_1() {return physFiberCore_1;};
+  G4VPhysicalVolume* GetCladding1_2() {return physClad1_2;};  
+  G4VPhysicalVolume* GetCladding2_2() {return physClad2_2;};
+  G4VPhysicalVolume* GetAbsorberCore_2() {return physFiberCore_2;};
+  G4VPhysicalVolume* GetExpHall() {return experimentalHall_phys;}
+  G4VPhysicalVolume* GetSiPM() {return physSiPM;}
+  G4VPhysicalVolume* GetSiPMWin() {return physSiPMWin;}
+  G4VPhysicalVolume* GetSiPMWin_1() {return physSiPMWin_1;}
+  G4VPhysicalVolume* GetSiPM_1() {return physSiPM_1;}
+  G4VPhysicalVolume* GetSiPM_2() {return physSiPM_2;}
+  G4VPhysicalVolume* GetVirtualMother() {return physVirtualMother;}
+  G4VPhysicalVolume* GetVirtualVol() {return physVirtualVol;}
+  G4VPhysicalVolume* GetVirtualVol_1() {return physVirtualVol_1;}
+  G4VPhysicalVolume* GetVirtualVol_2() {return physVirtualVol_2;}
+  G4VPhysicalVolume* GetVirtualVol_3() {return physVirtualVol_3;}
+  G4VPhysicalVolume* GetVirtualVol_4() {return physVirtualVol_4;}
+  G4VPhysicalVolume* GetVirtualVol_5() {return physVirtualVol_5;}
+  G4VPhysicalVolume* GetMylar() {return physMylar;}
+  G4VPhysicalVolume* GetGlue() {return physGlue;}
+  G4VPhysicalVolume* GetGlue_1() {return physGlue_1;}
+  G4VPhysicalVolume* GetGlue_2() {return physGlue_2;}
+  G4VPhysicalVolume* GetGroove() {return physGroove;}
+  G4VPhysicalVolume* GetLightGuide() {return physLightGuide;}
+  G4VPhysicalVolume* GetWhiteFiber() {return physWhiteFiber;}
+  G4VPhysicalVolume* GetLightGuide1() {return physLightGuide1;}
+  G4VPhysicalVolume* GetDeposit() {return physDeposit;}
+  G4VPhysicalVolume* GetScintillator() {return physScintillator;}
+  
+private:
+  
+  //Material
+  G4int Npix;
+  G4double ff;
+  double dfib;
+  bool deposit;
+  bool muon_flag;
+  G4Material* scintBCF12;
+  G4Material* scintBC404;
+  G4Material* Acrylic;
+  G4Material* FluorAcrylic;
+  G4Material* Aluminum;
+  G4Material* Plexiglass;
+  G4Material* Copper;
+  G4Material* air;  
+  G4Material* iron;
+  G4Material* silicon;
+  G4Material* lead;
+  G4Material* vacuum;
+  G4Material* Diamond;
+  G4Material* Mylar;
+
+  // Logical volumes  
+  G4LogicalVolume* experimentalHall_log;
+  G4LogicalVolume* logicSourceSupport;
+  G4LogicalVolume* logicSourcePlace;
+  G4LogicalVolume* logicSourceCase;
+  G4LogicalVolume* logicCollimator;
+  G4LogicalVolume* logicDegrader;
+  G4LogicalVolume* logicMainDegrader;
+  G4LogicalVolume* logicIron1;
+  G4LogicalVolume* logicIron2;
+  G4LogicalVolume* logicCollimator_lead;
+  G4LogicalVolume* logicHole;
+  G4LogicalVolume* logicWhiteFiber;
+  G4LogicalVolume* logicLightGuide1;
+  G4LogicalVolume* logicGroove;
+  G4LogicalVolume* logicHole_lead;
+  G4LogicalVolume* logicfcase;
+  G4LogicalVolume* logicSiPMSupport;
+  G4LogicalVolume* logicSiPMCase;
+  G4LogicalVolume* logicSiPMCase_1;
+  G4LogicalVolume* logicSiPMCenter;
+  G4LogicalVolume* logicSiPMWin;
+  G4LogicalVolume* logicSiPMWin_1;
+  G4LogicalVolume* logicSiPMShield;
+  G4LogicalVolume* logicSiPMShieldWin;
+  G4LogicalVolume* logicFiberCoupling;
+  G4LogicalVolume* logicFiberCouplingWin;
+  G4LogicalVolume* logicGlue;
+  G4LogicalVolume* logicGlue_0;
+  G4LogicalVolume* logicGlue_01;
+  G4LogicalVolume* logicGlue_1;
+  G4LogicalVolume* logicGlue_2;
+  G4LogicalVolume* logicGlue_3;
+  G4LogicalVolume* logicGlue_4;
+  G4LogicalVolume* logicGlue_5;
+  G4LogicalVolume* logicLightGuide;
+  G4LogicalVolume* logicLightGuide_1;
+  G4LogicalVolume* logicClad1;
+  G4LogicalVolume* logicClad1_0;
+  G4LogicalVolume* logicClad1_1;
+  G4LogicalVolume* logicClad1_2;
+  G4LogicalVolume* logicClad2;
+  G4LogicalVolume* logicClad2_0;
+  G4LogicalVolume* logicClad2_1;
+  G4LogicalVolume* logicClad2_2;
+  G4LogicalVolume* logicFiberCore;
+  G4LogicalVolume* logicFiberCore_0;
+  G4LogicalVolume* logicFiberCore_1;
+  G4LogicalVolume* logicFiberCore_2;
+  G4LogicalVolume* logicDeposit;
+  G4LogicalVolume* logicDeposit_1;
+  G4LogicalVolume* logicDeposit_2;
+  G4LogicalVolume* logicVirtualMother;
+  G4LogicalVolume* logicVirtualVol;
+  G4LogicalVolume* logicVirtualVol_1;
+  G4LogicalVolume* logicVirtualVol_2;
+  G4LogicalVolume* logicVirtualVol_3;
+  G4LogicalVolume* logicVirtualVol_4;
+  G4LogicalVolume* logicVirtualVol_5;
+  G4LogicalVolume* logicScintillator;
+  G4LogicalVolume* logicPMT;
+  G4LogicalVolume* logicSiPM;
+  G4LogicalVolume* logicSiPM_1;
+  G4LogicalVolume* logicSiPM_2;
+  G4LogicalVolume* logicMylar;
+  
+  // Physical volumes  
+  G4VPhysicalVolume* experimentalHall_phys;
+  G4VPhysicalVolume* physSourceSupport;
+  G4VPhysicalVolume* physSourcePlace;
+  G4VPhysicalVolume* physSourceCase;
+  G4VPhysicalVolume* physCollimator;
+  G4VPhysicalVolume* physDegrader;
+  G4VPhysicalVolume* physMainDegrader;
+  G4VPhysicalVolume* physHole;
+  G4VPhysicalVolume* physGroove;
+  G4VPhysicalVolume* physWhiteFiber;
+  G4VPhysicalVolume* physLightGuide1;
+  G4VPhysicalVolume* physIron1;
+  G4VPhysicalVolume* physIron2;
+  G4VPhysicalVolume* physCollimator_lead;
+  G4VPhysicalVolume* physHole_lead;
+  G4VPhysicalVolume* physfcase;
+  G4VPhysicalVolume* physSiPMSupport;
+  G4VPhysicalVolume* physSiPMCase;
+  G4VPhysicalVolume* physSiPMCase_1;
+  G4VPhysicalVolume* physSiPMCenter;
+  G4VPhysicalVolume* physSiPMWin;
+  G4VPhysicalVolume* physSiPMWin_1;
+  G4VPhysicalVolume* physSiPMShield;
+  G4VPhysicalVolume* physSiPMShieldWin;
+  G4VPhysicalVolume* physFiberCoupling;
+  G4VPhysicalVolume* physFiberCouplingWin;
+  G4VPhysicalVolume* physGlue;
+  G4VPhysicalVolume* physGlue_0;
+  G4VPhysicalVolume* physGlue_01;
+  G4VPhysicalVolume* physGlue_1;
+  G4VPhysicalVolume* physGlue_2;
+  G4VPhysicalVolume* physGlue_3;
+  G4VPhysicalVolume* physGlue_4;
+  G4VPhysicalVolume* physGlue_5;
+  G4VPhysicalVolume* physLightGuide;
+  G4VPhysicalVolume* physLightGuide_1;
+  G4VPhysicalVolume* physClad1;
+  G4VPhysicalVolume* physClad1_0;
+  G4VPhysicalVolume* physClad1_1;
+  G4VPhysicalVolume* physClad1_2;
+  G4VPhysicalVolume* physClad2;
+  G4VPhysicalVolume* physClad2_0;
+  G4VPhysicalVolume* physClad2_1;
+  G4VPhysicalVolume* physClad2_2;
+  G4VPhysicalVolume* physFiberCore;
+  G4VPhysicalVolume* physFiberCore_0;
+  G4VPhysicalVolume* physFiberCore_1;
+  G4VPhysicalVolume* physFiberCore_2;
+  G4VPhysicalVolume* physDeposit;
+  G4VPhysicalVolume* physDeposit_1;
+  G4VPhysicalVolume* physDeposit_2;
+  G4VPhysicalVolume* physVirtualMother;
+  G4VPhysicalVolume* physVirtualVol;
+  G4VPhysicalVolume* physVirtualVol_1;
+  G4VPhysicalVolume* physVirtualVol_2;
+  G4VPhysicalVolume* physVirtualVol_3;
+  G4VPhysicalVolume* physVirtualVol_4;
+  G4VPhysicalVolume* physVirtualVol_5;
+  G4VPhysicalVolume* physScintillator;
+  G4VPhysicalVolume* physPMT;
+  G4VPhysicalVolume* physSiPM;
+  G4VPhysicalVolume* physSiPM_1;
+  G4VPhysicalVolume* physSiPM_2;
+  G4VPhysicalVolume* physMylar;
+  G4AssemblyVolume* PixelAssembly;
+  G4AssemblyVolume* PixelAssembly_1;
+  
+  //Vis attributes
+  G4VisAttributes* experimentalHall_vis;
+  G4VisAttributes* visSourceSupport;
+  G4VisAttributes* visSourcePlace;
+  G4VisAttributes* visIron1;
+  G4VisAttributes* visSourceCase;
+  G4VisAttributes* visCollimator;
+  G4VisAttributes* visHole;
+  G4VisAttributes* visHole_lead;
+  G4VisAttributes* visfcase;
+  G4VisAttributes* visSiPMSupport;
+  G4VisAttributes* visSiPMPlace;
+  G4VisAttributes* visSiPMCase;
+  G4VisAttributes* visSiPMWin;
+  G4VisAttributes* visSiPMShield;
+  G4VisAttributes* visSiPMShieldWin;
+  G4VisAttributes* visFiberCoupling;
+  G4VisAttributes* visFiberCouplingWin;
+  G4VisAttributes* visGlue;
+  G4VisAttributes* visGlue_1;
+  G4VisAttributes* visGlue_3;
+  G4VisAttributes* visGlue_4;
+  G4VisAttributes* visLightGuide;
+  G4VisAttributes* visClad1;
+  G4VisAttributes* visClad1_1;
+  G4VisAttributes* visClad1_2;
+  G4VisAttributes* visClad2;
+  G4VisAttributes* visClad2_1;
+  G4VisAttributes* visClad2_2;
+  G4VisAttributes* visFiberCore;
+  G4VisAttributes* visFiberCore_1;
+  G4VisAttributes* visFiberCore_2;
+  G4VisAttributes* visDeposit;
+  G4VisAttributes* visDeposit_1;
+  G4VisAttributes* visDeposit_2;
+  G4VisAttributes* visScintillator;
+  G4VisAttributes* visPMT;
+  G4VisAttributes* visSiPM;
+  G4VisAttributes* visSiPM_1;
+  G4VisAttributes* visSiPM_2;
+
+};
+
+#endif
+

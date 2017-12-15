@@ -1,0 +1,15 @@
+void compare_efficiency() {
+
+   TFile* ifile[3];
+   ifile[0] = new TFile("gr_effi_pb");
+   ifile[1] = new TFile("gr_effi_bgo");
+   ifile[2] = new TFile("gr_effi_nai");
+   TGraph* gr[3];
+   gr[0] = (TGraph*)ifile[0]->Get("gr_effi_pb");
+   gr[1] = (TGraph*)ifile[1]->Get("gr_effi_bgo");
+   gr[2] = (TGraph*)ifile[2]->Get("gr_effi_nai");
+   gr[0]->Draw("APL");
+   gr[1]->Draw("PL same");
+   gr[2]->Draw("PL same");
+   
+}

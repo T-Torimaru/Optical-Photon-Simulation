@@ -1,0 +1,97 @@
+//
+// ********************************************************************
+// * License and Disclaimer                                           *
+// *                                                                  *
+// * The  Geant4 software  is  copyright of the Copyright Holders  of *
+// * the Geant4 Collaboration.  It is provided  under  the terms  and *
+// * conditions of the Geant4 Software License,  included in the file *
+// * LICENSE and available at  http://cern.ch/geant4/license .  These *
+// * include a list of copyright holders.                             *
+// *                                                                  *
+// * Neither the authors of this software system, nor their employing *
+// * institutes,nor the agencies providing financial support for this *
+// * work  make  any representation or  warranty, express or implied, *
+// * regarding  this  software system or assume any liability for its *
+// * use.  Please see the license in the file  LICENSE  and URL above *
+// * for the full disclaimer and the limitation of liability.         *
+// *                                                                  *
+// * This  code  implementation is the result of  the  scientific and *
+// * technical work of the GEANT4 collaboration.                      *
+// * By using,  copying,  modifying or  distributing the software (or *
+// * any work based  on the software)  you  agree  to acknowledge its *
+// * use  in  resulting  scientific  publications,  and indicate your *
+// * acceptance of all terms of the Geant4 Software license.          *
+// ********************************************************************
+//
+// $Id: OpNoviceTriggerSD.hh 76474 2013-11-11 10:36:34Z gcosmo $
+//
+/// \file OpNoviceTriggerSD.hh
+/// \brief Definition of the OpNoviceTriggerSD class
+
+#ifndef OpNoviceTriggerSD_h
+#define OpNoviceTriggerSD_h 1
+// #ifndef OpNoviceTriggerSD_h
+// #define OpNoviceTriggerSD_h 1
+
+#include "G4VSensitiveDetector.hh"
+#include "OpNoviceTriggerHit.hh"
+
+#include <vector>
+
+class G4Step;
+class G4HCofThisEvent;
+
+/// Calorimeter sensitive detector class                                                                                    
+///                                                                                                                         
+/// In Initialize(), it creates one hit for each calorimeter layer and one more                                             
+/// hit for accounting the total quantities in all layers.                                                                  
+///                                                                                                                         
+/// The values are accounted in hits in ProcessHits() function which is called                                              
+/// by Geant4 kernel at each step.                                                                                          
+
+class OpNoviceTriggerSD : public G4VSensitiveDetector
+{
+public:
+  OpNoviceTriggerSD(const G4String& name,
+		   const G4String& hitsCollectionName,
+		   G4int nofCells);
+  virtual ~OpNoviceTriggerSD();
+
+  // methods from base class                                                                                              
+  virtual void   Initialize(G4HCofThisEvent* hitCollection);
+  virtual G4bool ProcessHits(G4Step* step, G4TouchableHistory* history);
+  virtual void   EndOfEvent(G4HCofThisEvent* hitCollection);
+
+private:
+  OpNoviceTriggerHitsCollection* fHitsCollection;
+  G4int     fNofCells;
+};
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......                                            
+
+#endif
+
+
+// class G4Step;
+// class G4HCofThisEvent;
+// class G4TouchableHistory;
+
+// /// Hodoscope sensitive detector
+
+// class OpNoviceTriggerSD : public G4VSensitiveDetector
+// {
+// public:
+//     OpNoviceTriggerSD(G4String name);
+//     virtual ~OpNoviceTriggerSD();
+    
+//     virtual void Initialize(G4HCofThisEvent*HCE);
+//     virtual G4bool ProcessHits(G4Step*aStep,G4TouchableHistory*ROhist);
+    
+// private:
+//     OpNoviceTriggerHitsCollection* fHitsCollection;
+//     G4int fHCID;
+// };
+
+// //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+// #endif

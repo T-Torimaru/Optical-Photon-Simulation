@@ -1,0 +1,239 @@
+/run/verbose 0
+/run/initialize
+/vis/open OGL 600x600-0+0
+/vis/sceneHandler/create OGL
+/vis/viewer/create ! ! 600x600-0+0
+/vis/viewer/refresh
+/vis/viewer/set/autoRefresh false
+/vis/drawVolume
+/vis/scene/create
+/vis/scene/add/volume world
+/vis/sceneHandler/attach
+/vis/viewer/set/viewpointVector -1 0 0
+/vis/viewer/set/lightsVector -1 0 0
+/vis/viewer/set/style wireframe
+/vis/viewer/set/auxiliaryEdge true
+/vis/viewer/set/lineSegmentsPerCircle 100
+/vis/scene/add/trajectories smooth
+/tracking/storeTrajectory 2
+/vis/scene/notifyHandlers
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
+/vis/scene/notifyHandlers scene-0
+/vis/scene/endOfEventAction accumulate
+/vis/geometry/set/visibility World 0 false
+/vis/scene/notifyHandlers
+/vis/viewer/set/style surface
+/vis/viewer/set/hiddenMarker true
+/vis/viewer/set/viewpointThetaPhi 120 150
+/vis/viewer/zoom 1.0
+/vis/viewer/set/autoRefresh true
+/vis/viewer/refresh
+/run/beamOn 1
+/vis/scene/notifyHandlers scene-0
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn
+/run/beamOn

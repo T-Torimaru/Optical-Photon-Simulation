@@ -1,0 +1,282 @@
+//$Id: ATSAPhysicsList.cc 148 2013-01-18 16:28:51Z ripiccini $
+//$Rev: 148 $
+
+#include "ATSAPhysicsList.hh"
+#include "G4ParticleTypes.hh"
+#include "G4ParticleDefinition.hh"
+#include "G4ParticleTable.hh"
+#include "G4Decay.hh"
+#include "G4ProcessManager.hh"
+#include "G4Scintillation.hh"
+#include "G4EmSaturation.hh"
+#include "G4OpAbsorption.hh"
+#include "G4OpBoundaryProcess.hh"
+#include "G4LossTableManager.hh"
+//include for radioactive decay
+#include "G4IonTable.hh"
+#include "G4IonConstructor.hh"
+#include "G4RadioactiveDecay.hh"
+#include "G4TransitionRadiation.hh"
+#include "G4StepLimiter.hh"
+ATSAPhysicsList::ATSAPhysicsList() : G4VUserPhysicsList()
+{
+  theScintillationProcess = NULL;
+  theAbsorptionProcess  = NULL;
+  theBoundaryProcess  = NULL;
+
+}
+
+
+
+ATSAPhysicsList::~ATSAPhysicsList()
+{;}
+
+void ATSAPhysicsList::ConstructParticle()
+{
+  // In this method, static member functions should be called
+  // for all particles which you want to use.
+  // This ensures that objects of these particle types will be
+  // created in the program. 
+
+  G4Geantino::GeantinoDefinition();
+  ConstructBosons();
+  ConstructLeptons();
+  //  ConstructIon();
+  
+  // baryons
+  G4Proton::ProtonDefinition();
+  G4Neutron::NeutronDefinition();  
+  
+
+  // ions
+  G4IonConstructor iConstructor;
+  iConstructor.ConstructParticle();  
+
+}
+
+void ATSAPhysicsList::ConstructProcess()
+{
+  // Define transportation process
+  AddTransportation();  
+  //
+  ConstructGeneral();
+  ConstructEM();
+  ConstructOp();
+  
+}
+
+void ATSAPhysicsList::SetCuts()
+{
+  // uppress error messages even in case e/gamma/proton do not exist            
+  G4int temp = GetVerboseLevel();                                                
+  SetVerboseLevel(0);                                                           
+  //  " G4VUserPhysicsList::SetCutsWithDefault" method sets 
+  //   the default cut value for all particle types 
+  SetCutsWithDefault();   
+
+  //  cutForElectron=0.001*mm;
+  // SetCutValue(cutForElectron,"e-");
+  // Retrieve verbose level
+  SetVerboseLevel(temp);  
+  DumpCutValuesTable();
+}
+
+void ATSAPhysicsList::ConstructBosons()
+{
+ // gamma
+ G4Gamma::GammaDefinition();
+ 
+ // optical photon
+ G4OpticalPhoton::OpticalPhotonDefinition();
+}
+
+void ATSAPhysicsList::ConstructLeptons()
+{
+ // leptons
+ //  e+/-
+ G4Electron::ElectronDefinition();
+ G4Positron::PositronDefinition();
+ // mu+/-
+ G4MuonPlus::MuonPlusDefinition();
+ G4MuonMinus::MuonMinusDefinition();
+ // nu_e
+ G4NeutrinoE::NeutrinoEDefinition();
+ G4AntiNeutrinoE::AntiNeutrinoEDefinition();
+ // nu_mu
+ G4NeutrinoMu::NeutrinoMuDefinition();
+ G4AntiNeutrinoMu::AntiNeutrinoMuDefinition();
+
+ 
+}
+
+void ATSAPhysicsList::ConstructGeneral()
+{
+  // Add Decay Process
+  G4Decay* theDecayProcess = new G4Decay();
+  theParticleIterator->reset();
+  while( (*theParticleIterator)() ){
+    G4ParticleDefinition* particle = theParticleIterator->value();
+    G4ProcessManager* pmanager = particle->GetProcessManager();
+    if (theDecayProcess->IsApplicable(*particle)) {
+      pmanager ->AddProcess(theDecayProcess);
+      // set ordering for PostStepDoIt and AtRestDoIt
+      pmanager ->SetProcessOrdering(theDecayProcess, idxPostStep);
+      pmanager ->SetProcessOrdering(theDecayProcess, idxAtRest); 
+	}
+  }
+
+  // Declaration of radioactive decay to the Generic Ion in IonTable
+  //
+  //the following lines have still to be checked (rev5)
+  
+  const G4IonTable *theIonTable = G4ParticleTable::GetParticleTable()->GetIonTable();
+  G4RadioactiveDecay *theRadioactiveDecay = new G4RadioactiveDecay();
+
+    G4ProcessManager* pmanager = G4GenericIon::GenericIon()->GetProcessManager();  
+  pmanager->AddProcess(theRadioactiveDecay, 0, -1, 1); 
+
+  
+  for (G4int i=0; i<theIonTable->Entries(); i++)
+    {
+      G4ParticleDefinition* ionparticle = theIonTable->GetParticle(i); 
+      G4String particleName = theIonTable->GetParticle(i)->GetParticleName();
+      if (particleName == "GenericIon")
+	{
+	  G4ProcessManager* pmanager = ionparticle->GetProcessManager();     
+	  //ionparticle->SetAtomicNumber(1);      
+	  //ionparticle->SetAtomicMass(1);        
+          pmanager->SetVerboseLevel(0);
+          pmanager ->AddProcess(theRadioactiveDecay);
+          pmanager ->SetProcessOrdering(theRadioactiveDecay, idxPostStep);
+          pmanager ->SetProcessOrdering(theRadioactiveDecay, idxAtRest);
+        }
+    }
+  
+}
+
+/*
+void ATSAPhysicsList::ConstructIon()
+{
+
+  G4GenericIon* ion = G4GenericIon::GenericIon(); 
+  G4RadioactiveDecay* theRadioactiveDecay = new G4RadioactiveDecay(); 
+  ion->GetProcessManager()->AddProcess(theRadioactiveDecay, 0, -1, 3); 
+}
+*/
+
+//include needed for EM processes (only GAMMA and MUON)
+#include "G4ComptonScattering.hh"
+#include "G4GammaConversion.hh"
+#include "G4PhotoElectricEffect.hh"
+
+#include "G4MuMultipleScattering.hh"
+#include "G4eMultipleScattering.hh"
+#include "G4hMultipleScattering.hh"
+
+#include "G4MuIonisation.hh"
+#include "G4MuBremsstrahlung.hh"
+#include "G4MuPairProduction.hh"
+
+
+#include "G4eIonisation.hh"
+#include "G4eBremsstrahlung.hh"
+#include "G4eplusAnnihilation.hh"
+
+#include "G4hIonisation.hh"
+
+void ATSAPhysicsList::ConstructEM()
+{
+ theParticleIterator->reset();
+while( (*theParticleIterator)() ){
+G4ParticleDefinition* particle = theParticleIterator->value();
+ G4ProcessManager* pmanager = particle->GetProcessManager();
+ G4String particleName = particle->GetParticleName();
+
+//Note on G4ProcessManager::AddProcess(*G4VProcess, G4int, G4int, G4int)
+//The numbers following the process name indicate the priority order in 
+ //which the process itself can happen, respectively: atRest, AlongStep, PostStep
+//If number is set to -1, the process cannot happen
+
+ // GAMMAS
+ // Construct processes for GAMMAS
+ if (particleName == "gamma") {
+   pmanager->AddDiscreteProcess(new G4GammaConversion());
+   pmanager->AddDiscreteProcess(new G4ComptonScattering());
+   pmanager->AddDiscreteProcess(new G4PhotoElectricEffect());
+ }
+ 
+ else if (particleName == "e-") {
+   //electron
+   // Construct processes for electron
+   pmanager->AddProcess(new G4eMultipleScattering(),-1, 1, 1);
+   pmanager->AddProcess(new G4eIonisation(),-1, 2, 2);
+   pmanager->AddProcess(new G4eBremsstrahlung(),-1, 3, 3);
+ } else if (particleName == "e+") {
+   //positron
+   // Construct processes for positron
+   pmanager->AddProcess(new G4eMultipleScattering(),-1, 1, 1);
+   pmanager->AddProcess(new G4eIonisation(),-1, 2, 2);
+   pmanager->AddProcess(new G4eBremsstrahlung(), -1, 3, 3);
+   pmanager->AddProcess(new G4eplusAnnihilation(), 0,-1, 4);
+   
+ } else if( particleName == "mu+" || particleName == "mu-") {
+   //muon
+   pmanager->AddProcess(new G4MuMultipleScattering(),-1, 1, 1);
+    pmanager->AddProcess(new G4MuIonisation(),-1, 2, 2);
+   pmanager->AddProcess(new G4MuBremsstrahlung(),-1, 3, 3);
+   pmanager->AddProcess(new G4MuPairProduction(), -1, 4, 4);
+   pmanager->AddDiscreteProcess(new G4StepLimiter());
+ }
+}
+}
+
+void ATSAPhysicsList::ConstructOp()
+  
+{
+
+ theScintillationProcess = new G4Scintillation("Scintillation");
+ theAbsorptionProcess  = new G4OpAbsorption();
+ theBoundaryProcess  = new G4OpBoundaryProcess();
+
+ theScintillationProcess->SetScintillationYieldFactor(1.);//0.9995);//provisional
+ theScintillationProcess->SetTrackSecondariesFirst(true);
+ // theScintillationProcess->SetScintillationByParticleType(true);
+
+
+G4EmSaturation* emSaturation = G4LossTableManager::Instance()->EmSaturation();
+  theScintillationProcess->AddSaturation(emSaturation);
+
+ //Defining the model for 
+ //G4OpticalSurfaceModel themodel = unified;
+ //theBoundaryProcess->SetModel(themodel);
+  
+ theParticleIterator->reset();
+ while( (*theParticleIterator)() ){
+ G4ParticleDefinition* particle = theParticleIterator->value();
+ G4ProcessManager* pmanager = particle->GetProcessManager();
+ G4String particleName = particle->GetParticleName();
+ 
+ if (theScintillationProcess->IsApplicable(*particle)) {
+ pmanager->AddProcess(theScintillationProcess);
+ pmanager->SetProcessOrderingToLast(theScintillationProcess, idxAtRest);
+ pmanager->SetProcessOrderingToLast(theScintillationProcess, idxPostStep);
+ }
+
+ G4StepLimiter* stepLimiter = new G4StepLimiter();
+ 
+ if (particleName == "opticalphoton") {
+ G4cout << " AddDiscreteProcess to OpticalPhoton " << G4endl;
+ pmanager->AddDiscreteProcess(theAbsorptionProcess);
+ pmanager->AddDiscreteProcess(theBoundaryProcess);
+ // pmanager->AddDiscreteProcess(stepLimiter);
+
+ }
+ }
+
+
+ theScintillationProcess->SetVerboseLevel(0);
+ theAbsorptionProcess->SetVerboseLevel(0);
+ theBoundaryProcess->SetVerboseLevel(0); 
+}
+
+

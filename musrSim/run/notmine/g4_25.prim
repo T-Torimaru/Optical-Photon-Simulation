@@ -1,0 +1,27 @@
+##G4.PRIM-FORMAT-2.4
+/BoundingBox       -21.4105384       -22.6605384       -17.6605384        23.9105384        22.6605384        27.6605384
+!SetCamera
+!OpenDevice
+!BeginModeling
+#--------------------
+#/PVName          phys_scintFarAwayC1.0
+/ColorRGB                 0                 1                 1
+/ForceWireframe  0
+/Origin                 0                 0                 5
+/BaseVector                 1                 0                 0                 0    6.12303177e-17                 1
+/Trap               2.5                0                0                1             22.5               20      0.896055385                1             22.5               20      0.896055385
+#--------------------
+#/PVName          phys_APD1.0
+/ColorRGB                 1                 0                 0
+/ForceWireframe  0
+/Origin              22.5                 0               3.9
+/BaseVector                 1                 0                 0                 0                 1                 0
+/Box               0.5               0.5               0.1
+/ColorRGB                 1                 0                 0
+/Origin                 0                 0                 0
+/BaseVector                 1                 0                 0                 0                 1                 0
+/MarkCircle2DS       -13.5650119       0.930422097                 4               0.5
+#--------------------
+!EndModeling
+!DrawAll
+!CloseDevice

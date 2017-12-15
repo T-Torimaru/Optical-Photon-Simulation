@@ -1,0 +1,114 @@
+//$Id: ATSAPrimaryGeneratorAction.cc 141 2013-01-18 13:31:51Z ripiccini $
+//$Rev: 141 $
+
+#include "ATSAPrimaryGeneratorAction.hh"
+#include "G4Event.hh"
+#include "G4ParticleGun.hh"
+#include "G4ParticleTable.hh"
+#include "G4ParticleDefinition.hh"
+#include "globals.hh"
+#include "G4GeneralParticleSource.hh"
+#include "G4RadioactiveDecaymessenger.hh"
+#include "G4UImanager.hh"
+#include "TRandom3.h"
+#include "G4SystemOfUnits.hh"
+
+//#include "G4VisManager"
+
+ATSAPrimaryGeneratorAction::ATSAPrimaryGeneratorAction()
+
+{
+  // G4int n_particle = 1;
+  //  particleGun = new G4ParticleGun(n_particle);
+  //  G4ParticleTable *particleTable;
+  // G4ParticleDefinition* particleName;
+
+  gen=new TRandom3(2637262);
+  
+  gps = new G4GeneralParticleSource();
+  
+  G4UImanager* UImanager = G4UImanager::GetUIpointer();
+  //   
+  
+  
+  //position
+  
+  
+  // G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
+  // G4String particleName;
+  //  particleGun->SetParticleDefinition(particleTable->FindParticle(particleName="geantino"));
+  //  particleGun->SetParticleEnergy(2*MeV);
+  //  particleGun->SetParticlePosition(G4ThreeVector(0.0, 0.0, -50*cm));
+
+}
+
+ATSAPrimaryGeneratorAction::~ATSAPrimaryGeneratorAction()
+{
+  //  delete particleGun;
+  delete gps;
+}
+
+void ATSAPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
+{
+
+
+
+  G4UImanager* UImanager = G4UImanager::GetUIpointer();
+  G4PrimaryVertex *vertex=new G4PrimaryVertex();
+  //vertex->SetPosition(-110*mm,y,z);
+
+  Int_t N=(Int_t)gen->Poisson(35);
+  //  
+
+  for(Int_t i=0;i<N;i++){
+   
+    Double_t time;
+    
+    time=gen->Exp((Double_t)N);
+    while(time>50) time=gen->Exp(N);
+    //    G4cout<<time<<G4endl;
+    Double_t y=gen->Uniform(-0.65,0.65);
+    Double_t z=gen->Uniform(-0.65,0.65);
+    //  UImanager->ApplyCommand("/gps/number 10");
+    //  UImanager->ApplyCommand("/gps/source/multiplevertex true");
+    //UImanager->ApplyCommand("/gps/pos/type Plane");
+    // UImanager->ApplyCommand("/gps/pos/shape Square");
+    // UImanager->ApplyCommand("/gps/pos/centre -110. 0. 0. mm");
+    // UImanager->ApplyCommand("/gps/pos/halfx 0. mm");
+    // UImanager->ApplyCommand("/gps/pos/halfy 0.65 mm");
+    UImanager->ApplyCommand(Form("/gps/time %f ns",time));
+    UImanager->ApplyCommand(Form("/gps/position -110 %f %f mm",y,z));
+    
+  gps->GeneratePrimaryVertex(anEvent);
+ 
+  }
+
+
+  // G4int i = anEvent->GetEventID();
+  //  G4ThreeVector v(0.0,0.0,0.0);
+  /* switch(i)
+
+  G4int i = anEvent->GetEventID();
+  G4ThreeVector v(0.0,0.0,-1.0);
+  switch(i)
+
+  {
+    case 0:
+      break;
+    case 1:
+      v.setY(0.1);
+      break;
+    case 2:
+      v.setZ(0.1);
+      break;
+
+      }*/
+  // particleGun->SetParticleMomentumDirection(v);
+  // particleGun->GeneratePrimaryVertex(anEvent);
+  
+
+  
+
+}
+
+

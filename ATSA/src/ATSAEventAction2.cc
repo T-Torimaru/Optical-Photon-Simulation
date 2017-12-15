@@ -1,0 +1,279 @@
+//$Id: ATSAEventAction.cc 152 2013-01-22 16:58:44Z ripiccini $
+//$Rev: 152 $
+
+#include "ATSAEventAction2.hh"
+#include "G4Event.hh"
+#include "G4EventManager.hh"
+#include "G4TrajectoryContainer.hh"
+#include "G4Trajectory.hh"
+#include "G4ios.hh"
+#include "ATSAHistoManager.hh"
+#include "ATSARunAction.hh"
+#include "ATSASteppingAction2.hh"
+#include "TRandom3.h"
+#include "TROOT.h"
+#include "TH1D.h"
+#include "ATSADetectorConstruction2.hh"
+#include "G4SystemOfUnits.hh"
+
+
+ATSAEventAction2::ATSAEventAction2(ATSARunAction* run, ATSAHistoManager* histo,ATSADetectorConstruction2* det, double kill)
+  :runAct(run), histoManager(histo), detector(det),killphot(kill)
+{}
+
+ATSAEventAction2::~ATSAEventAction2()
+{}
+
+void ATSAEventAction2::BeginOfEventAction(const G4Event* aEvent)
+{
+
+  gen=new TRandom3(12342845);
+  
+  
+  //   G4cout << "EVENT" << G4endl;
+  j=0;
+  jj=0;
+  ll=0;
+  mm=0;
+  k=0;
+  k1=0;
+  k2=0;
+  kk=0;
+  kk1=0;
+  kk2=0;
+  Energy=0.;
+  Energy_pos=0.;
+  Energy_muon=0.;
+  EnergyBirks_muon=0.;
+  EnergyScintillator=0.;
+  Energy1_pos=0.;
+  Energy2_pos=0.;
+  Energy1=0.;
+  Energy2=0.;
+  Energy1_muon=0.;
+  Energy2_muon=0.;
+  SiPMCounter=0;
+  SiPMWinCounter=0;
+  EdgeCounter_wf=0;
+  EdgeCounter=0;
+  EdgeCounter1=0;
+  EdgeCounter2=0;
+  EdgeCounter_muon=0;
+  EdgeCounter1_muon=0;
+  EdgeCounter2_muon=0;
+  MylarCounter=0;
+  OutCounter=0;
+  AirCounter=0;
+  PhotonCounter=0;
+  PhotonCounter1=0;
+  PhotonCounter2=0;
+  PhotonCounter_muon=0;
+  PhotonCounter1_muon=0;
+  PhotonCounter2_muon=0;
+  trackLength=0;
+  trackLength1=0;
+  trackLength2=0;
+  trackLength_pos=0;
+  trackLength1_pos=0;
+  trackLength2_pos=0;
+  trackLength_muon=0;
+  trackLength1_muon=0;
+  trackLength2_muon=0;
+  
+  Npix=detector->GetNpix();
+
+  
+  for(G4int lll=0;lll<Npix*Npix;lll++){
+    
+    SiPMPixelCounter[lll]=0;
+    SiPMPixelCounter_pde[lll]=0;
+
+
+  }    
+
+
+
+     if(aEvent->GetEventID()%100==0)G4cout<<aEvent->GetEventID()<<G4endl;  
+  
+  //  G4cout<<killphot<<G4endl;
+  
+  Nph=0;
+  Nph_muon=0;
+  Nph_1=0;
+  Nph1_muon=0;
+  totphotonsipm=0;
+  totphotonsipm_pde=0;
+
+}
+
+
+
+
+void ATSAEventAction2::EndOfEventAction(const G4Event* aEvent)
+{
+  
+  
+  G4double PDE=0.35;
+  G4double ff=detector->GetFillFactor();
+  G4double QE=PDE/ff;
+  
+  
+
+  for(Int_t i=0;i<Npix*Npix;i++){
+    
+
+  ////////////fill factor EFFECT\\\\\\\\\\\ Nph
+    totphotonsipm=totphotonsipm+(int)SiPMPixelCounter[i];
+    //    G4cout<<(int)SiPMPixelCounter[i]<<G4endl;
+    ////////////pde EFFECT\\\\\\\\\\		\
+    
+  //    for(Int_t jjj=0;jjj<SiPMPixelCounter[i];jjj++){
+      
+      //      G4double ran=gen->Uniform(0.,1.);
+      
+      //      G4cout<<ran<<" "<<QE<<" "<<ff<<G4endl;
+      
+      //      if(ran<QE)SiPMPixelCounter_pde[i]++;
+      
+      
+  // }
+
+    totphotonsipm_pde=totphotonsipm_pde+(int)SiPMPixelCounter_pde[i];  
+    
+
+  
+  }
+  
+  
+  for(Int_t i=0;i<Npix*Npix;i++)
+    {
+      if(SiPMPixelCounter_pde[i]>1)SiPMPixelCounter_pde[i]=1;    
+      
+      //PIXEL EFFECT
+      
+      SiPMCounter=SiPMCounter+SiPMPixelCounter_pde[i];    
+        
+    }
+  
+  
+  //    G4cout<<totphotonsipm<<" "<<totphotonsipm_pde<<" "<<SiPMCounter<<G4endl;
+
+  //TREES
+
+  //    G4cout<<EdgeCounter_wf<<" "<<EdgeCounter<<G4endl;
+
+  //  G4cout<<EdgeCounter_muon<<" "<<EdgeCounter1_muon<<" "<<EdgeCounter2_muon<<G4endl;
+  eventnumber=aEvent->GetEventID();
+
+  //  G4cout<<AirCounter<<" "<<PhotonCounter<<G4endl;
+ 
+  //  G4cout<<BetaEnergy<<G4endl;
+
+  histoManager->SetBetaEnergy(BetaEnergy);
+  histoManager->SetPositronEnergy(PositronEnergy);
+  histoManager->SetEnergy(Energy);
+  histoManager->SetEnergy1(Energy1);
+  histoManager->SetEnergy2(Energy2);
+  histoManager->SetEnergy_pos(Energy_pos);
+  histoManager->SetEnergy1_pos(Energy1_pos);
+  histoManager->SetEnergy2_pos(Energy2_pos);
+  histoManager->SetEnergy_muon(Energy_muon);
+  histoManager->SetEnergyBirks_muon(EnergyBirks_muon);
+  histoManager->SetEnergy1_muon(Energy1_muon);
+  histoManager->SetEnergy2_muon(Energy2_muon);
+  histoManager->SetEnergyScintillator(EnergyScintillator);
+  histoManager->SetEdgeCounter_wf(EdgeCounter_wf);
+  histoManager->SetEdgeCounter(EdgeCounter);
+  histoManager->SetTotPhotonSipm(totphotonsipm);
+  histoManager->SetTotPhotonSipm_pde(totphotonsipm_pde);
+  histoManager->SetEdgeCounter1(EdgeCounter1);
+  histoManager->SetEdgeCounter2(EdgeCounter2);
+  histoManager->SetEdgeCounter_muon(EdgeCounter_muon);
+  histoManager->SetEdgeCounter1_muon(EdgeCounter1_muon);
+  histoManager->SetEdgeCounter2_muon(EdgeCounter2_muon);
+  histoManager->SetSiPMCounter(SiPMCounter);
+  histoManager->SetSiPMWinCounter(SiPMWinCounter);
+  histoManager->SetAirCounter(AirCounter);
+  histoManager->SetPhotonCounter(PhotonCounter);
+  histoManager->SetPhotonCounter1(PhotonCounter1);
+  histoManager->SetPhotonCounter2(PhotonCounter2);
+  histoManager->SetPhotonCounter_muon(PhotonCounter_muon);
+  histoManager->SetPhotonCounter1_muon(PhotonCounter1_muon);
+  histoManager->SetPhotonCounter2_muon(PhotonCounter2_muon);
+  histoManager->SetTrackLength(trackLength);
+  histoManager->SetTrackLength1(trackLength1);
+  histoManager->SetTrackLength2(trackLength2);
+  histoManager->SetTrackLength_pos(trackLength_pos);
+  histoManager->SetTrackLength1_pos(trackLength1_pos);
+  histoManager->SetTrackLength2_pos(trackLength2_pos);
+  histoManager->SetTrackLength_muon(trackLength_muon);
+  histoManager->SetTrackLength1_muon(trackLength1_muon);
+  histoManager->SetTrackLength2_muon(trackLength2_muon);
+  histoManager->SetInitialTheta(InitialTheta);
+  histoManager->SetZStop_muon(ZStop);
+  histoManager->SetInitialMomentum_pos(InitialMomentum_pos);
+  histoManager->SetInitialMomentum_muon(InitialMomentum_muon);
+  histoManager->SetInitialPhi(InitialPhi);
+  histoManager->SetFinalTheta(FinalTheta);
+  histoManager->SetFinalPhi(FinalPhi);
+
+ 
+
+  for(G4int i=0;i<Nph;i++){
+
+
+    histoManager->SetPosY(y[i],i);
+    histoManager->SetPosZ(z[i],i);
+    histoManager->SetTime(t[i],i);
+    histoManager->SetDeltaTime(delta_t[i],i); 
+    histoManager->SetDeltaLength(delta_l[i],i); 
+  }
+
+  for(G4int i=0;i<Nph_muon;i++){
+
+
+    histoManager->SetPosY_muon(y_muon[i],i);
+    histoManager->SetPosZ_muon(z_muon[i],i);
+    histoManager->SetTime_muon(tph_muon[i],i);
+    histoManager->SetDeltaTime_muon(deltamuon_t[i],i); 
+    histoManager->SetDeltaLength_muon(deltamuon_l[i],i); 
+  }
+  histoManager->SetNph(Nph);
+  histoManager->SetNph_muon(Nph_muon);
+
+
+
+  for(G4int i=0;i<Nph_1;i++){
+
+
+
+    histoManager->SetPosY_1(y_1[i],i);
+    histoManager->SetPosZ_1(z_1[i],i);
+    histoManager->SetTime_1(t_1[i],i);
+    histoManager->SetDeltaTime1(delta1_t[i],i); 
+    histoManager->SetDeltaLength1(delta1_l[i],i); 
+  }
+
+  for(G4int i=0;i<Nph1_muon;i++){
+
+
+    histoManager->SetPosY_muon_1(y1_muon[i],i);
+    histoManager->SetPosZ_muon_1(z1_muon[i],i);
+    histoManager->SetTime_muon_1(tph1_muon[i],i);
+    histoManager->SetDeltaTime1_muon(delta1muon_t[i],i); 
+    histoManager->SetDeltaLength1_muon(delta1muon_l[i],i); 
+  }
+  histoManager->SetNph_1(Nph_1);
+  histoManager->SetNph_muon_1(Nph1_muon);
+
+
+
+  histoManager->SetEventNumber(eventnumber);
+  
+  delete gen;
+
+  histoManager->FillNtuple(0);
+
+}
+
+
