@@ -10,7 +10,7 @@
 # #/OpNovice/gun/optPhotonPolar
 # #/run/beamOn 1
 # #
-# /gun/position 7.5 7.5 4.9 mm
+## /gun/position 7.5 7.5 4.9 mm
 # #/gun/direction 1 1 1
 # #/OpNovice/gun/optPhotonPolar
 # /run/beamOn 1
