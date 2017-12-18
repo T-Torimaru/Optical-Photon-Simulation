@@ -14,7 +14,7 @@ void dist(){
   hist->SetMaximum(50.);
   hist->SetMinimum(0.);
 
-  ifstream ifs("./dist5.dat");
+  ifstream ifs("./old30mm.dat");
   while(ifs>>x>>y>>z>>w){
     
     hist->Fill(x,y,z);
@@ -27,8 +27,8 @@ void dist(){
   c2->cd();
   hist->Draw("text45 colz");
   
-  sprintf(canvasName,"./png/dist5.png");
+  sprintf(canvasName,"./png/old30mm_dist.png");
   c1->SaveAs(canvasName);
-  sprintf(canvasName,"./png/dist5_plate.png");
+  sprintf(canvasName,"./png/old30mm_dist_plate.png");
   c2->SaveAs(canvasName);
 } 

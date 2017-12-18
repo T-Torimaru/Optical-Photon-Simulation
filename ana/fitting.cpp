@@ -19,8 +19,8 @@ void fitting() {
   sprintf(fileName, "./peak.dat");
   FILE *fp = fopen(fileName,"w");
   
-  for (j=0;j<1;j++){
-    sprintf(fileName,"rootfile/ori13mmx.root");//,runNum[j]);
+  for (j=0;j<25;j++){
+    sprintf(fileName,"rootfile/old30mm%d.root",runNum[j]);
       
       pe->Reset();
     
@@ -48,7 +48,7 @@ void fitting() {
     histoCanvas->cd();
     fitFunc->Draw("same");
     
-    sprintf(canvasName,"./png/ori13mmx.png");//,runNum[j]);
+    sprintf(canvasName,"./png/old30mm%d.png",runNum[j]);
     histoCanvas->SaveAs(canvasName);
     
     fprintf(fp,"%6.4f %6.4f\n",peakP,peakPError);

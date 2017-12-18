@@ -30,9 +30,9 @@
 OpNoviceDetectorConstruction::OpNoviceDetectorConstruction()
   : G4VUserDetectorConstruction(),fVisAttributes(),Apd_log(0)
 {
-  fExpHall_x = fExpHall_y = 31*mm;
+  fExpHall_x = fExpHall_y = 16*mm;
   fExpHall_z =  1*cm;
-  fScinti_x  = fScinti_y               =  30.0*mm;
+  fScinti_x  = fScinti_y               =  15.0*mm;
   fScinti_z                            =  1.50*mm;
   Rmax       = 4.5*mm;
   //  Rmax       = 4.54*mm;
@@ -43,19 +43,19 @@ OpNoviceDetectorConstruction::OpNoviceDetectorConstruction()
   endTheta   = 180*deg;
   center    = 4.8*mm;
    center    = 4.84*mm;
-  Ax = Ay = 0.50*mm;
-  Az = 0.085*mm;
-  Epo_x = 1.3125*mm;
-  Epo_y = 1.225*mm;
-  Epo_z = 0.25*mm;
-  z_epo = -3.55*mm;
-  apd_z = 0.165*mm;
-  // Ax = Ay = 0.65*mm;
-  // Az = 0.10*mm;
-  // Epo_x = Epo_y = 1.05*mm;
+  // Ax = Ay = 0.50*mm;
+  // Az = 0.085*mm;
+  // Epo_x = 1.3125*mm;
+  // Epo_y = 1.225*mm;
   // Epo_z = 0.25*mm;
   // z_epo = -3.55*mm;
-  // apd_z = 0.15*mm;
+  // apd_z = 0.165*mm;
+  Ax = Ay = 0.65*mm;
+  Az = 0.10*mm;
+  Epo_x = Epo_y = 1.05*mm;
+  Epo_z = 0.25*mm;
+  z_epo = -3.55*mm;
+  apd_z = 0.15*mm;
   trigger_x = trigger_y = trigger_z = 2.5*mm;
 }
 
@@ -327,29 +327,29 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
   Apd_log
     = new G4LogicalVolume(Apd_box,apd,"apd_logical");
 
-  // G4VPhysicalVolume* Apd_phys1
-  //   = new G4PVPlacement(0,G4ThreeVector(0,0,apd_z),Apd_log,"Apd",
-  // 			Epoxy_log1,false,0);
+  G4VPhysicalVolume* Apd_phys1
+    = new G4PVPlacement(0,G4ThreeVector(0,0,apd_z),Apd_log,"Apd",
+  			Epoxy_log1,false,0);
 
   // G4VPhysicalVolume* Apd_phys2
   //   = new G4PVPlacement(0,G4ThreeVector(0,0,apd_z),Apd_log,"Apd",
   // 			Epoxy_log2,false,0);
 
-  G4VPhysicalVolume* Apd_phys1
-    = new G4PVPlacement(0,G4ThreeVector(0.69,0.6,apd_z),Apd_log,"Apd",
-  			Epoxy_log1,false,0);
+  // G4VPhysicalVolume* Apd_phys1
+  //   = new G4PVPlacement(0,G4ThreeVector(0.69,0.6,apd_z),Apd_log,"Apd",
+  // 			Epoxy_log1,false,0);
 
-  G4VPhysicalVolume* Apd_phys2
-    = new G4PVPlacement(0,G4ThreeVector(0.69,-0.6,apd_z),Apd_log,"Apd",
-  			Epoxy_log1,false,0);
+  // G4VPhysicalVolume* Apd_phys2
+  //   = new G4PVPlacement(0,G4ThreeVector(0.69,-0.6,apd_z),Apd_log,"Apd",
+  // 			Epoxy_log1,false,0);
 
-  G4VPhysicalVolume* Apd_phys3
-    = new G4PVPlacement(0,G4ThreeVector(-0.51,0.6,apd_z),Apd_log,"Apd",
-  			Epoxy_log1,false,0);
+  // G4VPhysicalVolume* Apd_phys3
+  //   = new G4PVPlacement(0,G4ThreeVector(-0.51,0.6,apd_z),Apd_log,"Apd",
+  // 			Epoxy_log1,false,0);
 
-  G4VPhysicalVolume* Apd_phys4
-    = new G4PVPlacement(0,G4ThreeVector(-0.51,-0.6,apd_z),Apd_log,"Apd",
-  			Epoxy_log1,false,0);
+  // G4VPhysicalVolume* Apd_phys4
+  //   = new G4PVPlacement(0,G4ThreeVector(-0.51,-0.6,apd_z),Apd_log,"Apd",
+  // 			Epoxy_log1,false,0);
 
 
 // ------------- Surfaces --------------
