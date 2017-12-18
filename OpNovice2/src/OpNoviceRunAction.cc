@@ -56,7 +56,7 @@ OpNoviceRunAction::OpNoviceRunAction()
    G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
   // //    analysisManager->SetNtupleMerging(true);
     analysisManager->SetVerboseLevel(1);
-    analysisManager->SetFileName("old30mm25");
+    analysisManager->SetFileName("f1218_2_25");
 
    analysisManager->CreateH1("test1","test1 of runaction",50,0.,50);
   //  analysisManager->CreateH1("test2","test2 of runaction",50,0.,50);

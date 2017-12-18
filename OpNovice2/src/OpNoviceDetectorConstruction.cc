@@ -30,9 +30,9 @@
 OpNoviceDetectorConstruction::OpNoviceDetectorConstruction()
   : G4VUserDetectorConstruction(),fVisAttributes(),Apd_log(0)
 {
-  fExpHall_x = fExpHall_y = 16*mm;
+  fExpHall_x = fExpHall_y = 31*mm;
   fExpHall_z =  1*cm;
-  fScinti_x  = fScinti_y               =  15.0*mm;
+  fScinti_x  = fScinti_y               =  30.0*mm;
   fScinti_z                            =  1.50*mm;
   Rmax       = 4.5*mm;
   //  Rmax       = 4.54*mm;
