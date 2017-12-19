@@ -257,7 +257,7 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
   G4LogicalVolume* Scinti_log
     = new G4LogicalVolume(Scinti_box,Sci,"Tile_logical");
 
-  G4VPhysicalVolume* Scinti_phys
+  Scinti_phys
     = new G4PVPlacement(0,G4ThreeVector(),Scinti_log,"Tile",
 			expHall_log,true,0);
 

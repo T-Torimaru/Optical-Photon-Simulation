@@ -53,7 +53,8 @@ OpNoviceEventAction::OpNoviceEventAction()
 : G4UserEventAction(), 
   fmppcID(-1),
   ftriggerHCID(-1),
-  fAbsHCID(-1)
+  fAbsHCID(-1),
+  fEnergyDep(0.)
   //  ftriggerID(-1)
   //  ene(0.)
   // fHHC1ID(-1),
@@ -98,7 +99,9 @@ OpNoviceEventAction::GetHitsCollection(G4int hcID,
 
 void OpNoviceEventAction::BeginOfEventAction(const G4Event*)
 {
-
+  // initialisation per event 
+  fEnergyDep = 0.;
+ 
   //    if (fHHC1ID==-1) {
     // if (fmppcID==-1) {
     //   G4SDManager* sdManager = G4SDManager::GetSDMpointer();
@@ -178,7 +181,9 @@ void OpNoviceEventAction::EndOfEventAction(const G4Event* event)
   //Fill ntuple
   analysisManager->FillNtupleDColumn(0, n_hit1);
   //  analysisManager->FillNtupleDColumn(1, triggerHit->GetEdep());
+  analysisManager->FillNtupleDColumn(1, fEnergyDep);
   analysisManager->AddNtupleRow();
+
 
 
 }

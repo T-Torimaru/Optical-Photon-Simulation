@@ -52,8 +52,12 @@ class OpNoviceDetectorConstruction : public G4VUserDetectorConstruction
     virtual G4VPhysicalVolume* Construct();
     virtual void ConstructSDandField();
 
+    const G4VPhysicalVolume* GetScintPV() const;
+
   private:
     std::vector<G4VisAttributes*> fVisAttributes;
+
+    G4VPhysicalVolume* Scinti_phys;
 
     G4LogicalVolume* Apd_log;
     G4LogicalVolume* Trigger_log;
@@ -84,8 +88,14 @@ class OpNoviceDetectorConstruction : public G4VUserDetectorConstruction
     G4double trigger_y;
     G4double trigger_z;
 
-  G4Material* Sci;
+    G4Material* Sci;
+
 };
+
+inline const G4VPhysicalVolume* OpNoviceDetectorConstruction::GetScintPV() const {
+
+  return Scinti_phys;
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

@@ -125,11 +125,16 @@ int main(int argc,char** argv)
   // Set mandatory initialization classes
   //
   // Detector construction
-  runManager-> SetUserInitialization(new OpNoviceDetectorConstruction());
+  OpNoviceDetectorConstruction* detConstruction = new OpNoviceDetectorConstruction();
+  runManager->SetUserInitialization(detConstruction);
+  //  runManager-> SetUserInitialization(new OpNoviceDetectorConstruction());
   // Physics list
   runManager-> SetUserInitialization(new OpNovicePhysicsList());
   // User action initialization
-  runManager->SetUserInitialization(new OpNoviceActionInitialization());
+  OpNoviceActionInitialization* actionInitialization
+    = new OpNoviceActionInitialization(detConstruction);
+  runManager->SetUserInitialization(actionInitialization);
+  //  runManager->SetUserInitialization(new OpNoviceActionInitialization());
   // Initialize G4 kernel
   //
   runManager->Initialize();

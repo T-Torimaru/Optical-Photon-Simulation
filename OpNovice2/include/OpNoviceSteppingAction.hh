@@ -36,27 +36,32 @@
 
 /// Stepping action class
 /// 
-//class OpNoviceEventAction;
+class OpNoviceEventAction;
 
 //class G4LogicalVolume;
+
+class OpNoviceDetectorConstruction;
 
 class OpNoviceSteppingAction : public G4UserSteppingAction
 {
   public:
-    OpNoviceSteppingAction();
-  //    OpNoviceSteppingAction(OpNoviceEventAction* eventAction);
+  //    OpNoviceSteppingAction();
+  OpNoviceSteppingAction(const OpNoviceDetectorConstruction* detectorConstruction,
+			 OpNoviceEventAction* eventAction);
     virtual ~OpNoviceSteppingAction();
 
     // method from the base class
     virtual void UserSteppingAction(const G4Step*);
 
   private:
-  // OpNoviceEventAction* fEventAction;
-  // G4LogicalVolume* fScoringVolume;
+ const OpNoviceDetectorConstruction* fDetConstruction;
+  OpNoviceEventAction* fEventAction;
+// G4LogicalVolume* fScoringVolume;
   // G4int prevID;
     G4int fScintillationCounter;
     G4int fCerenkovCounter;
     G4int fEventNumber;
+  
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -35,11 +35,12 @@
 #include "OpNoviceStackingAction.hh"
 #include "OpNoviceSteppingVerbose.hh"
 #include "OpNoviceEventAction.hh"
+#include "OpNoviceDetectorConstruction.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-OpNoviceActionInitialization::OpNoviceActionInitialization()
- : G4VUserActionInitialization()
+OpNoviceActionInitialization::OpNoviceActionInitialization(OpNoviceDetectorConstruction* detConstruction)
+  : G4VUserActionInitialization(),fDetConstruction(detConstruction)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -60,9 +61,10 @@ void OpNoviceActionInitialization::Build() const
 {
   SetUserAction(new OpNovicePrimaryGeneratorAction());
   SetUserAction(new OpNoviceRunAction());
-  SetUserAction(new OpNoviceSteppingAction());
+  OpNoviceEventAction* eventAction = new OpNoviceEventAction;
+  SetUserAction(eventAction);
+  SetUserAction(new OpNoviceSteppingAction(fDetConstruction,eventAction));
   SetUserAction(new OpNoviceStackingAction());
-  SetUserAction(new OpNoviceEventAction());
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

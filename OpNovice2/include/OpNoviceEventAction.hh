@@ -48,6 +48,8 @@ public:
     
     virtual void BeginOfEventAction(const G4Event*);
     virtual void EndOfEventAction(const G4Event*);
+
+  void AddDep(G4double de);
     
 private:
   // methods                                                                                    
@@ -66,7 +68,12 @@ private:
   
   G4int fMPPCCollID;
   G4int fTRIGGERCollID;
-};
+  G4double fEnergyDep;
+
+};  
+  inline void OpNoviceEventAction::AddDep(G4double de){
+    fEnergyDep += de;
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

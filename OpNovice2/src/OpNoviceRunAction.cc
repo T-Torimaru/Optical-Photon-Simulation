@@ -56,14 +56,15 @@ OpNoviceRunAction::OpNoviceRunAction()
    G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
   // //    analysisManager->SetNtupleMerging(true);
     analysisManager->SetVerboseLevel(1);
-    analysisManager->SetFileName("f1218_2_25");
+    analysisManager->SetFileName("test");
 
-   analysisManager->CreateH1("test1","test1 of runaction",50,0.,50);
+    //   analysisManager->CreateH1("test1","test1 of runaction",50,0.,50);
   //  analysisManager->CreateH1("test2","test2 of runaction",50,0.,50);
 
   //  if (fEventAction){
     analysisManager->CreateNtuple("photoele","Entry and Energy");
     analysisManager->CreateNtupleDColumn("NP"); // column ID = 
+    analysisManager->CreateNtupleDColumn("EDep");
     //    analysisManager->CreateNtupleDColumn("TEnergy"); // column ID = 1
     // analysisManager->SetH1Title(0,"icepp");
     // analysisManager->SetH1XAxisTitle(0,"# p.e.");

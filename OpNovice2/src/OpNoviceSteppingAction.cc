@@ -29,9 +29,9 @@
 /// \brief Implementation of the OpNoviceSteppingAction class
 
 #include "OpNoviceSteppingAction.hh"
-//#include "OpNoviceEventAction.hh"
+#include "OpNoviceEventAction.hh"
 //#include "OpNoviceRunAction.hh"
-//#include "OpNoviceDetectorConstruction.hh"
+#include "OpNoviceDetectorConstruction.hh"
 
 #include "G4Step.hh"
 #include "G4Track.hh"
@@ -44,13 +44,17 @@
 
 
 
-
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 
-OpNoviceSteppingAction::OpNoviceSteppingAction()
-  //OpNoviceSteppingAction::OpNoviceSteppingAction(OpNoviceEventAction* eventAction)
-  : G4UserSteppingAction()//,fEventAction(eventAction),fScoringVolume(0)
+//OpNoviceSteppingAction::OpNoviceSteppingAction()
+  OpNoviceSteppingAction::OpNoviceSteppingAction(
+						 const OpNoviceDetectorConstruction* detectorConstruction,
+						 OpNoviceEventAction* eventAction)
+  : G4UserSteppingAction(),
+    fDetConstruction(detectorConstruction),
+    fEventAction(eventAction)
+    //,fScoringVolume(0)
 { 
   fScintillationCounter = 0;
   fCerenkovCounter      = 0;
@@ -67,85 +71,17 @@ OpNoviceSteppingAction::~OpNoviceSteppingAction()
 
 void OpNoviceSteppingAction::UserSteppingAction(const G4Step* step)
 {
-  // if (!fScoringVolume) {
-  //   const OpNoviceDetectorConstruction* detectorConstruction
-  //     = static_cast<const OpNoviceDetectorConstruction*>(G4RunManager::GetRunManager()->GetUserDetectorConstruction());
-  //   fScoringVolume = detectorConstruction->GetScoringVolume();
-  // }
 
-  // // get volume of the current step                                             
-  // G4LogicalVolume* volume  = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetName();
+  // get volume of the current step
+  G4VPhysicalVolume* volume
+    = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume();
 
-  // // check if we are in scoring volume                                          
-  // if (volume != fScoringVolume) return;
+  // energy deposit
+  G4double edep = step->GetTotalEnergyDeposit();
 
-  // // collect energy deposited in this step                                      
-  // G4double edepStep = step->GetTotalEnergyDeposit();
-  // fEventAction->AddEdep(edepStep);
-
-  // // Collect information of this step                                           
-  // G4StepPoint* preStep  = step->GetPreStepPoint();
-  // G4StepPoint* postStep = step->GetPostStepPoint();
-  // G4ThreeVector pos_pre  = preStep->GetPosition();
-  // G4ThreeVector pos_post = postStep->GetPosition();
-  // // G4double x_pre = pos_pre.x();
-  // // G4double y_pre = pos_pre.y();
-  // // G4double z_pre = pos_pre.z();
-  // // G4double x_post = pos_post.x();
-  // // G4double y_post = pos_post.y();
-  // //  Float_t z_post = pos_post.z();
-  // // G4double z_post = pos_post.z();                                            
-  // G4Track* aTrack = step->GetTrack();
-  // G4int trackID = aTrack->GetTrackID();
-  // G4int parentID = aTrack->GetParentID();
-  // G4int particleID = aTrack->GetParticleDefinition()->GetPDGEncoding();
-  // G4String particleName = aTrack->GetParticleDefinition()->GetParticleName();
-  // // G4ThreeVector momvec = aTrack->GetMomentum();
-  // // G4double momX = momvec.x();
-  // // G4double momY = momvec.y();
-  // // G4double momZ = momvec.z();
-  // // G4ThreeVector mom_pre = preStep->GetMomentum();
-  // // G4double mom_preX = mom_pre.x();
-  // // G4double mom_preY = mom_pre.y();
-  // // G4double mom_preZ = mom_pre.z();
-  // // G4ThreeVector mom_post = postStep->GetMomentum();
-  // // G4double mom_postX = mom_post.x();
-  // // G4double mom_postY = mom_post.y();
-  // // G4double mom_postZ = mom_post.z();
-  // const G4VProcess* proc = postStep->GetProcessDefinedStep();
-  // G4String pname = "";
-  // if (proc) {
-  //   pname = proc->GetProcessName();
-  // }
-  // const G4VProcess* creproc = aTrack->GetCreatorProcess();
-  // G4String cname = "";
-  // if (creproc) {
-  //   cname = creproc->GetProcessName();
-  // }
-  // prevID = trackID;
-
-  // if (trackID==1 && pname=="compt") {
-  //   OpNoviceRunAction* runAction = (OpNoviceRunAction*)(G4RunManager::GetRunManager()->GetUserRunAction());
-  //   runAction->SetIntr(2);
-  //   runAction->SetStatus(runAction->GetStatus() + 8);
-  // }
-  // if (trackID==1 && pname=="conv") {
-  //   OpNoviceRunAction* runAction = (OpNoviceRunAction*)(G4RunManager::GetRunManager()->GetUserRunAction());
-  //   runAction->SetIntr(1);
-  //   runAction->SetVtxZ(z_post);
-  //   runAction->SetStatus(runAction->GetStatus() + 1);
-  // }
-  // if (parentID==1 && cname=="conv") {
-  //   OpNoviceRunAction* runAction = (OpNoviceRunAction*)(G4RunManager::GetRunManager()->GetUserRunAction());
-  //   if (particleID == 11 && (runAction->GetStatus() & 2) != 2) {
-  //     runAction->SetMomM(mom_preX, mom_preY, mom_preZ);
-  //     runAction->SetStatus(runAction->GetStatus() + 2);
-  //   }
-  //   if (particleID == -11 && (runAction->GetStatus() & 4) != 4) {
-  //     runAction->SetMomP(mom_preX, mom_preY, mom_preZ);
-  //     runAction->SetStatus(runAction->GetStatus() + 4);
-  //   }
-  // }
+  if ( volume == fDetConstruction->GetScintPV() ){
+    fEventAction->AddDep(edep);
+  }
 
   G4int eventNumber = G4RunManager::GetRunManager()->
                                               GetCurrentEvent()->GetEventID();
