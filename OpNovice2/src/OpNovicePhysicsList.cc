@@ -29,6 +29,7 @@
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 #include "globals.hh"
+#include "G4ios.hh"
 #include "OpNovicePhysicsList.hh"
 #include "OpNovicePhysicsListMessenger.hh"
 
@@ -41,6 +42,10 @@
 #include "G4MesonConstructor.hh"
 #include "G4BaryonConstructor.hh"
 #include "G4IonConstructor.hh"
+#include "G4MuonDecayChannel.hh"
+#include "G4DecayTable.hh"
+#include "G4MuonDecayChannelWithSpin.hh"
+#include "G4RadioactiveDecay.hh"
 #include "G4ShortLivedConstructor.hh"
 
 #include "G4ProcessManager.hh"
@@ -54,7 +59,11 @@
 
 #include "G4LossTableManager.hh"
 #include "G4EmSaturation.hh"
- 
+
+#include "G4StepLimiter.hh"
+#include "G4UserSpecialCuts.hh" 
+
+#include "G4OpticalPhysics.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 OpNovicePhysicsList::OpNovicePhysicsList() 
@@ -140,6 +149,7 @@ void OpNovicePhysicsList::ConstructDecay()
 #include "G4GammaConversion.hh"
 #include "G4PhotoElectricEffect.hh"
 
+
 #include "G4eMultipleScattering.hh"
 #include "G4MuMultipleScattering.hh"
 #include "G4hMultipleScattering.hh"
@@ -224,7 +234,7 @@ void OpNovicePhysicsList::ConstructOp()
   //  absorptionProcess->SetVerboseLevel(fVerboseLebel);
   rayleighScatteringProcess->SetVerboseLevel(fVerboseLebel);
   mieHGScatteringProcess->SetVerboseLevel(fVerboseLebel);
-  //  boundaryProcess->SetVerboseLevel(fVerboseLebel);
+  boundaryProcess->SetVerboseLevel(fVerboseLebel);
   
   // Use Birks Correction in the Scintillation process
   if(!G4Threading::IsWorkerThread())

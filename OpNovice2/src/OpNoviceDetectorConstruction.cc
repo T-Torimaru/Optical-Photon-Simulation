@@ -199,7 +199,7 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
   EJ212_table->AddProperty("FASTCOMPONENT", photonenergy, Amplitude_fast, nEntries);
   EJ212_table->AddProperty("SLOWCOMPONENT", photonenergy, Amplitude_slow, nEntries);
 
-  G4double LY = 10000./MeV;
+  G4double LY = 10./MeV;
 
   EJ212_table->AddConstProperty("SCINTILLATIONYIELD",LY); //from ELJEN
 

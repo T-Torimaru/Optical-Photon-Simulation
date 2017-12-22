@@ -65,6 +65,12 @@ OpNoviceRunAction::OpNoviceRunAction()
     analysisManager->CreateNtuple("photoele","Entry and Energy");
     analysisManager->CreateNtupleDColumn("NP"); // column ID = 
     analysisManager->CreateNtupleDColumn("EDep");
+    analysisManager->CreateNtupleDColumn("initX");
+    analysisManager->CreateNtupleDColumn("initY");
+    analysisManager->CreateNtupleDColumn("initZ");
+    analysisManager->CreateNtupleDColumn("ScintX");
+    analysisManager->CreateNtupleDColumn("ScintY");
+    analysisManager->CreateNtupleDColumn("ScintZ");
     //    analysisManager->CreateNtupleDColumn("TEnergy"); // column ID = 1
     // analysisManager->SetH1Title(0,"icepp");
     // analysisManager->SetH1XAxisTitle(0,"# p.e.");
