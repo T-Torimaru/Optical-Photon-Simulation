@@ -234,7 +234,7 @@ void OpNovicePhysicsList::ConstructOp()
   //  absorptionProcess->SetVerboseLevel(fVerboseLebel);
   rayleighScatteringProcess->SetVerboseLevel(fVerboseLebel);
   mieHGScatteringProcess->SetVerboseLevel(fVerboseLebel);
-  boundaryProcess->SetVerboseLevel(fVerboseLebel);
+  //  boundaryProcess->SetVerboseLevel(fVerboseLebel);
   
   // Use Birks Correction in the Scintillation process
   if(!G4Threading::IsWorkerThread())

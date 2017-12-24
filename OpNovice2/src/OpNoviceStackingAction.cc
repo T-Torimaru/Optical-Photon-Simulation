@@ -35,7 +35,7 @@
 #include "G4ParticleTypes.hh"
 #include "G4Track.hh"
 #include "G4ios.hh"
-
+#include "OpNoviceAnalysis.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 OpNoviceStackingAction::OpNoviceStackingAction()
@@ -59,8 +59,6 @@ OpNoviceStackingAction::ClassifyNewTrack(const G4Track * aTrack)
     { // particle is secondary
       if(aTrack->GetCreatorProcess()->GetProcessName() == "Scintillation")
         fScintillationCounter++;
-      // if(aTrack->GetCreatorProcess()->GetProcessName() == "Cerenkov")
-      //   fCerenkovCounter++;
     }
   }
   return fUrgent;
@@ -70,10 +68,10 @@ OpNoviceStackingAction::ClassifyNewTrack(const G4Track * aTrack)
 
 void OpNoviceStackingAction::NewStage()
 {
-  // G4cout << "Number of Scintillation photons produced in this event : "
-  //        << fScintillationCounter << G4endl;
-  // G4cout << "Number of Cerenkov photons produced in this event : "
-  //        << fCerenkovCounter << G4endl;
+  G4cout << "Number of Scintillation photons produced in this event : "
+         << fScintillationCounter << G4endl;
+  G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
+  analysisManager->FillNtupleDColumn(5,fScintillationCounter);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

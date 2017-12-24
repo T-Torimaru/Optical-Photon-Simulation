@@ -68,6 +68,7 @@ OpNoviceRunAction::OpNoviceRunAction()
     analysisManager->CreateNtupleDColumn("EinitX");
     analysisManager->CreateNtupleDColumn("EinitY");
     analysisManager->CreateNtupleDColumn("EinitZ");
+    analysisManager->CreateNtupleDColumn("NScintPho");
     analysisManager->CreateNtupleDColumn("ScintX");
     analysisManager->CreateNtupleDColumn("ScintY");
     analysisManager->CreateNtupleDColumn("ScintZ");

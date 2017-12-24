@@ -465,6 +465,8 @@ G4Track.hh
 /home/torimaru/geant4_workdir/OpNovice2/src/G4Track.hh
 G4ios.hh
 /home/torimaru/geant4_workdir/OpNovice2/src/G4ios.hh
+OpNoviceAnalysis.hh
+/home/torimaru/geant4_workdir/OpNovice2/src/OpNoviceAnalysis.hh
 
 /home/torimaru/geant4_workdir/OpNovice2/src/OpNoviceSteppingAction.cc
 OpNoviceSteppingAction.hh
@@ -497,6 +499,8 @@ G4ParticleDefinition.hh
 /home/torimaru/geant4_workdir/OpNovice2/src/G4ParticleDefinition.hh
 G4Run.hh
 /home/torimaru/geant4_workdir/OpNovice2/src/G4Run.hh
+G4StepStatus.hh
+/home/torimaru/geant4_workdir/OpNovice2/src/G4StepStatus.hh
 G4SystemOfUnits.hh
 /home/torimaru/geant4_workdir/OpNovice2/src/G4SystemOfUnits.hh
 G4ios.hh

@@ -44,6 +44,7 @@
 #include "G4VPhysicalVolume.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4Run.hh"
+#include "G4StepStatus.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4ios.hh"
 #include "G4Step.hh"
@@ -87,6 +88,8 @@ OpNoviceSteppingAction::~OpNoviceSteppingAction()
 void OpNoviceSteppingAction::UserSteppingAction(const G4Step* step)
 {
 
+  G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
+
   // get volume of the current step
   G4VPhysicalVolume* volume
     = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume();
@@ -98,50 +101,70 @@ void OpNoviceSteppingAction::UserSteppingAction(const G4Step* step)
     fEventAction->AddDep(edep);
   }
 
+  G4StepPoint* PrePoint = step->GetPreStepPoint();
+  G4StepPoint* PostPoint = step->GetPostStepPoint();
+
+
   G4int eventNumber = G4RunManager::GetRunManager()->
                                               GetCurrentEvent()->GetEventID();
+
+  G4Track* track = step->GetTrack();
+  G4int trackID = track->GetTrackID();
+  G4ThreeVector pos_pre = PrePoint->GetPosition();
+  G4double x_pre = pos_pre.x();
+  G4double y_pre = pos_pre.y();
+  G4double z_pre = pos_pre.z();
+  G4ThreeVector pos_post = PostPoint->GetPosition();
+  G4double x_post = pos_post.x();
+  G4double y_post = pos_post.y();
+  G4double z_post = pos_post.z();
+  G4ThreeVector mom_pre = PrePoint->GetMomentum();
+  G4double mom_preX = mom_pre.x();
+  G4double mom_preY = mom_pre.y();
+  G4double mom_preZ = mom_pre.z();
+  G4ThreeVector mom_post = PostPoint->GetMomentum();
+  G4double mom_postX = mom_post.x();
+  G4double mom_postY = mom_post.y();
+  G4double mom_postZ = mom_post.z();
 
   if (eventNumber != fEventNumber) {
      G4cout << " Number of Scintillation Photons in previous event: "
             << fScintillationCounter << G4endl;
-     // G4cout << " Number of Cerenkov Photons in previous event: "
-     //        << fCerenkovCounter << G4endl;
      fEventNumber = eventNumber;
+     //  G4cout << "test : " << eventNumber << " " << fEventNumber << G4endl;
      fScintillationCounter = 0;
-     fCerenkovCounter = 0;
   }
+  
+  if ( step->GetTrack()->GetDefinition()->GetPDGCharge()!=0.){
+    if (z_pre == 1.5 ){
+      G4cout << "test_pos : " << x_pre << " " << y_pre << " " << z_pre << G4endl;
+      analysisManager->FillNtupleDColumn(2,x_pre);
+      analysisManager->FillNtupleDColumn(3,y_pre);
+      analysisManager->FillNtupleDColumn(4,z_pre);
+    }
+  }  
+  
+  //  if ( trackID==1 ){
+	//      if ( PrePoint->GetStepStatus()==fGeomBoundary ){
+		      // if (volume == fDetConstruction->GetScintPV() ){
+	   //        G4cout << "track : " << trackID << G4endl;
 
-  G4Track* track = step->GetTrack();
+        // G4cout << "test_mom : " << mom_preX << " " << mom_preY << " " << mom_preZ << G4endl;
+        // G4cout << "test_pos2 : " << x_post << " " << y_post << " " << z_post << G4endl;
+	// G4cout << "test_mom2 : " << mom_postX << " " << mom_postY << " " << mom_postZ << G4endl;
+  //}
 
+  
   G4String ParticleName = track->GetDynamicParticle()->
                                  GetParticleDefinition()->GetParticleName();
 
-  // G4StepPoint* thePrePoint = step->GetPreStepPoint();
-  // G4StepPoint* thePostPoint = step->GetPostStepPoint();
 
   // G4VPhysicalVolume* thePrePV = thePrePoint->GetPhysicalVolume();
   // G4VPhysicalVolume* thePostPV = thePostPoint->GetPhysicalVolume();
 
-  // G4ThreeVector pos_pre = thePrePoint->GetPosition();
-  // G4ThreeVector pos_post = thePostPoint->GetPosition();
-  // G4double x_pre = pos_pre.x();
-  // G4double y_pre = pos_pre.y();
-  // G4double z_pre = pos_pre.z();
-  // G4double x_post = pos_post.x();
-  // G4double y_post = pos_post.y();
-  // G4double z_post = pos_post.z();
-  // G4int trackID = track->GetTrackID();
-  // G4int parentID = track->GetTrackID();
-  // G4ThreeVector mom_pre = thePrePoint->GetMomentum();
-  // G4double mom_preX = mom_pre.x();
-  // G4double mom_preY = mom_pre.y();
-  // G4double mom_preZ = mom_pre.z();
-  // G4ThreeVector mom_post = thePostPoint->GetMomentum();
-  // G4double mom_postX = mom_post.x();
-  // G4double mom_postY = mom_post.y();
-  // G4double mom_postZ = mom_post.z();
 
-  // G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
+  // G4int parentID = track->GetTrackID();
+
 
   // if (trackID==1 && parentID==0){
   //   analysisManager->FillNtupleDColumn(3,x_pre);
@@ -161,8 +184,6 @@ void OpNoviceSteppingAction::UserSteppingAction(const G4Step* step)
                == G4OpticalPhoton::OpticalPhotonDefinition()){
               if (secondaries->at(i)->GetCreatorProcess()->GetProcessName()
                == "Scintillation")fScintillationCounter++;
-              // if (secondaries->at(i)->GetCreatorProcess()->GetProcessName()
-              //  == "Cerenkov")fCerenkovCounter++;
            }
         }
      }
