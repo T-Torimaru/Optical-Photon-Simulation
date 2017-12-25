@@ -57,7 +57,7 @@
 //#include "G4SystemOfUnits.hh"
 
 #include "G4OpticalPhoton.hh"
-
+#include "G4UserLimits.hh"
 
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -88,25 +88,11 @@ OpNoviceSteppingAction::~OpNoviceSteppingAction()
 void OpNoviceSteppingAction::UserSteppingAction(const G4Step* step)
 {
 
-  G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-
-  // get volume of the current step
-  G4VPhysicalVolume* volume
-    = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume();
-
-  // energy deposit
-  G4double edep = step->GetTotalEnergyDeposit();
-
-  if ( volume == fDetConstruction->GetScintPV() ){
-    fEventAction->AddDep(edep);
-  }
+  G4int eventNumber = G4RunManager::GetRunManager()->
+                                              GetCurrentEvent()->GetEventID();
 
   G4StepPoint* PrePoint = step->GetPreStepPoint();
   G4StepPoint* PostPoint = step->GetPostStepPoint();
-
-
-  G4int eventNumber = G4RunManager::GetRunManager()->
-                                              GetCurrentEvent()->GetEventID();
 
   G4Track* track = step->GetTrack();
   G4int trackID = track->GetTrackID();
@@ -127,6 +113,31 @@ void OpNoviceSteppingAction::UserSteppingAction(const G4Step* step)
   G4double mom_postY = mom_post.y();
   G4double mom_postZ = mom_post.z();
 
+  //  G4double maxStep = 0.10 *mm;
+  
+  G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
+
+  // get volume of the current step
+  G4VPhysicalVolume* volume
+    = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume();
+
+  // energy deposit
+  G4double edep = step->GetTotalEnergyDeposit();
+
+  if ( volume == fDetConstruction->GetScintPV() ){
+    fEventAction->AddDep(edep);
+    if ( step->GetTrack()->GetDefinition()->GetPDGCharge()!=0.){
+    G4UserLimits* fStepLimit = new G4UserLimits();
+    fStepLimit->SetMaxAllowedStep(0.10*mm);
+    // G4cout << "test_pos : " << z_pre << G4endl;
+    // G4cout << "energy : " << edep << G4endl;
+      // analysisManager->FillNtupleDColumn(6,z_pre);
+      // analysisManager->FillNtupleDColumn(7,edep);
+    analysisManager->FillH2(0,z_pre,edep);
+  }
+  }
+
+
   if (eventNumber != fEventNumber) {
      G4cout << " Number of Scintillation Photons in previous event: "
             << fScintillationCounter << G4endl;
@@ -137,7 +148,7 @@ void OpNoviceSteppingAction::UserSteppingAction(const G4Step* step)
   
   if ( step->GetTrack()->GetDefinition()->GetPDGCharge()!=0.){
     if (z_pre == 1.5 ){
-      G4cout << "test_pos : " << x_pre << " " << y_pre << " " << z_pre << G4endl;
+      //      G4cout << "test_pos : " << x_pre << " " << y_pre << " " << z_pre << G4endl;
       analysisManager->FillNtupleDColumn(2,x_pre);
       analysisManager->FillNtupleDColumn(3,y_pre);
       analysisManager->FillNtupleDColumn(4,z_pre);

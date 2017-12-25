@@ -191,6 +191,8 @@ OpNoviceTriggerSD.hh
 /home/torimaru/geant4_workdir/OpNovice2/src/OpNoviceTriggerSD.hh
 G4VSolid.hh
 /home/torimaru/geant4_workdir/OpNovice2/src/G4VSolid.hh
+G4UserLimits.hh
+/home/torimaru/geant4_workdir/OpNovice2/src/G4UserLimits.hh
 G4Material.hh
 /home/torimaru/geant4_workdir/OpNovice2/src/G4Material.hh
 G4Element.hh
@@ -519,6 +521,8 @@ sstream
 -
 G4OpticalPhoton.hh
 /home/torimaru/geant4_workdir/OpNovice2/src/G4OpticalPhoton.hh
+G4UserLimits.hh
+/home/torimaru/geant4_workdir/OpNovice2/src/G4UserLimits.hh
 
 /home/torimaru/geant4_workdir/OpNovice2/src/OpNoviceSteppingVerbose.cc
 OpNoviceSteppingVerbose.hh
@@ -4611,6 +4615,14 @@ G4ParticleDefinition.hh
 /megsrv00/users/torimaru/geant10.0/geant-install/include/Geant4/G4ParticleDefinition.hh
 
 /megsrv00/users/torimaru/geant10.0/geant-install/include/Geant4/G4UserEventAction.hh
+
+/megsrv00/users/torimaru/geant10.0/geant-install/include/Geant4/G4UserLimits.hh
+globals.hh
+/megsrv00/users/torimaru/geant10.0/geant-install/include/Geant4/globals.hh
+G4UserLimits.icc
+/megsrv00/users/torimaru/geant10.0/geant-install/include/Geant4/G4UserLimits.icc
+
+/megsrv00/users/torimaru/geant10.0/geant-install/include/Geant4/G4UserLimits.icc
 
 /megsrv00/users/torimaru/geant10.0/geant-install/include/Geant4/G4UserRunAction.hh
 G4Types.hh

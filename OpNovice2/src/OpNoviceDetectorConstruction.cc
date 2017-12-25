@@ -13,7 +13,7 @@
 #include "OpNoviceScintSD.hh"
 #include "OpNoviceTriggerSD.hh"
 #include "G4VSolid.hh"
-
+#include "G4UserLimits.hh"
 #include "G4Material.hh"
 #include "G4Element.hh"
 #include "G4LogicalBorderSurface.hh"
@@ -42,7 +42,7 @@ OpNoviceDetectorConstruction::OpNoviceDetectorConstruction()
   startTheta = 0.*deg;
   endTheta   = 180*deg;
   center    = 4.8*mm;
-   center    = 4.84*mm;
+  //   center    = 4.84*mm;
   // Ax = Ay = 0.50*mm;
   // Az = 0.085*mm;
   // Epo_x = 1.3125*mm;
@@ -199,7 +199,7 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
   EJ212_table->AddProperty("FASTCOMPONENT", photonenergy, Amplitude_fast, nEntries);
   EJ212_table->AddProperty("SLOWCOMPONENT", photonenergy, Amplitude_slow, nEntries);
 
-  G4double LY = 1./MeV;
+  G4double LY = 10000./MeV;
 
   EJ212_table->AddConstProperty("SCINTILLATIONYIELD",LY); //from ELJEN
 
@@ -256,6 +256,10 @@ G4VPhysicalVolume* OpNoviceDetectorConstruction::Construct()
 
   G4LogicalVolume* Scinti_log
     = new G4LogicalVolume(Scinti_box,Sci,"Tile_logical");
+  
+  G4double maxStep = 0.1*mm;
+  G4UserLimits *fstepLimit = new G4UserLimits(maxStep);
+  Scinti_log->SetUserLimits(fstepLimit);
 
   Scinti_phys
     = new G4PVPlacement(0,G4ThreeVector(),Scinti_log,"Tile",

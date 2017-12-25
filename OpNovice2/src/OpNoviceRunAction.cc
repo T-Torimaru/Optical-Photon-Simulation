@@ -56,10 +56,10 @@ OpNoviceRunAction::OpNoviceRunAction()
    G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
   // //    analysisManager->SetNtupleMerging(true);
     analysisManager->SetVerboseLevel(1);
-    analysisManager->SetFileName("test");
+    analysisManager->SetFileName("test2");
 
     //   analysisManager->CreateH1("test1","test1 of runaction",50,0.,50);
-  //  analysisManager->CreateH1("test2","test2 of runaction",50,0.,50);
+    analysisManager->CreateH2("EnergyDeposit","Depth vs Energy",50,-1.7,1.7,50,0.,0.4);
 
   //  if (fEventAction){
     analysisManager->CreateNtuple("photoele","Entry and Energy");
@@ -68,9 +68,12 @@ OpNoviceRunAction::OpNoviceRunAction()
     analysisManager->CreateNtupleDColumn("EinitX");
     analysisManager->CreateNtupleDColumn("EinitY");
     analysisManager->CreateNtupleDColumn("EinitZ");
-    analysisManager->CreateNtupleDColumn("ScintX");
-    analysisManager->CreateNtupleDColumn("ScintY");
-    analysisManager->CreateNtupleDColumn("ScintZ");
+    analysisManager->CreateNtupleDColumn("NScintPho");
+    // analysisManager->CreateNtupleDColumn("depth");
+    // analysisManager->CreateNtupleDColumn("StepEne");
+    // analysisManager->CreateNtupleDColumn("ScintX");
+    // analysisManager->CreateNtupleDColumn("ScintY");
+    // analysisManager->CreateNtupleDColumn("ScintZ");
     //    analysisManager->CreateNtupleDColumn("TEnergy"); // column ID = 1
     // analysisManager->SetH1Title(0,"icepp");
     // analysisManager->SetH1XAxisTitle(0,"# p.e.");

@@ -1,0 +1,3525 @@
+nohup: ignoring input
+
+*************************************************************
+ Geant4 version Name: geant4-10-00-patch-01    (28-February-2014)
+                      Copyright : Geant4 Collaboration
+                      Reference : NIM A 506 (2003), 250-303
+                            WWW : http://cern.ch/geant4
+*************************************************************
+
+ AddDiscreteProcess to OpticalPhoton 
+Visualization Manager instantiating with verbosity "warnings (3)"...
+Visualization Manager initialising...
+Registering graphics systems...
+
+You have successfully registered the following graphics systems.
+Current available graphics systems are:
+  ASCIITree (ATree)
+  DAWNFILE (DAWNFILE)
+  G4HepRep (HepRepXML)
+  G4HepRepFile (HepRepFile)
+  OpenGLImmediateX (OGLI, OGLIX)
+  OpenGLStoredX (OGL, OGLS, OGLSX)
+  RayTracer (RayTracer)
+  VRML1FILE (VRML1FILE)
+  VRML2FILE (VRML2FILE)
+  gMocrenFile (gMocrenFile)
+
+Registering model factories...
+
+You have successfully registered the following model factories.
+Registered model factories:
+  generic
+  drawByCharge
+  drawByParticleID
+  drawByOriginVolume
+  drawByAttribute
+
+Registered filter factories:
+  chargeFilter
+  particleFilter
+  originVolumeFilter
+  attributeFilter
+
+You have successfully registered the following user vis actions.
+Run Duration User Vis Actions: none
+End of Event User Vis Actions: none
+End of Run User Vis Actions: none
+
+Some /vis commands (optionally) take a string to specify colour.
+Available colours:
+  black, blue, brown, cyan, gray, green, grey, magenta, red, white, yellow
+
+
+conv:   for  gamma    SubType= 14
+      Lambda table from 1.022 MeV to 10 TeV in 49 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        BetheHeitler :  Emin=        0 eV    Emax=       80 GeV
+     BetheHeitlerLPM :  Emin=       80 GeV   Emax=       10 TeV
+
+compt:   for  gamma    SubType= 13
+      Lambda table from 100 eV  to 1 MeV in 28 bins, spline: 1
+      LambdaPrime table from 1 MeV to 10 TeV in 49 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       Klein-Nishina :  Emin=        0 eV    Emax=       10 TeV
+
+phot:   for  gamma    SubType= 12
+      LambdaPrime table from 200 keV to 10 TeV in 54 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       PhotoElectric :  Emin=        0 eV    Emax=       10 TeV   AngularGenSauterGavrila
+
+msc:   for e-    SubType= 10
+      RangeFactor= 0.04, stepLimitType: 1, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+eIoni:   for  e-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha :  Emin=        0 eV    Emax=       10 TeV
+
+eBrem:   for  e-    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      LPM flag: 1 for E > 1 GeV
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB :  Emin=        0 eV    Emax=        1 GeV   DipBustGen
+            eBremLPM :  Emin=        1 GeV   Emax=       10 TeV   DipBustGen
+
+msc:   for e+    SubType= 10
+      RangeFactor= 0.04, stepLimitType: 1, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+eIoni:   for  e+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha :  Emin=        0 eV    Emax=       10 TeV
+
+eBrem:   for  e+    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      LPM flag: 1 for E > 1 GeV
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB :  Emin=        0 eV    Emax=        1 GeV   DipBustGen
+            eBremLPM :  Emin=        1 GeV   Emax=       10 TeV   DipBustGen
+
+annihil:   for  e+    SubType= 5
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg :  Emin=        0 eV    Emax=       10 TeV
+
+msc:   for proton    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  proton    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=       10 TeV
+
+msc:   for GenericIon    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV
+
+hIoni:   for  GenericIon    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=       10 TeV
+
+msc:   for alpha    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  alpha    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=   7.9452 MeV
+          BetheBloch :  Emin=   7.9452 MeV   Emax=       10 TeV
+
+msc:   for anti_proton    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  anti_proton    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=        2 MeV
+          BetheBloch :  Emin=        2 MeV   Emax=       10 TeV
+
+msc:   for kaon+    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  kaon+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=  1.05231 MeV
+          BetheBloch :  Emin=  1.05231 MeV   Emax=       10 TeV
+
+msc:   for kaon-    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  kaon-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=  1.05231 MeV
+          BetheBloch :  Emin=  1.05231 MeV   Emax=       10 TeV
+
+msc:   for mu+    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 1, polarAngleLimit(deg)= 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+muIoni:   for  mu+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=      200 keV
+          BetheBloch :  Emin=      200 keV   Emax=        1 GeV
+        MuBetheBloch :  Emin=        1 GeV   Emax=       10 TeV
+
+muBrems:   for  mu+    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem :  Emin=        0 eV    Emax=       10 TeV
+
+muPairProd:   for  mu+    SubType= 4
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      Sampling table 17x1001; from 1 GeV to 10 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd :  Emin=        0 eV    Emax=       10 TeV
+
+msc:   for mu-    SubType= 10
+      RangeFactor= 0.2, step limit type: 0, lateralDisplacement: 1, polarAngleLimit(deg)= 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+muIoni:   for  mu-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=      200 keV
+          BetheBloch :  Emin=      200 keV   Emax=        1 GeV
+        MuBetheBloch :  Emin=        1 GeV   Emax=       10 TeV
+
+muBrems:   for  mu-    SubType= 3
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem :  Emin=        0 eV    Emax=       10 TeV
+
+muPairProd:   for  mu-    SubType= 4
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      Sampling table 17x1001; from 1 GeV to 10 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd :  Emin=        0 eV    Emax=       10 TeV
+
+msc:   for pi+    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  pi+    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg :  Emin=        0 eV    Emax=  297.505 keV
+          BetheBloch :  Emin=  297.505 keV   Emax=       10 TeV
+
+msc:   for pi-    SubType= 10
+      RangeFactor= 0.2, stepLimitType: 0, latDisplacement: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc :  Emin=        0 eV    Emax=       10 TeV  Table with 77 bins Emin=    100 eV    Emax=     10 TeV
+
+hIoni:   for  pi-    SubType= 2
+      dE/dx and range tables from 100 eV  to 10 TeV in 77 bins
+      Lambda tables from threshold to 10 TeV in 77 bins, spline: 1
+      finalRange(mm)= 0.1, dRoverRange= 0.2, integral: 1, fluct: 1, linLossLimit= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO :  Emin=        0 eV    Emax=  297.505 keV
+          BetheBloch :  Emin=  297.505 keV   Emax=       10 TeV
+
+========= Table of registered couples ==============================
+
+Index : 0     used in the geometry : Yes
+ Material : Air
+ Range cuts        :  gamma  1 mm     e-  1 mm     e+  1 mm  proton 1 mm 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 100 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : Scintillator
+ Range cuts        :  gamma  1 mm     e-  1 mm     e+  1 mm  proton 1 mm 
+ Energy thresholds :  gamma  2.40367 keV    e-  356.639 keV    e+  344.855 keV proton 100 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes
+ Material : Epoxy
+ Range cuts        :  gamma  1 mm     e-  1 mm     e+  1 mm  proton 1 mm 
+ Energy thresholds :  gamma  3.12389 keV    e-  526.624 keV    e+  512.657 keV proton 100 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 3     used in the geometry : Yes
+ Material : Si
+ Range cuts        :  gamma  1 mm     e-  1 mm     e+  1 mm  proton 1 mm 
+ Energy thresholds :  gamma  6.95018 keV    e-  548.291 keV    e+  526.624 keV proton 100 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+====================================================================
+
+### Run 0 starts.
+... open Root analysis file : test.root - done
+--> Event 0 starts.
+ Number of Scintillation Photons in previous event: 0
+### G4EmSaturation::FindBirksCoefficient Birks coefficient for Scintillator  0.126 mm/MeV
+Number of Scintillation photons produced in this event : 7036
+photon arrived : 12
+--> Event 1 starts.
+ Number of Scintillation Photons in previous event: 7036
+Number of Scintillation photons produced in this event : 4402
+photon arrived : 10
+--> Event 2 starts.
+ Number of Scintillation Photons in previous event: 4402
+Number of Scintillation photons produced in this event : 4309
+photon arrived : 4
+--> Event 3 starts.
+ Number of Scintillation Photons in previous event: 4309
+Number of Scintillation photons produced in this event : 4409
+photon arrived : 5
+--> Event 4 starts.
+ Number of Scintillation Photons in previous event: 4409
+Number of Scintillation photons produced in this event : 7002
+photon arrived : 8
+--> Event 5 starts.
+ Number of Scintillation Photons in previous event: 7002
+Number of Scintillation photons produced in this event : 6886
+photon arrived : 11
+--> Event 6 starts.
+ Number of Scintillation Photons in previous event: 6886
+Number of Scintillation photons produced in this event : 7077
+photon arrived : 13
+--> Event 7 starts.
+ Number of Scintillation Photons in previous event: 7077
+Number of Scintillation photons produced in this event : 4961
+photon arrived : 10
+--> Event 8 starts.
+ Number of Scintillation Photons in previous event: 4961
+Number of Scintillation photons produced in this event : 4761
+photon arrived : 4
+--> Event 9 starts.
+ Number of Scintillation Photons in previous event: 4761
+Number of Scintillation photons produced in this event : 6283
+photon arrived : 9
+--> Event 10 starts.
+ Number of Scintillation Photons in previous event: 6283
+Number of Scintillation photons produced in this event : 5284
+photon arrived : 9
+--> Event 11 starts.
+ Number of Scintillation Photons in previous event: 5284
+Number of Scintillation photons produced in this event : 4544
+photon arrived : 5
+--> Event 12 starts.
+ Number of Scintillation Photons in previous event: 4544
+Number of Scintillation photons produced in this event : 5612
+photon arrived : 10
+--> Event 13 starts.
+ Number of Scintillation Photons in previous event: 5612
+Number of Scintillation photons produced in this event : 5335
+photon arrived : 7
+--> Event 14 starts.
+ Number of Scintillation Photons in previous event: 5335
+Number of Scintillation photons produced in this event : 4845
+photon arrived : 12
+--> Event 15 starts.
+ Number of Scintillation Photons in previous event: 4845
+Number of Scintillation photons produced in this event : 5012
+photon arrived : 9
+--> Event 16 starts.
+ Number of Scintillation Photons in previous event: 5012
+Number of Scintillation photons produced in this event : 5954
+photon arrived : 8
+--> Event 17 starts.
+ Number of Scintillation Photons in previous event: 5954
+Number of Scintillation photons produced in this event : 5182
+photon arrived : 5
+--> Event 18 starts.
+ Number of Scintillation Photons in previous event: 5182
+Number of Scintillation photons produced in this event : 5700
+photon arrived : 10
+--> Event 19 starts.
+ Number of Scintillation Photons in previous event: 5700
+Number of Scintillation photons produced in this event : 5224
+photon arrived : 4
+--> Event 20 starts.
+ Number of Scintillation Photons in previous event: 5224
+Number of Scintillation photons produced in this event : 4270
+photon arrived : 9
+--> Event 21 starts.
+ Number of Scintillation Photons in previous event: 4270
+Number of Scintillation photons produced in this event : 6947
+photon arrived : 6
+--> Event 22 starts.
+ Number of Scintillation Photons in previous event: 6947
+Number of Scintillation photons produced in this event : 4863
+photon arrived : 7
+--> Event 23 starts.
+ Number of Scintillation Photons in previous event: 4863
+Number of Scintillation photons produced in this event : 5376
+photon arrived : 9
+--> Event 24 starts.
+ Number of Scintillation Photons in previous event: 5376
+Number of Scintillation photons produced in this event : 6569
+photon arrived : 6
+--> Event 25 starts.
+ Number of Scintillation Photons in previous event: 6569
+Number of Scintillation photons produced in this event : 6202
+photon arrived : 12
+--> Event 26 starts.
+ Number of Scintillation Photons in previous event: 6202
+Number of Scintillation photons produced in this event : 4739
+photon arrived : 11
+--> Event 27 starts.
+ Number of Scintillation Photons in previous event: 4739
+Number of Scintillation photons produced in this event : 5356
+photon arrived : 6
+--> Event 28 starts.
+ Number of Scintillation Photons in previous event: 5356
+Number of Scintillation photons produced in this event : 4883
+photon arrived : 9
+--> Event 29 starts.
+ Number of Scintillation Photons in previous event: 4883
+Number of Scintillation photons produced in this event : 4383
+photon arrived : 6
+--> Event 30 starts.
+ Number of Scintillation Photons in previous event: 4383
+Number of Scintillation photons produced in this event : 4981
+photon arrived : 6
+--> Event 31 starts.
+ Number of Scintillation Photons in previous event: 4981
+Number of Scintillation photons produced in this event : 7211
+photon arrived : 11
+--> Event 32 starts.
+ Number of Scintillation Photons in previous event: 7211
+Number of Scintillation photons produced in this event : 4149
+photon arrived : 9
+--> Event 33 starts.
+ Number of Scintillation Photons in previous event: 4149
+Number of Scintillation photons produced in this event : 5877
+photon arrived : 18
+--> Event 34 starts.
+ Number of Scintillation Photons in previous event: 5877
+Number of Scintillation photons produced in this event : 4466
+photon arrived : 8
+--> Event 35 starts.
+ Number of Scintillation Photons in previous event: 4466
+Number of Scintillation photons produced in this event : 4201
+photon arrived : 4
+--> Event 36 starts.
+ Number of Scintillation Photons in previous event: 4201
+Number of Scintillation photons produced in this event : 4352
+photon arrived : 10
+--> Event 37 starts.
+ Number of Scintillation Photons in previous event: 4352
+Number of Scintillation photons produced in this event : 4649
+photon arrived : 13
+--> Event 38 starts.
+ Number of Scintillation Photons in previous event: 4649
+Number of Scintillation photons produced in this event : 4066
+photon arrived : 6
+--> Event 39 starts.
+ Number of Scintillation Photons in previous event: 4066
+Number of Scintillation photons produced in this event : 4340
+photon arrived : 9
+--> Event 40 starts.
+ Number of Scintillation Photons in previous event: 4340
+Number of Scintillation photons produced in this event : 4804
+photon arrived : 8
+--> Event 41 starts.
+ Number of Scintillation Photons in previous event: 4804
+Number of Scintillation photons produced in this event : 4387
+photon arrived : 8
+--> Event 42 starts.
+ Number of Scintillation Photons in previous event: 4387
+Number of Scintillation photons produced in this event : 4234
+photon arrived : 10
+--> Event 43 starts.
+ Number of Scintillation Photons in previous event: 4234
+Number of Scintillation photons produced in this event : 4872
+photon arrived : 8
+--> Event 44 starts.
+ Number of Scintillation Photons in previous event: 4872
+Number of Scintillation photons produced in this event : 4514
+photon arrived : 8
+--> Event 45 starts.
+ Number of Scintillation Photons in previous event: 4514
+Number of Scintillation photons produced in this event : 5240
+photon arrived : 6
+--> Event 46 starts.
+ Number of Scintillation Photons in previous event: 5240
+Number of Scintillation photons produced in this event : 4476
+photon arrived : 11
+--> Event 47 starts.
+ Number of Scintillation Photons in previous event: 4476
+Number of Scintillation photons produced in this event : 5657
+photon arrived : 9
+--> Event 48 starts.
+ Number of Scintillation Photons in previous event: 5657
+Number of Scintillation photons produced in this event : 4365
+photon arrived : 7
+--> Event 49 starts.
+ Number of Scintillation Photons in previous event: 4365
+Number of Scintillation photons produced in this event : 4661
+photon arrived : 7
+--> Event 50 starts.
+ Number of Scintillation Photons in previous event: 4661
+Number of Scintillation photons produced in this event : 4877
+photon arrived : 5
+--> Event 51 starts.
+ Number of Scintillation Photons in previous event: 4877
+Number of Scintillation photons produced in this event : 5720
+photon arrived : 14
+--> Event 52 starts.
+ Number of Scintillation Photons in previous event: 5720
+Number of Scintillation photons produced in this event : 4972
+photon arrived : 7
+--> Event 53 starts.
+ Number of Scintillation Photons in previous event: 4972
+Number of Scintillation photons produced in this event : 4833
+photon arrived : 7
+--> Event 54 starts.
+ Number of Scintillation Photons in previous event: 4833
+Number of Scintillation photons produced in this event : 5021
+photon arrived : 10
+--> Event 55 starts.
+ Number of Scintillation Photons in previous event: 5021
+Number of Scintillation photons produced in this event : 5980
+photon arrived : 8
+--> Event 56 starts.
+ Number of Scintillation Photons in previous event: 5980
+Number of Scintillation photons produced in this event : 8081
+photon arrived : 17
+--> Event 57 starts.
+ Number of Scintillation Photons in previous event: 8081
+Number of Scintillation photons produced in this event : 4576
+photon arrived : 5
+--> Event 58 starts.
+ Number of Scintillation Photons in previous event: 4576
+Number of Scintillation photons produced in this event : 5143
+photon arrived : 7
+--> Event 59 starts.
+ Number of Scintillation Photons in previous event: 5143
+Number of Scintillation photons produced in this event : 4115
+photon arrived : 6
+--> Event 60 starts.
+ Number of Scintillation Photons in previous event: 4115
+Number of Scintillation photons produced in this event : 4946
+photon arrived : 9
+--> Event 61 starts.
+ Number of Scintillation Photons in previous event: 4946
+Number of Scintillation photons produced in this event : 7168
+photon arrived : 18
+--> Event 62 starts.
+ Number of Scintillation Photons in previous event: 7168
+Number of Scintillation photons produced in this event : 6751
+photon arrived : 12
+--> Event 63 starts.
+ Number of Scintillation Photons in previous event: 6751
+Number of Scintillation photons produced in this event : 6350
+photon arrived : 9
+--> Event 64 starts.
+ Number of Scintillation Photons in previous event: 6350
+Number of Scintillation photons produced in this event : 5199
+photon arrived : 9
+--> Event 65 starts.
+ Number of Scintillation Photons in previous event: 5199
+Number of Scintillation photons produced in this event : 4476
+photon arrived : 14
+--> Event 66 starts.
+ Number of Scintillation Photons in previous event: 4476
+Number of Scintillation photons produced in this event : 9078
+photon arrived : 14
+--> Event 67 starts.
+ Number of Scintillation Photons in previous event: 9078
+Number of Scintillation photons produced in this event : 4455
+photon arrived : 7
+--> Event 68 starts.
+ Number of Scintillation Photons in previous event: 4455
+Number of Scintillation photons produced in this event : 5539
+photon arrived : 7
+--> Event 69 starts.
+ Number of Scintillation Photons in previous event: 5539
+Number of Scintillation photons produced in this event : 4525
+photon arrived : 9
+--> Event 70 starts.
+ Number of Scintillation Photons in previous event: 4525
+Number of Scintillation photons produced in this event : 5457
+photon arrived : 7
+--> Event 71 starts.
+ Number of Scintillation Photons in previous event: 5457
+Number of Scintillation photons produced in this event : 4442
+photon arrived : 3
+--> Event 72 starts.
+ Number of Scintillation Photons in previous event: 4442
+Number of Scintillation photons produced in this event : 4666
+photon arrived : 10
+--> Event 73 starts.
+ Number of Scintillation Photons in previous event: 4666
+Number of Scintillation photons produced in this event : 4254
+photon arrived : 8
+--> Event 74 starts.
+ Number of Scintillation Photons in previous event: 4254
+Number of Scintillation photons produced in this event : 4747
+photon arrived : 5
+--> Event 75 starts.
+ Number of Scintillation Photons in previous event: 4747
+Number of Scintillation photons produced in this event : 4916
+photon arrived : 7
+--> Event 76 starts.
+ Number of Scintillation Photons in previous event: 4916
+Number of Scintillation photons produced in this event : 5776
+photon arrived : 13
+--> Event 77 starts.
+ Number of Scintillation Photons in previous event: 5776
+Number of Scintillation photons produced in this event : 4764
+photon arrived : 7
+--> Event 78 starts.
+ Number of Scintillation Photons in previous event: 4764
+Number of Scintillation photons produced in this event : 4756
+photon arrived : 10
+--> Event 79 starts.
+ Number of Scintillation Photons in previous event: 4756
+Number of Scintillation photons produced in this event : 6591
+photon arrived : 14
+--> Event 80 starts.
+ Number of Scintillation Photons in previous event: 6591
+Number of Scintillation photons produced in this event : 4424
+photon arrived : 10
+--> Event 81 starts.
+ Number of Scintillation Photons in previous event: 4424
+Number of Scintillation photons produced in this event : 4142
+photon arrived : 3
+--> Event 82 starts.
+ Number of Scintillation Photons in previous event: 4142
+Number of Scintillation photons produced in this event : 4537
+photon arrived : 10
+--> Event 83 starts.
+ Number of Scintillation Photons in previous event: 4537
+Number of Scintillation photons produced in this event : 5226
+photon arrived : 14
+--> Event 84 starts.
+ Number of Scintillation Photons in previous event: 5226
+Number of Scintillation photons produced in this event : 4654
+photon arrived : 10
+--> Event 85 starts.
+ Number of Scintillation Photons in previous event: 4654
+Number of Scintillation photons produced in this event : 4846
+photon arrived : 8
+--> Event 86 starts.
+ Number of Scintillation Photons in previous event: 4846
+Number of Scintillation photons produced in this event : 10007
+photon arrived : 12
+--> Event 87 starts.
+ Number of Scintillation Photons in previous event: 10007
+Number of Scintillation photons produced in this event : 4789
+photon arrived : 4
+--> Event 88 starts.
+ Number of Scintillation Photons in previous event: 4789
+Number of Scintillation photons produced in this event : 9874
+photon arrived : 23
+--> Event 89 starts.
+ Number of Scintillation Photons in previous event: 9874
+Number of Scintillation photons produced in this event : 4644
+photon arrived : 4
+--> Event 90 starts.
+ Number of Scintillation Photons in previous event: 4644
+Number of Scintillation photons produced in this event : 5027
+photon arrived : 9
+--> Event 91 starts.
+ Number of Scintillation Photons in previous event: 5027
+Number of Scintillation photons produced in this event : 5062
+photon arrived : 8
+--> Event 92 starts.
+ Number of Scintillation Photons in previous event: 5062
+Number of Scintillation photons produced in this event : 4254
+photon arrived : 8
+--> Event 93 starts.
+ Number of Scintillation Photons in previous event: 4254
+Number of Scintillation photons produced in this event : 6433
+photon arrived : 15
+--> Event 94 starts.
+ Number of Scintillation Photons in previous event: 6433
+Number of Scintillation photons produced in this event : 6737
+photon arrived : 9
+--> Event 95 starts.
+ Number of Scintillation Photons in previous event: 6737
+Number of Scintillation photons produced in this event : 4523
+photon arrived : 8
+--> Event 96 starts.
+ Number of Scintillation Photons in previous event: 4523
+Number of Scintillation photons produced in this event : 4824
+photon arrived : 8
+--> Event 97 starts.
+ Number of Scintillation Photons in previous event: 4824
+Number of Scintillation photons produced in this event : 4488
+photon arrived : 7
+--> Event 98 starts.
+ Number of Scintillation Photons in previous event: 4488
+Number of Scintillation photons produced in this event : 6457
+photon arrived : 11
+--> Event 99 starts.
+ Number of Scintillation Photons in previous event: 6457
+Number of Scintillation photons produced in this event : 5433
+photon arrived : 10
+--> Event 100 starts.
+ Number of Scintillation Photons in previous event: 5433
+Number of Scintillation photons produced in this event : 4604
+photon arrived : 9
+--> Event 101 starts.
+ Number of Scintillation Photons in previous event: 4604
+Number of Scintillation photons produced in this event : 4496
+photon arrived : 4
+--> Event 102 starts.
+ Number of Scintillation Photons in previous event: 4496
+Number of Scintillation photons produced in this event : 5043
+photon arrived : 10
+--> Event 103 starts.
+ Number of Scintillation Photons in previous event: 5043
+Number of Scintillation photons produced in this event : 4550
+photon arrived : 3
+--> Event 104 starts.
+ Number of Scintillation Photons in previous event: 4550
+Number of Scintillation photons produced in this event : 4327
+photon arrived : 3
+--> Event 105 starts.
+ Number of Scintillation Photons in previous event: 4327
+Number of Scintillation photons produced in this event : 4475
+photon arrived : 7
+--> Event 106 starts.
+ Number of Scintillation Photons in previous event: 4475
+Number of Scintillation photons produced in this event : 6574
+photon arrived : 10
+--> Event 107 starts.
+ Number of Scintillation Photons in previous event: 6574
+Number of Scintillation photons produced in this event : 4531
+photon arrived : 7
+--> Event 108 starts.
+ Number of Scintillation Photons in previous event: 4531
+Number of Scintillation photons produced in this event : 5227
+photon arrived : 4
+--> Event 109 starts.
+ Number of Scintillation Photons in previous event: 5227
+Number of Scintillation photons produced in this event : 6091
+photon arrived : 6
+--> Event 110 starts.
+ Number of Scintillation Photons in previous event: 6091
+Number of Scintillation photons produced in this event : 4975
+photon arrived : 5
+--> Event 111 starts.
+ Number of Scintillation Photons in previous event: 4975
+Number of Scintillation photons produced in this event : 6565
+photon arrived : 11
+--> Event 112 starts.
+ Number of Scintillation Photons in previous event: 6565
+Number of Scintillation photons produced in this event : 4630
+photon arrived : 7
+--> Event 113 starts.
+ Number of Scintillation Photons in previous event: 4630
+Number of Scintillation photons produced in this event : 6676
+photon arrived : 14
+--> Event 114 starts.
+ Number of Scintillation Photons in previous event: 6676
+Number of Scintillation photons produced in this event : 4216
+photon arrived : 5
+--> Event 115 starts.
+ Number of Scintillation Photons in previous event: 4216
+Number of Scintillation photons produced in this event : 4335
+photon arrived : 12
+--> Event 116 starts.
+ Number of Scintillation Photons in previous event: 4335
+Number of Scintillation photons produced in this event : 5011
+photon arrived : 9
+--> Event 117 starts.
+ Number of Scintillation Photons in previous event: 5011
+Number of Scintillation photons produced in this event : 4607
+photon arrived : 9
+--> Event 118 starts.
+ Number of Scintillation Photons in previous event: 4607
+Number of Scintillation photons produced in this event : 6030
+photon arrived : 6
+--> Event 119 starts.
+ Number of Scintillation Photons in previous event: 6030
+Number of Scintillation photons produced in this event : 4811
+photon arrived : 10
+--> Event 120 starts.
+ Number of Scintillation Photons in previous event: 4811
+Number of Scintillation photons produced in this event : 8304
+photon arrived : 18
+--> Event 121 starts.
+ Number of Scintillation Photons in previous event: 8304
+Number of Scintillation photons produced in this event : 6255
+photon arrived : 9
+--> Event 122 starts.
+ Number of Scintillation Photons in previous event: 6255
+Number of Scintillation photons produced in this event : 4275
+photon arrived : 3
+--> Event 123 starts.
+ Number of Scintillation Photons in previous event: 4275
+Number of Scintillation photons produced in this event : 4565
+photon arrived : 8
+--> Event 124 starts.
+ Number of Scintillation Photons in previous event: 4565
+Number of Scintillation photons produced in this event : 4987
+photon arrived : 13
+--> Event 125 starts.
+ Number of Scintillation Photons in previous event: 4987
+Number of Scintillation photons produced in this event : 6840
+photon arrived : 22
+--> Event 126 starts.
+ Number of Scintillation Photons in previous event: 6840
+Number of Scintillation photons produced in this event : 4592
+photon arrived : 12
+--> Event 127 starts.
+ Number of Scintillation Photons in previous event: 4592
+Number of Scintillation photons produced in this event : 4304
+photon arrived : 6
+--> Event 128 starts.
+ Number of Scintillation Photons in previous event: 4304
+Number of Scintillation photons produced in this event : 5447
+photon arrived : 8
+--> Event 129 starts.
+ Number of Scintillation Photons in previous event: 5447
+Number of Scintillation photons produced in this event : 4524
+photon arrived : 8
+--> Event 130 starts.
+ Number of Scintillation Photons in previous event: 4524
+Number of Scintillation photons produced in this event : 4548
+photon arrived : 6
+--> Event 131 starts.
+ Number of Scintillation Photons in previous event: 4548
+Number of Scintillation photons produced in this event : 7119
+photon arrived : 6
+--> Event 132 starts.
+ Number of Scintillation Photons in previous event: 7119
+Number of Scintillation photons produced in this event : 4480
+photon arrived : 11
+--> Event 133 starts.
+ Number of Scintillation Photons in previous event: 4480
+Number of Scintillation photons produced in this event : 5465
+photon arrived : 19
+--> Event 134 starts.
+ Number of Scintillation Photons in previous event: 5465
+Number of Scintillation photons produced in this event : 4472
+photon arrived : 6
+--> Event 135 starts.
+ Number of Scintillation Photons in previous event: 4472
+Number of Scintillation photons produced in this event : 5879
+photon arrived : 10
+--> Event 136 starts.
+ Number of Scintillation Photons in previous event: 5879
+Number of Scintillation photons produced in this event : 4501
+photon arrived : 9
+--> Event 137 starts.
+ Number of Scintillation Photons in previous event: 4501
+Number of Scintillation photons produced in this event : 7891
+photon arrived : 11
+--> Event 138 starts.
+ Number of Scintillation Photons in previous event: 7891
+Number of Scintillation photons produced in this event : 5113
+photon arrived : 8
+--> Event 139 starts.
+ Number of Scintillation Photons in previous event: 5113
+Number of Scintillation photons produced in this event : 5000
+photon arrived : 9
+--> Event 140 starts.
+ Number of Scintillation Photons in previous event: 5000
+Number of Scintillation photons produced in this event : 4571
+photon arrived : 6
+--> Event 141 starts.
+ Number of Scintillation Photons in previous event: 4571
+Number of Scintillation photons produced in this event : 4868
+photon arrived : 10
+--> Event 142 starts.
+ Number of Scintillation Photons in previous event: 4868
+Number of Scintillation photons produced in this event : 4702
+photon arrived : 6
+--> Event 143 starts.
+ Number of Scintillation Photons in previous event: 4702
+Number of Scintillation photons produced in this event : 6894
+photon arrived : 9
+--> Event 144 starts.
+ Number of Scintillation Photons in previous event: 6894
+Number of Scintillation photons produced in this event : 4396
+photon arrived : 8
+--> Event 145 starts.
+ Number of Scintillation Photons in previous event: 4396
+Number of Scintillation photons produced in this event : 4406
+photon arrived : 7
+--> Event 146 starts.
+ Number of Scintillation Photons in previous event: 4406
+Number of Scintillation photons produced in this event : 5831
+photon arrived : 10
+--> Event 147 starts.
+ Number of Scintillation Photons in previous event: 5831
+Number of Scintillation photons produced in this event : 5453
+photon arrived : 13
+--> Event 148 starts.
+ Number of Scintillation Photons in previous event: 5453
+Number of Scintillation photons produced in this event : 4142
+photon arrived : 8
+--> Event 149 starts.
+ Number of Scintillation Photons in previous event: 4142
+Number of Scintillation photons produced in this event : 15280
+photon arrived : 24
+--> Event 150 starts.
+ Number of Scintillation Photons in previous event: 15280
+Number of Scintillation photons produced in this event : 5665
+photon arrived : 8
+--> Event 151 starts.
+ Number of Scintillation Photons in previous event: 5665
+Number of Scintillation photons produced in this event : 5987
+photon arrived : 6
+--> Event 152 starts.
+ Number of Scintillation Photons in previous event: 5987
+Number of Scintillation photons produced in this event : 4216
+photon arrived : 6
+--> Event 153 starts.
+ Number of Scintillation Photons in previous event: 4216
+Number of Scintillation photons produced in this event : 4546
+photon arrived : 5
+--> Event 154 starts.
+ Number of Scintillation Photons in previous event: 4546
+Number of Scintillation photons produced in this event : 4935
+photon arrived : 9
+--> Event 155 starts.
+ Number of Scintillation Photons in previous event: 4935
+Number of Scintillation photons produced in this event : 4649
+photon arrived : 9
+--> Event 156 starts.
+ Number of Scintillation Photons in previous event: 4649
+Number of Scintillation photons produced in this event : 5473
+photon arrived : 9
+--> Event 157 starts.
+ Number of Scintillation Photons in previous event: 5473
+Number of Scintillation photons produced in this event : 4180
+photon arrived : 6
+--> Event 158 starts.
+ Number of Scintillation Photons in previous event: 4180
+Number of Scintillation photons produced in this event : 5534
+photon arrived : 9
+--> Event 159 starts.
+ Number of Scintillation Photons in previous event: 5534
+Number of Scintillation photons produced in this event : 5048
+photon arrived : 11
+--> Event 160 starts.
+ Number of Scintillation Photons in previous event: 5048
+Number of Scintillation photons produced in this event : 6774
+photon arrived : 15
+--> Event 161 starts.
+ Number of Scintillation Photons in previous event: 6774
+Number of Scintillation photons produced in this event : 7445
+photon arrived : 7
+--> Event 162 starts.
+ Number of Scintillation Photons in previous event: 7445
+Number of Scintillation photons produced in this event : 4992
+photon arrived : 12
+--> Event 163 starts.
+ Number of Scintillation Photons in previous event: 4992
+Number of Scintillation photons produced in this event : 4251
+photon arrived : 10
+--> Event 164 starts.
+ Number of Scintillation Photons in previous event: 4251
+Number of Scintillation photons produced in this event : 7002
+photon arrived : 10
+--> Event 165 starts.
+ Number of Scintillation Photons in previous event: 7002
+Number of Scintillation photons produced in this event : 5638
+photon arrived : 9
+--> Event 166 starts.
+ Number of Scintillation Photons in previous event: 5638
+Number of Scintillation photons produced in this event : 5195
+photon arrived : 12
+--> Event 167 starts.
+ Number of Scintillation Photons in previous event: 5195
+Number of Scintillation photons produced in this event : 6492
+photon arrived : 14
+--> Event 168 starts.
+ Number of Scintillation Photons in previous event: 6492
+Number of Scintillation photons produced in this event : 5345
+photon arrived : 10
+--> Event 169 starts.
+ Number of Scintillation Photons in previous event: 5345
+Number of Scintillation photons produced in this event : 4405
+photon arrived : 11
+--> Event 170 starts.
+ Number of Scintillation Photons in previous event: 4405
+Number of Scintillation photons produced in this event : 5820
+photon arrived : 14
+--> Event 171 starts.
+ Number of Scintillation Photons in previous event: 5820
+Number of Scintillation photons produced in this event : 5909
+photon arrived : 12
+--> Event 172 starts.
+ Number of Scintillation Photons in previous event: 5909
+Number of Scintillation photons produced in this event : 4440
+photon arrived : 9
+--> Event 173 starts.
+ Number of Scintillation Photons in previous event: 4440
+Number of Scintillation photons produced in this event : 4670
+photon arrived : 9
+--> Event 174 starts.
+ Number of Scintillation Photons in previous event: 4670
+Number of Scintillation photons produced in this event : 5007
+photon arrived : 9
+--> Event 175 starts.
+ Number of Scintillation Photons in previous event: 5007
+Number of Scintillation photons produced in this event : 6915
+photon arrived : 16
+--> Event 176 starts.
+ Number of Scintillation Photons in previous event: 6915
+Number of Scintillation photons produced in this event : 5331
+photon arrived : 6
+--> Event 177 starts.
+ Number of Scintillation Photons in previous event: 5331
+Number of Scintillation photons produced in this event : 6474
+photon arrived : 8
+--> Event 178 starts.
+ Number of Scintillation Photons in previous event: 6474
+Number of Scintillation photons produced in this event : 6551
+photon arrived : 12
+--> Event 179 starts.
+ Number of Scintillation Photons in previous event: 6551
+Number of Scintillation photons produced in this event : 5518
+photon arrived : 6
+--> Event 180 starts.
+ Number of Scintillation Photons in previous event: 5518
+Number of Scintillation photons produced in this event : 5880
+photon arrived : 15
+--> Event 181 starts.
+ Number of Scintillation Photons in previous event: 5880
+Number of Scintillation photons produced in this event : 4194
+photon arrived : 4
+--> Event 182 starts.
+ Number of Scintillation Photons in previous event: 4194
+Number of Scintillation photons produced in this event : 5423
+photon arrived : 10
+--> Event 183 starts.
+ Number of Scintillation Photons in previous event: 5423
+Number of Scintillation photons produced in this event : 4361
+photon arrived : 12
+--> Event 184 starts.
+ Number of Scintillation Photons in previous event: 4361
+Number of Scintillation photons produced in this event : 5699
+photon arrived : 7
+--> Event 185 starts.
+ Number of Scintillation Photons in previous event: 5699
+Number of Scintillation photons produced in this event : 4661
+photon arrived : 13
+--> Event 186 starts.
+ Number of Scintillation Photons in previous event: 4661
+Number of Scintillation photons produced in this event : 5010
+photon arrived : 6
+--> Event 187 starts.
+ Number of Scintillation Photons in previous event: 5010
+Number of Scintillation photons produced in this event : 4205
+photon arrived : 4
+--> Event 188 starts.
+ Number of Scintillation Photons in previous event: 4205
+Number of Scintillation photons produced in this event : 5501
+photon arrived : 6
+--> Event 189 starts.
+ Number of Scintillation Photons in previous event: 5501
+Number of Scintillation photons produced in this event : 4524
+photon arrived : 15
+--> Event 190 starts.
+ Number of Scintillation Photons in previous event: 4524
+Number of Scintillation photons produced in this event : 4836
+photon arrived : 7
+--> Event 191 starts.
+ Number of Scintillation Photons in previous event: 4836
+Number of Scintillation photons produced in this event : 4894
+photon arrived : 6
+--> Event 192 starts.
+ Number of Scintillation Photons in previous event: 4894
+Number of Scintillation photons produced in this event : 4634
+photon arrived : 9
+--> Event 193 starts.
+ Number of Scintillation Photons in previous event: 4634
+Number of Scintillation photons produced in this event : 5099
+photon arrived : 9
+--> Event 194 starts.
+ Number of Scintillation Photons in previous event: 5099
+Number of Scintillation photons produced in this event : 3980
+photon arrived : 6
+--> Event 195 starts.
+ Number of Scintillation Photons in previous event: 3980
+Number of Scintillation photons produced in this event : 5114
+photon arrived : 7
+--> Event 196 starts.
+ Number of Scintillation Photons in previous event: 5114
+Number of Scintillation photons produced in this event : 5563
+photon arrived : 13
+--> Event 197 starts.
+ Number of Scintillation Photons in previous event: 5563
+Number of Scintillation photons produced in this event : 4041
+photon arrived : 7
+--> Event 198 starts.
+ Number of Scintillation Photons in previous event: 4041
+Number of Scintillation photons produced in this event : 4722
+photon arrived : 12
+--> Event 199 starts.
+ Number of Scintillation Photons in previous event: 4722
+Number of Scintillation photons produced in this event : 5200
+photon arrived : 7
+--> Event 200 starts.
+ Number of Scintillation Photons in previous event: 5200
+Number of Scintillation photons produced in this event : 4717
+photon arrived : 10
+--> Event 201 starts.
+ Number of Scintillation Photons in previous event: 4717
+Number of Scintillation photons produced in this event : 4449
+photon arrived : 10
+--> Event 202 starts.
+ Number of Scintillation Photons in previous event: 4449
+Number of Scintillation photons produced in this event : 5123
+photon arrived : 6
+--> Event 203 starts.
+ Number of Scintillation Photons in previous event: 5123
+Number of Scintillation photons produced in this event : 5093
+photon arrived : 10
+--> Event 204 starts.
+ Number of Scintillation Photons in previous event: 5093
+Number of Scintillation photons produced in this event : 4269
+photon arrived : 6
+--> Event 205 starts.
+ Number of Scintillation Photons in previous event: 4269
+Number of Scintillation photons produced in this event : 4836
+photon arrived : 11
+--> Event 206 starts.
+ Number of Scintillation Photons in previous event: 4836
+Number of Scintillation photons produced in this event : 4214
+photon arrived : 5
+--> Event 207 starts.
+ Number of Scintillation Photons in previous event: 4214
+Number of Scintillation photons produced in this event : 4266
+photon arrived : 12
+--> Event 208 starts.
+ Number of Scintillation Photons in previous event: 4266
+Number of Scintillation photons produced in this event : 5005
+photon arrived : 4
+--> Event 209 starts.
+ Number of Scintillation Photons in previous event: 5005
+Number of Scintillation photons produced in this event : 8204
+photon arrived : 13
+--> Event 210 starts.
+ Number of Scintillation Photons in previous event: 8204
+Number of Scintillation photons produced in this event : 4730
+photon arrived : 4
+--> Event 211 starts.
+ Number of Scintillation Photons in previous event: 4730
+Number of Scintillation photons produced in this event : 4970
+photon arrived : 10
+--> Event 212 starts.
+ Number of Scintillation Photons in previous event: 4970
+Number of Scintillation photons produced in this event : 4598
+photon arrived : 5
+--> Event 213 starts.
+ Number of Scintillation Photons in previous event: 4598
+Number of Scintillation photons produced in this event : 5128
+photon arrived : 3
+--> Event 214 starts.
+ Number of Scintillation Photons in previous event: 5128
+Number of Scintillation photons produced in this event : 5539
+photon arrived : 9
+--> Event 215 starts.
+ Number of Scintillation Photons in previous event: 5539
+Number of Scintillation photons produced in this event : 4494
+photon arrived : 11
+--> Event 216 starts.
+ Number of Scintillation Photons in previous event: 4494
+Number of Scintillation photons produced in this event : 4389
+photon arrived : 10
+--> Event 217 starts.
+ Number of Scintillation Photons in previous event: 4389
+Number of Scintillation photons produced in this event : 6024
+photon arrived : 7
+--> Event 218 starts.
+ Number of Scintillation Photons in previous event: 6024
+Number of Scintillation photons produced in this event : 6893
+photon arrived : 14
+--> Event 219 starts.
+ Number of Scintillation Photons in previous event: 6893
+Number of Scintillation photons produced in this event : 4286
+photon arrived : 12
+--> Event 220 starts.
+ Number of Scintillation Photons in previous event: 4286
+Number of Scintillation photons produced in this event : 4479
+photon arrived : 10
+--> Event 221 starts.
+ Number of Scintillation Photons in previous event: 4479
+Number of Scintillation photons produced in this event : 6052
+photon arrived : 8
+--> Event 222 starts.
+ Number of Scintillation Photons in previous event: 6052
+Number of Scintillation photons produced in this event : 8240
+photon arrived : 14
+--> Event 223 starts.
+ Number of Scintillation Photons in previous event: 8240
+Number of Scintillation photons produced in this event : 4743
+photon arrived : 8
+--> Event 224 starts.
+ Number of Scintillation Photons in previous event: 4743
+Number of Scintillation photons produced in this event : 5056
+photon arrived : 7
+--> Event 225 starts.
+ Number of Scintillation Photons in previous event: 5056
+Number of Scintillation photons produced in this event : 4566
+photon arrived : 5
+--> Event 226 starts.
+ Number of Scintillation Photons in previous event: 4566
+Number of Scintillation photons produced in this event : 4863
+photon arrived : 10
+--> Event 227 starts.
+ Number of Scintillation Photons in previous event: 4863
+Number of Scintillation photons produced in this event : 5448
+photon arrived : 11
+--> Event 228 starts.
+ Number of Scintillation Photons in previous event: 5448
+Number of Scintillation photons produced in this event : 10880
+photon arrived : 20
+--> Event 229 starts.
+ Number of Scintillation Photons in previous event: 10880
+Number of Scintillation photons produced in this event : 5096
+photon arrived : 10
+--> Event 230 starts.
+ Number of Scintillation Photons in previous event: 5096
+Number of Scintillation photons produced in this event : 6590
+photon arrived : 9
+--> Event 231 starts.
+ Number of Scintillation Photons in previous event: 6590
+Number of Scintillation photons produced in this event : 5282
+photon arrived : 8
+--> Event 232 starts.
+ Number of Scintillation Photons in previous event: 5282
+Number of Scintillation photons produced in this event : 4115
+photon arrived : 5
+--> Event 233 starts.
+ Number of Scintillation Photons in previous event: 4115
+Number of Scintillation photons produced in this event : 4828
+photon arrived : 12
+--> Event 234 starts.
+ Number of Scintillation Photons in previous event: 4828
+Number of Scintillation photons produced in this event : 7111
+photon arrived : 16
+--> Event 235 starts.
+ Number of Scintillation Photons in previous event: 7111
+Number of Scintillation photons produced in this event : 4959
+photon arrived : 8
+--> Event 236 starts.
+ Number of Scintillation Photons in previous event: 4959
+Number of Scintillation photons produced in this event : 11577
+photon arrived : 15
+--> Event 237 starts.
+ Number of Scintillation Photons in previous event: 11577
+Number of Scintillation photons produced in this event : 5714
+photon arrived : 15
+--> Event 238 starts.
+ Number of Scintillation Photons in previous event: 5714
+Number of Scintillation photons produced in this event : 4799
+photon arrived : 8
+--> Event 239 starts.
+ Number of Scintillation Photons in previous event: 4799
+Number of Scintillation photons produced in this event : 4724
+photon arrived : 9
+--> Event 240 starts.
+ Number of Scintillation Photons in previous event: 4724
+Number of Scintillation photons produced in this event : 4477
+photon arrived : 8
+--> Event 241 starts.
+ Number of Scintillation Photons in previous event: 4477
+Number of Scintillation photons produced in this event : 4857
+photon arrived : 6
+--> Event 242 starts.
+ Number of Scintillation Photons in previous event: 4857
+Number of Scintillation photons produced in this event : 4704
+photon arrived : 10
+--> Event 243 starts.
+ Number of Scintillation Photons in previous event: 4704
+Number of Scintillation photons produced in this event : 6251
+photon arrived : 8
+--> Event 244 starts.
+ Number of Scintillation Photons in previous event: 6251
+Number of Scintillation photons produced in this event : 6007
+photon arrived : 7
+--> Event 245 starts.
+ Number of Scintillation Photons in previous event: 6007
+Number of Scintillation photons produced in this event : 5389
+photon arrived : 6
+--> Event 246 starts.
+ Number of Scintillation Photons in previous event: 5389
+Number of Scintillation photons produced in this event : 5043
+photon arrived : 4
+--> Event 247 starts.
+ Number of Scintillation Photons in previous event: 5043
+Number of Scintillation photons produced in this event : 4645
+photon arrived : 8
+--> Event 248 starts.
+ Number of Scintillation Photons in previous event: 4645
+Number of Scintillation photons produced in this event : 4129
+photon arrived : 7
+--> Event 249 starts.
+ Number of Scintillation Photons in previous event: 4129
+Number of Scintillation photons produced in this event : 4465
+photon arrived : 10
+--> Event 250 starts.
+ Number of Scintillation Photons in previous event: 4465
+Number of Scintillation photons produced in this event : 4132
+photon arrived : 8
+--> Event 251 starts.
+ Number of Scintillation Photons in previous event: 4132
+Number of Scintillation photons produced in this event : 4926
+photon arrived : 8
+--> Event 252 starts.
+ Number of Scintillation Photons in previous event: 4926
+Number of Scintillation photons produced in this event : 5040
+photon arrived : 9
+--> Event 253 starts.
+ Number of Scintillation Photons in previous event: 5040
+Number of Scintillation photons produced in this event : 4868
+photon arrived : 10
+--> Event 254 starts.
+ Number of Scintillation Photons in previous event: 4868
+Number of Scintillation photons produced in this event : 4363
+photon arrived : 4
+--> Event 255 starts.
+ Number of Scintillation Photons in previous event: 4363
+Number of Scintillation photons produced in this event : 5700
+photon arrived : 9
+--> Event 256 starts.
+ Number of Scintillation Photons in previous event: 5700
+Number of Scintillation photons produced in this event : 4449
+photon arrived : 7
+--> Event 257 starts.
+ Number of Scintillation Photons in previous event: 4449
+Number of Scintillation photons produced in this event : 5647
+photon arrived : 8
+--> Event 258 starts.
+ Number of Scintillation Photons in previous event: 5647
+Number of Scintillation photons produced in this event : 4630
+photon arrived : 8
+--> Event 259 starts.
+ Number of Scintillation Photons in previous event: 4630
+Number of Scintillation photons produced in this event : 5138
+photon arrived : 8
+--> Event 260 starts.
+ Number of Scintillation Photons in previous event: 5138
+Number of Scintillation photons produced in this event : 4671
+photon arrived : 5
+--> Event 261 starts.
+ Number of Scintillation Photons in previous event: 4671
+Number of Scintillation photons produced in this event : 4800
+photon arrived : 10
+--> Event 262 starts.
+ Number of Scintillation Photons in previous event: 4800
+Number of Scintillation photons produced in this event : 7264
+photon arrived : 10
+--> Event 263 starts.
+ Number of Scintillation Photons in previous event: 7264
+Number of Scintillation photons produced in this event : 4013
+photon arrived : 4
+--> Event 264 starts.
+ Number of Scintillation Photons in previous event: 4013
+Number of Scintillation photons produced in this event : 5121
+photon arrived : 10
+--> Event 265 starts.
+ Number of Scintillation Photons in previous event: 5121
+Number of Scintillation photons produced in this event : 5043
+photon arrived : 4
+--> Event 266 starts.
+ Number of Scintillation Photons in previous event: 5043
+Number of Scintillation photons produced in this event : 6619
+photon arrived : 6
+--> Event 267 starts.
+ Number of Scintillation Photons in previous event: 6619
+Number of Scintillation photons produced in this event : 4338
+photon arrived : 2
+--> Event 268 starts.
+ Number of Scintillation Photons in previous event: 4338
+Number of Scintillation photons produced in this event : 6034
+photon arrived : 12
+--> Event 269 starts.
+ Number of Scintillation Photons in previous event: 6034
+Number of Scintillation photons produced in this event : 4129
+photon arrived : 9
+--> Event 270 starts.
+ Number of Scintillation Photons in previous event: 4129
+Number of Scintillation photons produced in this event : 4916
+photon arrived : 12
+--> Event 271 starts.
+ Number of Scintillation Photons in previous event: 4916
+Number of Scintillation photons produced in this event : 4735
+photon arrived : 8
+--> Event 272 starts.
+ Number of Scintillation Photons in previous event: 4735
+Number of Scintillation photons produced in this event : 5046
+photon arrived : 10
+--> Event 273 starts.
+ Number of Scintillation Photons in previous event: 5046
+Number of Scintillation photons produced in this event : 4978
+photon arrived : 6
+--> Event 274 starts.
+ Number of Scintillation Photons in previous event: 4978
+Number of Scintillation photons produced in this event : 4998
+photon arrived : 9
+--> Event 275 starts.
+ Number of Scintillation Photons in previous event: 4998
+Number of Scintillation photons produced in this event : 4807
+photon arrived : 3
+--> Event 276 starts.
+ Number of Scintillation Photons in previous event: 4807
+Number of Scintillation photons produced in this event : 4326
+photon arrived : 8
+--> Event 277 starts.
+ Number of Scintillation Photons in previous event: 4326
+Number of Scintillation photons produced in this event : 5241
+photon arrived : 7
+--> Event 278 starts.
+ Number of Scintillation Photons in previous event: 5241
+Number of Scintillation photons produced in this event : 5527
+photon arrived : 11
+--> Event 279 starts.
+ Number of Scintillation Photons in previous event: 5527
+Number of Scintillation photons produced in this event : 4293
+photon arrived : 6
+--> Event 280 starts.
+ Number of Scintillation Photons in previous event: 4293
+Number of Scintillation photons produced in this event : 5125
+photon arrived : 14
+--> Event 281 starts.
+ Number of Scintillation Photons in previous event: 5125
+Number of Scintillation photons produced in this event : 4526
+photon arrived : 6
+--> Event 282 starts.
+ Number of Scintillation Photons in previous event: 4526
+Number of Scintillation photons produced in this event : 4301
+photon arrived : 6
+--> Event 283 starts.
+ Number of Scintillation Photons in previous event: 4301
+Number of Scintillation photons produced in this event : 4308
+photon arrived : 9
+--> Event 284 starts.
+ Number of Scintillation Photons in previous event: 4308
+Number of Scintillation photons produced in this event : 4683
+photon arrived : 5
+--> Event 285 starts.
+ Number of Scintillation Photons in previous event: 4683
+Number of Scintillation photons produced in this event : 4006
+photon arrived : 4
+--> Event 286 starts.
+ Number of Scintillation Photons in previous event: 4006
+Number of Scintillation photons produced in this event : 7023
+photon arrived : 12
+--> Event 287 starts.
+ Number of Scintillation Photons in previous event: 7023
+Number of Scintillation photons produced in this event : 5606
+photon arrived : 8
+--> Event 288 starts.
+ Number of Scintillation Photons in previous event: 5606
+Number of Scintillation photons produced in this event : 4888
+photon arrived : 12
+--> Event 289 starts.
+ Number of Scintillation Photons in previous event: 4888
+Number of Scintillation photons produced in this event : 4394
+photon arrived : 9
+--> Event 290 starts.
+ Number of Scintillation Photons in previous event: 4394
+Number of Scintillation photons produced in this event : 5441
+photon arrived : 8
+--> Event 291 starts.
+ Number of Scintillation Photons in previous event: 5441
+Number of Scintillation photons produced in this event : 4126
+photon arrived : 4
+--> Event 292 starts.
+ Number of Scintillation Photons in previous event: 4126
+Number of Scintillation photons produced in this event : 4731
+photon arrived : 7
+--> Event 293 starts.
+ Number of Scintillation Photons in previous event: 4731
+Number of Scintillation photons produced in this event : 5528
+photon arrived : 10
+--> Event 294 starts.
+ Number of Scintillation Photons in previous event: 5528
+Number of Scintillation photons produced in this event : 5229
+photon arrived : 12
+--> Event 295 starts.
+ Number of Scintillation Photons in previous event: 5229
+Number of Scintillation photons produced in this event : 4544
+photon arrived : 7
+--> Event 296 starts.
+ Number of Scintillation Photons in previous event: 4544
+Number of Scintillation photons produced in this event : 5330
+photon arrived : 11
+--> Event 297 starts.
+ Number of Scintillation Photons in previous event: 5330
+Number of Scintillation photons produced in this event : 5143
+photon arrived : 8
+--> Event 298 starts.
+ Number of Scintillation Photons in previous event: 5143
+Number of Scintillation photons produced in this event : 4619
+photon arrived : 12
+--> Event 299 starts.
+ Number of Scintillation Photons in previous event: 4619
+Number of Scintillation photons produced in this event : 4407
+photon arrived : 8
+--> Event 300 starts.
+ Number of Scintillation Photons in previous event: 4407
+Number of Scintillation photons produced in this event : 4372
+photon arrived : 4
+--> Event 301 starts.
+ Number of Scintillation Photons in previous event: 4372
+Number of Scintillation photons produced in this event : 4751
+photon arrived : 7
+--> Event 302 starts.
+ Number of Scintillation Photons in previous event: 4751
+Number of Scintillation photons produced in this event : 4889
+photon arrived : 7
+--> Event 303 starts.
+ Number of Scintillation Photons in previous event: 4889
+Number of Scintillation photons produced in this event : 4709
+photon arrived : 8
+--> Event 304 starts.
+ Number of Scintillation Photons in previous event: 4709
+Number of Scintillation photons produced in this event : 6014
+photon arrived : 13
+--> Event 305 starts.
+ Number of Scintillation Photons in previous event: 6014
+Number of Scintillation photons produced in this event : 5105
+photon arrived : 5
+--> Event 306 starts.
+ Number of Scintillation Photons in previous event: 5105
+Number of Scintillation photons produced in this event : 4988
+photon arrived : 6
+--> Event 307 starts.
+ Number of Scintillation Photons in previous event: 4988
+Number of Scintillation photons produced in this event : 5464
+photon arrived : 9
+--> Event 308 starts.
+ Number of Scintillation Photons in previous event: 5464
+Number of Scintillation photons produced in this event : 4626
+photon arrived : 8
+--> Event 309 starts.
+ Number of Scintillation Photons in previous event: 4626
+Number of Scintillation photons produced in this event : 4899
+photon arrived : 9
+--> Event 310 starts.
+ Number of Scintillation Photons in previous event: 4899
+Number of Scintillation photons produced in this event : 4230
+photon arrived : 8
+--> Event 311 starts.
+ Number of Scintillation Photons in previous event: 4230
+Number of Scintillation photons produced in this event : 4134
+photon arrived : 4
+--> Event 312 starts.
+ Number of Scintillation Photons in previous event: 4134
+Number of Scintillation photons produced in this event : 4483
+photon arrived : 4
+--> Event 313 starts.
+ Number of Scintillation Photons in previous event: 4483
+Number of Scintillation photons produced in this event : 6434
+photon arrived : 9
+--> Event 314 starts.
+ Number of Scintillation Photons in previous event: 6434
+Number of Scintillation photons produced in this event : 4368
+photon arrived : 6
+--> Event 315 starts.
+ Number of Scintillation Photons in previous event: 4368
+Number of Scintillation photons produced in this event : 5985
+photon arrived : 8
+--> Event 316 starts.
+ Number of Scintillation Photons in previous event: 5985
+Number of Scintillation photons produced in this event : 5560
+photon arrived : 11
+--> Event 317 starts.
+ Number of Scintillation Photons in previous event: 5560
+Number of Scintillation photons produced in this event : 5576
+photon arrived : 8
+--> Event 318 starts.
+ Number of Scintillation Photons in previous event: 5576
+Number of Scintillation photons produced in this event : 4661
+photon arrived : 5
+--> Event 319 starts.
+ Number of Scintillation Photons in previous event: 4661
+Number of Scintillation photons produced in this event : 5302
+photon arrived : 8
+--> Event 320 starts.
+ Number of Scintillation Photons in previous event: 5302
+Number of Scintillation photons produced in this event : 4386
+photon arrived : 7
+--> Event 321 starts.
+ Number of Scintillation Photons in previous event: 4386
+Number of Scintillation photons produced in this event : 5359
+photon arrived : 6
+--> Event 322 starts.
+ Number of Scintillation Photons in previous event: 5359
+Number of Scintillation photons produced in this event : 5215
+photon arrived : 11
+--> Event 323 starts.
+ Number of Scintillation Photons in previous event: 5215
+Number of Scintillation photons produced in this event : 5265
+photon arrived : 8
+--> Event 324 starts.
+ Number of Scintillation Photons in previous event: 5265
+Number of Scintillation photons produced in this event : 5002
+photon arrived : 2
+--> Event 325 starts.
+ Number of Scintillation Photons in previous event: 5002
+Number of Scintillation photons produced in this event : 4697
+photon arrived : 6
+--> Event 326 starts.
+ Number of Scintillation Photons in previous event: 4697
+Number of Scintillation photons produced in this event : 5297
+photon arrived : 8
+--> Event 327 starts.
+ Number of Scintillation Photons in previous event: 5297
+Number of Scintillation photons produced in this event : 5027
+photon arrived : 10
+--> Event 328 starts.
+ Number of Scintillation Photons in previous event: 5027
+Number of Scintillation photons produced in this event : 4845
+photon arrived : 8
+--> Event 329 starts.
+ Number of Scintillation Photons in previous event: 4845
+Number of Scintillation photons produced in this event : 4996
+photon arrived : 7
+--> Event 330 starts.
+ Number of Scintillation Photons in previous event: 4996
+Number of Scintillation photons produced in this event : 6314
+photon arrived : 14
+--> Event 331 starts.
+ Number of Scintillation Photons in previous event: 6314
+Number of Scintillation photons produced in this event : 4360
+photon arrived : 5
+--> Event 332 starts.
+ Number of Scintillation Photons in previous event: 4360
+Number of Scintillation photons produced in this event : 4903
+photon arrived : 4
+--> Event 333 starts.
+ Number of Scintillation Photons in previous event: 4903
+Number of Scintillation photons produced in this event : 4319
+photon arrived : 9
+--> Event 334 starts.
+ Number of Scintillation Photons in previous event: 4319
+Number of Scintillation photons produced in this event : 4876
+photon arrived : 6
+--> Event 335 starts.
+ Number of Scintillation Photons in previous event: 4876
+Number of Scintillation photons produced in this event : 5363
+photon arrived : 11
+--> Event 336 starts.
+ Number of Scintillation Photons in previous event: 5363
+Number of Scintillation photons produced in this event : 4758
+photon arrived : 13
+--> Event 337 starts.
+ Number of Scintillation Photons in previous event: 4758
+Number of Scintillation photons produced in this event : 4432
+photon arrived : 5
+--> Event 338 starts.
+ Number of Scintillation Photons in previous event: 4432
+Number of Scintillation photons produced in this event : 4611
+photon arrived : 8
+--> Event 339 starts.
+ Number of Scintillation Photons in previous event: 4611
+Number of Scintillation photons produced in this event : 5690
+photon arrived : 11
+--> Event 340 starts.
+ Number of Scintillation Photons in previous event: 5690
+Number of Scintillation photons produced in this event : 6220
+photon arrived : 7
+--> Event 341 starts.
+ Number of Scintillation Photons in previous event: 6220
+Number of Scintillation photons produced in this event : 5026
+photon arrived : 8
+--> Event 342 starts.
+ Number of Scintillation Photons in previous event: 5026
+Number of Scintillation photons produced in this event : 6549
+photon arrived : 8
+--> Event 343 starts.
+ Number of Scintillation Photons in previous event: 6549
+Number of Scintillation photons produced in this event : 7017
+photon arrived : 14
+--> Event 344 starts.
+ Number of Scintillation Photons in previous event: 7017
+Number of Scintillation photons produced in this event : 5196
+photon arrived : 4
+--> Event 345 starts.
+ Number of Scintillation Photons in previous event: 5196
+Number of Scintillation photons produced in this event : 4582
+photon arrived : 5
+--> Event 346 starts.
+ Number of Scintillation Photons in previous event: 4582
+Number of Scintillation photons produced in this event : 4798
+photon arrived : 6
+--> Event 347 starts.
+ Number of Scintillation Photons in previous event: 4798
+Number of Scintillation photons produced in this event : 4461
+photon arrived : 1
+--> Event 348 starts.
+ Number of Scintillation Photons in previous event: 4461
+Number of Scintillation photons produced in this event : 4918
+photon arrived : 13
+--> Event 349 starts.
+ Number of Scintillation Photons in previous event: 4918
+Number of Scintillation photons produced in this event : 5540
+photon arrived : 9
+--> Event 350 starts.
+ Number of Scintillation Photons in previous event: 5540
+Number of Scintillation photons produced in this event : 4784
+photon arrived : 9
+--> Event 351 starts.
+ Number of Scintillation Photons in previous event: 4784
+Number of Scintillation photons produced in this event : 4526
+photon arrived : 8
+--> Event 352 starts.
+ Number of Scintillation Photons in previous event: 4526
+Number of Scintillation photons produced in this event : 6682
+photon arrived : 13
+--> Event 353 starts.
+ Number of Scintillation Photons in previous event: 6682
+Number of Scintillation photons produced in this event : 4976
+photon arrived : 7
+--> Event 354 starts.
+ Number of Scintillation Photons in previous event: 4976
+Number of Scintillation photons produced in this event : 4705
+photon arrived : 5
+--> Event 355 starts.
+ Number of Scintillation Photons in previous event: 4705
+Number of Scintillation photons produced in this event : 4511
+photon arrived : 5
+--> Event 356 starts.
+ Number of Scintillation Photons in previous event: 4511
+Number of Scintillation photons produced in this event : 4787
+photon arrived : 9
+--> Event 357 starts.
+ Number of Scintillation Photons in previous event: 4787
+Number of Scintillation photons produced in this event : 4756
+photon arrived : 5
+--> Event 358 starts.
+ Number of Scintillation Photons in previous event: 4756
+Number of Scintillation photons produced in this event : 6382
+photon arrived : 9
+--> Event 359 starts.
+ Number of Scintillation Photons in previous event: 6382
+Number of Scintillation photons produced in this event : 4945
+photon arrived : 11
+--> Event 360 starts.
+ Number of Scintillation Photons in previous event: 4945
+Number of Scintillation photons produced in this event : 5979
+photon arrived : 13
+--> Event 361 starts.
+ Number of Scintillation Photons in previous event: 5979
+Number of Scintillation photons produced in this event : 4480
+photon arrived : 8
+--> Event 362 starts.
+ Number of Scintillation Photons in previous event: 4480
+Number of Scintillation photons produced in this event : 4671
+photon arrived : 12
+--> Event 363 starts.
+ Number of Scintillation Photons in previous event: 4671
+Number of Scintillation photons produced in this event : 5423
+photon arrived : 10
+--> Event 364 starts.
+ Number of Scintillation Photons in previous event: 5423
+Number of Scintillation photons produced in this event : 6313
+photon arrived : 6
+--> Event 365 starts.
+ Number of Scintillation Photons in previous event: 6313
+Number of Scintillation photons produced in this event : 4768
+photon arrived : 9
+--> Event 366 starts.
+ Number of Scintillation Photons in previous event: 4768
+Number of Scintillation photons produced in this event : 4403
+photon arrived : 9
+--> Event 367 starts.
+ Number of Scintillation Photons in previous event: 4403
+Number of Scintillation photons produced in this event : 4939
+photon arrived : 12
+--> Event 368 starts.
+ Number of Scintillation Photons in previous event: 4939
+Number of Scintillation photons produced in this event : 4910
+photon arrived : 8
+--> Event 369 starts.
+ Number of Scintillation Photons in previous event: 4910
+Number of Scintillation photons produced in this event : 4508
+photon arrived : 7
+--> Event 370 starts.
+ Number of Scintillation Photons in previous event: 4508
+Number of Scintillation photons produced in this event : 4443
+photon arrived : 9
+--> Event 371 starts.
+ Number of Scintillation Photons in previous event: 4443
+Number of Scintillation photons produced in this event : 5985
+photon arrived : 7
+--> Event 372 starts.
+ Number of Scintillation Photons in previous event: 5985
+Number of Scintillation photons produced in this event : 11027
+photon arrived : 16
+--> Event 373 starts.
+ Number of Scintillation Photons in previous event: 11027
+Number of Scintillation photons produced in this event : 5058
+photon arrived : 6
+--> Event 374 starts.
+ Number of Scintillation Photons in previous event: 5058
+Number of Scintillation photons produced in this event : 6896
+photon arrived : 19
+--> Event 375 starts.
+ Number of Scintillation Photons in previous event: 6896
+Number of Scintillation photons produced in this event : 5708
+photon arrived : 9
+--> Event 376 starts.
+ Number of Scintillation Photons in previous event: 5708
+Number of Scintillation photons produced in this event : 5881
+photon arrived : 15
+--> Event 377 starts.
+ Number of Scintillation Photons in previous event: 5881
+Number of Scintillation photons produced in this event : 4938
+photon arrived : 5
+--> Event 378 starts.
+ Number of Scintillation Photons in previous event: 4938
+Number of Scintillation photons produced in this event : 4706
+photon arrived : 9
+--> Event 379 starts.
+ Number of Scintillation Photons in previous event: 4706
+Number of Scintillation photons produced in this event : 4113
+photon arrived : 9
+--> Event 380 starts.
+ Number of Scintillation Photons in previous event: 4113
+Number of Scintillation photons produced in this event : 4592
+photon arrived : 5
+--> Event 381 starts.
+ Number of Scintillation Photons in previous event: 4592
+Number of Scintillation photons produced in this event : 4197
+photon arrived : 5
+--> Event 382 starts.
+ Number of Scintillation Photons in previous event: 4197
+Number of Scintillation photons produced in this event : 4424
+photon arrived : 9
+--> Event 383 starts.
+ Number of Scintillation Photons in previous event: 4424
+Number of Scintillation photons produced in this event : 6496
+photon arrived : 13
+--> Event 384 starts.
+ Number of Scintillation Photons in previous event: 6496
+Number of Scintillation photons produced in this event : 4528
+photon arrived : 6
+--> Event 385 starts.
+ Number of Scintillation Photons in previous event: 4528
+Number of Scintillation photons produced in this event : 4534
+photon arrived : 5
+--> Event 386 starts.
+ Number of Scintillation Photons in previous event: 4534
+Number of Scintillation photons produced in this event : 4566
+photon arrived : 13
+--> Event 387 starts.
+ Number of Scintillation Photons in previous event: 4566
+Number of Scintillation photons produced in this event : 5615
+photon arrived : 5
+--> Event 388 starts.
+ Number of Scintillation Photons in previous event: 5615
+Number of Scintillation photons produced in this event : 3926
+photon arrived : 3
+--> Event 389 starts.
+ Number of Scintillation Photons in previous event: 3926
+Number of Scintillation photons produced in this event : 4968
+photon arrived : 7
+--> Event 390 starts.
+ Number of Scintillation Photons in previous event: 4968
+Number of Scintillation photons produced in this event : 4563
+photon arrived : 8
+--> Event 391 starts.
+ Number of Scintillation Photons in previous event: 4563
+Number of Scintillation photons produced in this event : 4353
+photon arrived : 8
+--> Event 392 starts.
+ Number of Scintillation Photons in previous event: 4353
+Number of Scintillation photons produced in this event : 9245
+photon arrived : 13
+--> Event 393 starts.
+ Number of Scintillation Photons in previous event: 9245
+Number of Scintillation photons produced in this event : 5256
+photon arrived : 13
+--> Event 394 starts.
+ Number of Scintillation Photons in previous event: 5256
+Number of Scintillation photons produced in this event : 5276
+photon arrived : 4
+--> Event 395 starts.
+ Number of Scintillation Photons in previous event: 5276
+Number of Scintillation photons produced in this event : 4945
+photon arrived : 6
+--> Event 396 starts.
+ Number of Scintillation Photons in previous event: 4945
+Number of Scintillation photons produced in this event : 3968
+photon arrived : 4
+--> Event 397 starts.
+ Number of Scintillation Photons in previous event: 3968
+Number of Scintillation photons produced in this event : 5412
+photon arrived : 13
+--> Event 398 starts.
+ Number of Scintillation Photons in previous event: 5412
+Number of Scintillation photons produced in this event : 5268
+photon arrived : 9
+--> Event 399 starts.
+ Number of Scintillation Photons in previous event: 5268
+Number of Scintillation photons produced in this event : 4741
+photon arrived : 10
+--> Event 400 starts.
+ Number of Scintillation Photons in previous event: 4741
+Number of Scintillation photons produced in this event : 4550
+photon arrived : 6
+--> Event 401 starts.
+ Number of Scintillation Photons in previous event: 4550
+Number of Scintillation photons produced in this event : 4997
+photon arrived : 8
+--> Event 402 starts.
+ Number of Scintillation Photons in previous event: 4997
+Number of Scintillation photons produced in this event : 4794
+photon arrived : 8
+--> Event 403 starts.
+ Number of Scintillation Photons in previous event: 4794
+Number of Scintillation photons produced in this event : 5238
+photon arrived : 4
+--> Event 404 starts.
+ Number of Scintillation Photons in previous event: 5238
+Number of Scintillation photons produced in this event : 4393
+photon arrived : 12
+--> Event 405 starts.
+ Number of Scintillation Photons in previous event: 4393
+Number of Scintillation photons produced in this event : 5550
+photon arrived : 8
+--> Event 406 starts.
+ Number of Scintillation Photons in previous event: 5550
+Number of Scintillation photons produced in this event : 4770
+photon arrived : 5
+--> Event 407 starts.
+ Number of Scintillation Photons in previous event: 4770
+Number of Scintillation photons produced in this event : 5082
+photon arrived : 10
+--> Event 408 starts.
+ Number of Scintillation Photons in previous event: 5082
+Number of Scintillation photons produced in this event : 5557
+photon arrived : 10
+--> Event 409 starts.
+ Number of Scintillation Photons in previous event: 5557
+Number of Scintillation photons produced in this event : 4205
+photon arrived : 8
+--> Event 410 starts.
+ Number of Scintillation Photons in previous event: 4205
+Number of Scintillation photons produced in this event : 6092
+photon arrived : 12
+--> Event 411 starts.
+ Number of Scintillation Photons in previous event: 6092
+Number of Scintillation photons produced in this event : 6315
+photon arrived : 10
+--> Event 412 starts.
+ Number of Scintillation Photons in previous event: 6315
+Number of Scintillation photons produced in this event : 5901
+photon arrived : 17
+--> Event 413 starts.
+ Number of Scintillation Photons in previous event: 5901
+Number of Scintillation photons produced in this event : 4261
+photon arrived : 7
+--> Event 414 starts.
+ Number of Scintillation Photons in previous event: 4261
+Number of Scintillation photons produced in this event : 6288
+photon arrived : 6
+--> Event 415 starts.
+ Number of Scintillation Photons in previous event: 6288
+Number of Scintillation photons produced in this event : 5888
+photon arrived : 12
+--> Event 416 starts.
+ Number of Scintillation Photons in previous event: 5888
+Number of Scintillation photons produced in this event : 4400
+photon arrived : 9
+--> Event 417 starts.
+ Number of Scintillation Photons in previous event: 4400
+Number of Scintillation photons produced in this event : 7095
+photon arrived : 11
+--> Event 418 starts.
+ Number of Scintillation Photons in previous event: 7095
+Number of Scintillation photons produced in this event : 5132
+photon arrived : 9
+--> Event 419 starts.
+ Number of Scintillation Photons in previous event: 5132
+Number of Scintillation photons produced in this event : 4437
+photon arrived : 4
+--> Event 420 starts.
+ Number of Scintillation Photons in previous event: 4437
+Number of Scintillation photons produced in this event : 5319
+photon arrived : 11
+--> Event 421 starts.
+ Number of Scintillation Photons in previous event: 5319
+Number of Scintillation photons produced in this event : 4905
+photon arrived : 11
+--> Event 422 starts.
+ Number of Scintillation Photons in previous event: 4905
+Number of Scintillation photons produced in this event : 4379
+photon arrived : 3
+--> Event 423 starts.
+ Number of Scintillation Photons in previous event: 4379
+Number of Scintillation photons produced in this event : 4856
+photon arrived : 10
+--> Event 424 starts.
+ Number of Scintillation Photons in previous event: 4856
+Number of Scintillation photons produced in this event : 4436
+photon arrived : 8
+--> Event 425 starts.
+ Number of Scintillation Photons in previous event: 4436
+Number of Scintillation photons produced in this event : 5653
+photon arrived : 8
+--> Event 426 starts.
+ Number of Scintillation Photons in previous event: 5653
+Number of Scintillation photons produced in this event : 4439
+photon arrived : 9
+--> Event 427 starts.
+ Number of Scintillation Photons in previous event: 4439
+Number of Scintillation photons produced in this event : 5842
+photon arrived : 11
+--> Event 428 starts.
+ Number of Scintillation Photons in previous event: 5842
+Number of Scintillation photons produced in this event : 4027
+photon arrived : 10
+--> Event 429 starts.
+ Number of Scintillation Photons in previous event: 4027
+Number of Scintillation photons produced in this event : 4678
+photon arrived : 7
+--> Event 430 starts.
+ Number of Scintillation Photons in previous event: 4678
+Number of Scintillation photons produced in this event : 7359
+photon arrived : 13
+--> Event 431 starts.
+ Number of Scintillation Photons in previous event: 7359
+Number of Scintillation photons produced in this event : 6348
+photon arrived : 15
+--> Event 432 starts.
+ Number of Scintillation Photons in previous event: 6348
+Number of Scintillation photons produced in this event : 5320
+photon arrived : 14
+--> Event 433 starts.
+ Number of Scintillation Photons in previous event: 5320
+Number of Scintillation photons produced in this event : 5918
+photon arrived : 11
+--> Event 434 starts.
+ Number of Scintillation Photons in previous event: 5918
+Number of Scintillation photons produced in this event : 4414
+photon arrived : 2
+--> Event 435 starts.
+ Number of Scintillation Photons in previous event: 4414
+Number of Scintillation photons produced in this event : 4444
+photon arrived : 8
+--> Event 436 starts.
+ Number of Scintillation Photons in previous event: 4444
+Number of Scintillation photons produced in this event : 4486
+photon arrived : 12
+--> Event 437 starts.
+ Number of Scintillation Photons in previous event: 4486
+Number of Scintillation photons produced in this event : 4469
+photon arrived : 7
+--> Event 438 starts.
+ Number of Scintillation Photons in previous event: 4469
+Number of Scintillation photons produced in this event : 5275
+photon arrived : 12
+--> Event 439 starts.
+ Number of Scintillation Photons in previous event: 5275
+Number of Scintillation photons produced in this event : 4891
+photon arrived : 5
+--> Event 440 starts.
+ Number of Scintillation Photons in previous event: 4891
+Number of Scintillation photons produced in this event : 4644
+photon arrived : 8
+--> Event 441 starts.
+ Number of Scintillation Photons in previous event: 4644
+Number of Scintillation photons produced in this event : 3963
+photon arrived : 5
+--> Event 442 starts.
+ Number of Scintillation Photons in previous event: 3963
+Number of Scintillation photons produced in this event : 4605
+photon arrived : 11
+--> Event 443 starts.
+ Number of Scintillation Photons in previous event: 4605
+Number of Scintillation photons produced in this event : 5127
+photon arrived : 5
+--> Event 444 starts.
+ Number of Scintillation Photons in previous event: 5127
+Number of Scintillation photons produced in this event : 4246
+photon arrived : 2
+--> Event 445 starts.
+ Number of Scintillation Photons in previous event: 4246
+Number of Scintillation photons produced in this event : 4577
+photon arrived : 11
+--> Event 446 starts.
+ Number of Scintillation Photons in previous event: 4577
+Number of Scintillation photons produced in this event : 5230
+photon arrived : 7
+--> Event 447 starts.
+ Number of Scintillation Photons in previous event: 5230
+Number of Scintillation photons produced in this event : 4954
+photon arrived : 7
+--> Event 448 starts.
+ Number of Scintillation Photons in previous event: 4954
+Number of Scintillation photons produced in this event : 5207
+photon arrived : 10
+--> Event 449 starts.
+ Number of Scintillation Photons in previous event: 5207
+Number of Scintillation photons produced in this event : 4392
+photon arrived : 7
+--> Event 450 starts.
+ Number of Scintillation Photons in previous event: 4392
+Number of Scintillation photons produced in this event : 6222
+photon arrived : 12
+--> Event 451 starts.
+ Number of Scintillation Photons in previous event: 6222
+Number of Scintillation photons produced in this event : 5213
+photon arrived : 5
+--> Event 452 starts.
+ Number of Scintillation Photons in previous event: 5213
+Number of Scintillation photons produced in this event : 4367
+photon arrived : 9
+--> Event 453 starts.
+ Number of Scintillation Photons in previous event: 4367
+Number of Scintillation photons produced in this event : 5473
+photon arrived : 9
+--> Event 454 starts.
+ Number of Scintillation Photons in previous event: 5473
+Number of Scintillation photons produced in this event : 8160
+photon arrived : 16
+--> Event 455 starts.
+ Number of Scintillation Photons in previous event: 8160
+Number of Scintillation photons produced in this event : 5384
+photon arrived : 7
+--> Event 456 starts.
+ Number of Scintillation Photons in previous event: 5384
+Number of Scintillation photons produced in this event : 4364
+photon arrived : 7
+--> Event 457 starts.
+ Number of Scintillation Photons in previous event: 4364
+Number of Scintillation photons produced in this event : 5903
+photon arrived : 5
+--> Event 458 starts.
+ Number of Scintillation Photons in previous event: 5903
+Number of Scintillation photons produced in this event : 5164
+photon arrived : 10
+--> Event 459 starts.
+ Number of Scintillation Photons in previous event: 5164
+Number of Scintillation photons produced in this event : 8831
+photon arrived : 26
+--> Event 460 starts.
+ Number of Scintillation Photons in previous event: 8831
+Number of Scintillation photons produced in this event : 5577
+photon arrived : 8
+--> Event 461 starts.
+ Number of Scintillation Photons in previous event: 5577
+Number of Scintillation photons produced in this event : 3887
+photon arrived : 10
+--> Event 462 starts.
+ Number of Scintillation Photons in previous event: 3887
+Number of Scintillation photons produced in this event : 4693
+photon arrived : 9
+--> Event 463 starts.
+ Number of Scintillation Photons in previous event: 4693
+Number of Scintillation photons produced in this event : 4434
+photon arrived : 9
+--> Event 464 starts.
+ Number of Scintillation Photons in previous event: 4434
+Number of Scintillation photons produced in this event : 6214
+photon arrived : 11
+--> Event 465 starts.
+ Number of Scintillation Photons in previous event: 6214
+Number of Scintillation photons produced in this event : 5008
+photon arrived : 10
+--> Event 466 starts.
+ Number of Scintillation Photons in previous event: 5008
+Number of Scintillation photons produced in this event : 4454
+photon arrived : 8
+--> Event 467 starts.
+ Number of Scintillation Photons in previous event: 4454
+Number of Scintillation photons produced in this event : 4700
+photon arrived : 10
+--> Event 468 starts.
+ Number of Scintillation Photons in previous event: 4700
+Number of Scintillation photons produced in this event : 4359
+photon arrived : 5
+--> Event 469 starts.
+ Number of Scintillation Photons in previous event: 4359
+Number of Scintillation photons produced in this event : 5104
+photon arrived : 8
+--> Event 470 starts.
+ Number of Scintillation Photons in previous event: 5104
+Number of Scintillation photons produced in this event : 5057
+photon arrived : 4
+--> Event 471 starts.
+ Number of Scintillation Photons in previous event: 5057
+Number of Scintillation photons produced in this event : 5832
+photon arrived : 10
+--> Event 472 starts.
+ Number of Scintillation Photons in previous event: 5832
+Number of Scintillation photons produced in this event : 4216
+photon arrived : 7
+--> Event 473 starts.
+ Number of Scintillation Photons in previous event: 4216
+Number of Scintillation photons produced in this event : 6156
+photon arrived : 7
+--> Event 474 starts.
+ Number of Scintillation Photons in previous event: 6156
+Number of Scintillation photons produced in this event : 5232
+photon arrived : 9
+--> Event 475 starts.
+ Number of Scintillation Photons in previous event: 5232
+Number of Scintillation photons produced in this event : 4245
+photon arrived : 9
+--> Event 476 starts.
+ Number of Scintillation Photons in previous event: 4245
+Number of Scintillation photons produced in this event : 4407
+photon arrived : 6
+--> Event 477 starts.
+ Number of Scintillation Photons in previous event: 4407
+Number of Scintillation photons produced in this event : 4587
+photon arrived : 13
+--> Event 478 starts.
+ Number of Scintillation Photons in previous event: 4587
+Number of Scintillation photons produced in this event : 6065
+photon arrived : 15
+--> Event 479 starts.
+ Number of Scintillation Photons in previous event: 6065
+Number of Scintillation photons produced in this event : 5247
+photon arrived : 5
+--> Event 480 starts.
+ Number of Scintillation Photons in previous event: 5247
+Number of Scintillation photons produced in this event : 4626
+photon arrived : 8
+--> Event 481 starts.
+ Number of Scintillation Photons in previous event: 4626
+Number of Scintillation photons produced in this event : 4626
+photon arrived : 10
+--> Event 482 starts.
+ Number of Scintillation Photons in previous event: 4626
+Number of Scintillation photons produced in this event : 5434
+photon arrived : 8
+--> Event 483 starts.
+ Number of Scintillation Photons in previous event: 5434
+Number of Scintillation photons produced in this event : 6198
+photon arrived : 8
+--> Event 484 starts.
+ Number of Scintillation Photons in previous event: 6198
+Number of Scintillation photons produced in this event : 4238
+photon arrived : 4
+--> Event 485 starts.
+ Number of Scintillation Photons in previous event: 4238
+Number of Scintillation photons produced in this event : 4810
+photon arrived : 13
+--> Event 486 starts.
+ Number of Scintillation Photons in previous event: 4810
+Number of Scintillation photons produced in this event : 4520
+photon arrived : 5
+--> Event 487 starts.
+ Number of Scintillation Photons in previous event: 4520
+Number of Scintillation photons produced in this event : 7707
+photon arrived : 13
+--> Event 488 starts.
+ Number of Scintillation Photons in previous event: 7707
+Number of Scintillation photons produced in this event : 5875
+photon arrived : 11
+--> Event 489 starts.
+ Number of Scintillation Photons in previous event: 5875
+Number of Scintillation photons produced in this event : 5301
+photon arrived : 4
+--> Event 490 starts.
+ Number of Scintillation Photons in previous event: 5301
+Number of Scintillation photons produced in this event : 5787
+photon arrived : 15
+--> Event 491 starts.
+ Number of Scintillation Photons in previous event: 5787
+Number of Scintillation photons produced in this event : 4463
+photon arrived : 8
+--> Event 492 starts.
+ Number of Scintillation Photons in previous event: 4463
+Number of Scintillation photons produced in this event : 4563
+photon arrived : 6
+--> Event 493 starts.
+ Number of Scintillation Photons in previous event: 4563
+Number of Scintillation photons produced in this event : 5604
+photon arrived : 8
+--> Event 494 starts.
+ Number of Scintillation Photons in previous event: 5604
+Number of Scintillation photons produced in this event : 4652
+photon arrived : 10
+--> Event 495 starts.
+ Number of Scintillation Photons in previous event: 4652
+Number of Scintillation photons produced in this event : 5091
+photon arrived : 10
+--> Event 496 starts.
+ Number of Scintillation Photons in previous event: 5091
+Number of Scintillation photons produced in this event : 4084
+photon arrived : 5
+--> Event 497 starts.
+ Number of Scintillation Photons in previous event: 4084
+Number of Scintillation photons produced in this event : 10312
+photon arrived : 19
+--> Event 498 starts.
+ Number of Scintillation Photons in previous event: 10312
+Number of Scintillation photons produced in this event : 4695
+photon arrived : 16
+--> Event 499 starts.
+ Number of Scintillation Photons in previous event: 4695
+Number of Scintillation photons produced in this event : 4279
+photon arrived : 15
+--> Event 500 starts.
+ Number of Scintillation Photons in previous event: 4279
+Number of Scintillation photons produced in this event : 4971
+photon arrived : 16
+--> Event 501 starts.
+ Number of Scintillation Photons in previous event: 4971
+Number of Scintillation photons produced in this event : 4998
+photon arrived : 4
+--> Event 502 starts.
+ Number of Scintillation Photons in previous event: 4998
+Number of Scintillation photons produced in this event : 4532
+photon arrived : 9
+--> Event 503 starts.
+ Number of Scintillation Photons in previous event: 4532
+Number of Scintillation photons produced in this event : 5570
+photon arrived : 8
+--> Event 504 starts.
+ Number of Scintillation Photons in previous event: 5570
+Number of Scintillation photons produced in this event : 7291
+photon arrived : 15
+--> Event 505 starts.
+ Number of Scintillation Photons in previous event: 7291
+Number of Scintillation photons produced in this event : 6003
+photon arrived : 18
+--> Event 506 starts.
+ Number of Scintillation Photons in previous event: 6003
+Number of Scintillation photons produced in this event : 6695
+photon arrived : 16
+--> Event 507 starts.
+ Number of Scintillation Photons in previous event: 6695
+Number of Scintillation photons produced in this event : 5301
+photon arrived : 10
+--> Event 508 starts.
+ Number of Scintillation Photons in previous event: 5301
+Number of Scintillation photons produced in this event : 6287
+photon arrived : 8
+--> Event 509 starts.
+ Number of Scintillation Photons in previous event: 6287
+Number of Scintillation photons produced in this event : 4614
+photon arrived : 12
+--> Event 510 starts.
+ Number of Scintillation Photons in previous event: 4614
+Number of Scintillation photons produced in this event : 4452
+photon arrived : 8
+--> Event 511 starts.
+ Number of Scintillation Photons in previous event: 4452
+Number of Scintillation photons produced in this event : 4406
+photon arrived : 3
+--> Event 512 starts.
+ Number of Scintillation Photons in previous event: 4406
+Number of Scintillation photons produced in this event : 6181
+photon arrived : 11
+--> Event 513 starts.
+ Number of Scintillation Photons in previous event: 6181
+Number of Scintillation photons produced in this event : 7090
+photon arrived : 10
+--> Event 514 starts.
+ Number of Scintillation Photons in previous event: 7090
+Number of Scintillation photons produced in this event : 4693
+photon arrived : 10
+--> Event 515 starts.
+ Number of Scintillation Photons in previous event: 4693
+Number of Scintillation photons produced in this event : 4681
+photon arrived : 12
+--> Event 516 starts.
+ Number of Scintillation Photons in previous event: 4681
+Number of Scintillation photons produced in this event : 4488
+photon arrived : 6
+--> Event 517 starts.
+ Number of Scintillation Photons in previous event: 4488
+Number of Scintillation photons produced in this event : 8131
+photon arrived : 18
+--> Event 518 starts.
+ Number of Scintillation Photons in previous event: 8131
+Number of Scintillation photons produced in this event : 4709
+photon arrived : 7
+--> Event 519 starts.
+ Number of Scintillation Photons in previous event: 4709
+Number of Scintillation photons produced in this event : 5264
+photon arrived : 6
+--> Event 520 starts.
+ Number of Scintillation Photons in previous event: 5264
+Number of Scintillation photons produced in this event : 4867
+photon arrived : 9
+--> Event 521 starts.
+ Number of Scintillation Photons in previous event: 4867
+Number of Scintillation photons produced in this event : 4700
+photon arrived : 15
+--> Event 522 starts.
+ Number of Scintillation Photons in previous event: 4700
+Number of Scintillation photons produced in this event : 4820
+photon arrived : 8
+--> Event 523 starts.
+ Number of Scintillation Photons in previous event: 4820
+Number of Scintillation photons produced in this event : 4493
+photon arrived : 6
+--> Event 524 starts.
+ Number of Scintillation Photons in previous event: 4493
+Number of Scintillation photons produced in this event : 4981
+photon arrived : 7
+--> Event 525 starts.
+ Number of Scintillation Photons in previous event: 4981
+Number of Scintillation photons produced in this event : 4582
+photon arrived : 5
+--> Event 526 starts.
+ Number of Scintillation Photons in previous event: 4582
+Number of Scintillation photons produced in this event : 4567
+photon arrived : 7
+--> Event 527 starts.
+ Number of Scintillation Photons in previous event: 4567
+Number of Scintillation photons produced in this event : 4043
+photon arrived : 4
+--> Event 528 starts.
+ Number of Scintillation Photons in previous event: 4043
+Number of Scintillation photons produced in this event : 4228
+photon arrived : 9
+--> Event 529 starts.
+ Number of Scintillation Photons in previous event: 4228
+Number of Scintillation photons produced in this event : 4656
+photon arrived : 7
+--> Event 530 starts.
+ Number of Scintillation Photons in previous event: 4656
+Number of Scintillation photons produced in this event : 4716
+photon arrived : 11
+--> Event 531 starts.
+ Number of Scintillation Photons in previous event: 4716
+Number of Scintillation photons produced in this event : 12425
+photon arrived : 24
+--> Event 532 starts.
+ Number of Scintillation Photons in previous event: 12425
+Number of Scintillation photons produced in this event : 4701
+photon arrived : 7
+--> Event 533 starts.
+ Number of Scintillation Photons in previous event: 4701
+Number of Scintillation photons produced in this event : 10449
+photon arrived : 11
+--> Event 534 starts.
+ Number of Scintillation Photons in previous event: 10449
+Number of Scintillation photons produced in this event : 3949
+photon arrived : 7
+--> Event 535 starts.
+ Number of Scintillation Photons in previous event: 3949
+Number of Scintillation photons produced in this event : 5192
+photon arrived : 7
+--> Event 536 starts.
+ Number of Scintillation Photons in previous event: 5192
+Number of Scintillation photons produced in this event : 4020
+photon arrived : 4
+--> Event 537 starts.
+ Number of Scintillation Photons in previous event: 4020
+Number of Scintillation photons produced in this event : 4404
+photon arrived : 4
+--> Event 538 starts.
+ Number of Scintillation Photons in previous event: 4404
+Number of Scintillation photons produced in this event : 4775
+photon arrived : 9
+--> Event 539 starts.
+ Number of Scintillation Photons in previous event: 4775
+Number of Scintillation photons produced in this event : 4450
+photon arrived : 9
+--> Event 540 starts.
+ Number of Scintillation Photons in previous event: 4450
+Number of Scintillation photons produced in this event : 4862
+photon arrived : 5
+--> Event 541 starts.
+ Number of Scintillation Photons in previous event: 4862
+Number of Scintillation photons produced in this event : 4259
+photon arrived : 3
+--> Event 542 starts.
+ Number of Scintillation Photons in previous event: 4259
+Number of Scintillation photons produced in this event : 4544
+photon arrived : 6
+--> Event 543 starts.
+ Number of Scintillation Photons in previous event: 4544
+Number of Scintillation photons produced in this event : 5304
+photon arrived : 9
+--> Event 544 starts.
+ Number of Scintillation Photons in previous event: 5304
+Number of Scintillation photons produced in this event : 4292
+photon arrived : 4
+--> Event 545 starts.
+ Number of Scintillation Photons in previous event: 4292
+Number of Scintillation photons produced in this event : 4611
+photon arrived : 4
+--> Event 546 starts.
+ Number of Scintillation Photons in previous event: 4611
+Number of Scintillation photons produced in this event : 5099
+photon arrived : 5
+--> Event 547 starts.
+ Number of Scintillation Photons in previous event: 5099
+Number of Scintillation photons produced in this event : 4513
+photon arrived : 7
+--> Event 548 starts.
+ Number of Scintillation Photons in previous event: 4513
+Number of Scintillation photons produced in this event : 5356
+photon arrived : 3
+--> Event 549 starts.
+ Number of Scintillation Photons in previous event: 5356
+Number of Scintillation photons produced in this event : 5439
+photon arrived : 7
+--> Event 550 starts.
+ Number of Scintillation Photons in previous event: 5439
+Number of Scintillation photons produced in this event : 4352
+photon arrived : 8
+--> Event 551 starts.
+ Number of Scintillation Photons in previous event: 4352
+Number of Scintillation photons produced in this event : 4627
+photon arrived : 9
+--> Event 552 starts.
+ Number of Scintillation Photons in previous event: 4627
+Number of Scintillation photons produced in this event : 5101
+photon arrived : 9
+--> Event 553 starts.
+ Number of Scintillation Photons in previous event: 5101
+Number of Scintillation photons produced in this event : 4760
+photon arrived : 9
+--> Event 554 starts.
+ Number of Scintillation Photons in previous event: 4760
+Number of Scintillation photons produced in this event : 4821
+photon arrived : 4
+--> Event 555 starts.
+ Number of Scintillation Photons in previous event: 4821
+Number of Scintillation photons produced in this event : 10287
+photon arrived : 19
+--> Event 556 starts.
+ Number of Scintillation Photons in previous event: 10287
+Number of Scintillation photons produced in this event : 6521
+photon arrived : 10
+--> Event 557 starts.
+ Number of Scintillation Photons in previous event: 6521
+Number of Scintillation photons produced in this event : 6131
+photon arrived : 12
+--> Event 558 starts.
+ Number of Scintillation Photons in previous event: 6131
+Number of Scintillation photons produced in this event : 7481
+photon arrived : 9
+--> Event 559 starts.
+ Number of Scintillation Photons in previous event: 7481
+Number of Scintillation photons produced in this event : 4334
+photon arrived : 12
+--> Event 560 starts.
+ Number of Scintillation Photons in previous event: 4334
+Number of Scintillation photons produced in this event : 4975
+photon arrived : 4
+--> Event 561 starts.
+ Number of Scintillation Photons in previous event: 4975
+Number of Scintillation photons produced in this event : 7505
+photon arrived : 14
+--> Event 562 starts.
+ Number of Scintillation Photons in previous event: 7505
+Number of Scintillation photons produced in this event : 4246
+photon arrived : 2
+--> Event 563 starts.
+ Number of Scintillation Photons in previous event: 4246
+Number of Scintillation photons produced in this event : 4904
+photon arrived : 7
+--> Event 564 starts.
+ Number of Scintillation Photons in previous event: 4904
+Number of Scintillation photons produced in this event : 5066
+photon arrived : 11
+--> Event 565 starts.
+ Number of Scintillation Photons in previous event: 5066
+Number of Scintillation photons produced in this event : 4527
+photon arrived : 8
+--> Event 566 starts.
+ Number of Scintillation Photons in previous event: 4527
+Number of Scintillation photons produced in this event : 8921
+photon arrived : 11
+--> Event 567 starts.
+ Number of Scintillation Photons in previous event: 8921
+Number of Scintillation photons produced in this event : 4172
+photon arrived : 7
+--> Event 568 starts.
+ Number of Scintillation Photons in previous event: 4172
+Number of Scintillation photons produced in this event : 4886
+photon arrived : 6
+--> Event 569 starts.
+ Number of Scintillation Photons in previous event: 4886
+Number of Scintillation photons produced in this event : 4857
+photon arrived : 6
+--> Event 570 starts.
+ Number of Scintillation Photons in previous event: 4857
+Number of Scintillation photons produced in this event : 4546
+photon arrived : 6
+--> Event 571 starts.
+ Number of Scintillation Photons in previous event: 4546
+Number of Scintillation photons produced in this event : 4988
+photon arrived : 14
+--> Event 572 starts.
+ Number of Scintillation Photons in previous event: 4988
+Number of Scintillation photons produced in this event : 4449
+photon arrived : 3
+--> Event 573 starts.
+ Number of Scintillation Photons in previous event: 4449
+Number of Scintillation photons produced in this event : 5019
+photon arrived : 13
+--> Event 574 starts.
+ Number of Scintillation Photons in previous event: 5019
+Number of Scintillation photons produced in this event : 4504
+photon arrived : 8
+--> Event 575 starts.
+ Number of Scintillation Photons in previous event: 4504
+Number of Scintillation photons produced in this event : 5904
+photon arrived : 12
+--> Event 576 starts.
+ Number of Scintillation Photons in previous event: 5904
+Number of Scintillation photons produced in this event : 4645
+photon arrived : 13
+--> Event 577 starts.
+ Number of Scintillation Photons in previous event: 4645
+Number of Scintillation photons produced in this event : 4923
+photon arrived : 12
+--> Event 578 starts.
+ Number of Scintillation Photons in previous event: 4923
+Number of Scintillation photons produced in this event : 4933
+photon arrived : 10
+--> Event 579 starts.
+ Number of Scintillation Photons in previous event: 4933
+Number of Scintillation photons produced in this event : 4377
+photon arrived : 9
+--> Event 580 starts.
+ Number of Scintillation Photons in previous event: 4377
+Number of Scintillation photons produced in this event : 4020
+photon arrived : 3
+--> Event 581 starts.
+ Number of Scintillation Photons in previous event: 4020
+Number of Scintillation photons produced in this event : 5378
+photon arrived : 7
+--> Event 582 starts.
+ Number of Scintillation Photons in previous event: 5378
+Number of Scintillation photons produced in this event : 8522
+photon arrived : 16
+--> Event 583 starts.
+ Number of Scintillation Photons in previous event: 8522
+Number of Scintillation photons produced in this event : 5361
+photon arrived : 8
+--> Event 584 starts.
+ Number of Scintillation Photons in previous event: 5361
+Number of Scintillation photons produced in this event : 5386
+photon arrived : 13
+--> Event 585 starts.
+ Number of Scintillation Photons in previous event: 5386
+Number of Scintillation photons produced in this event : 5026
+photon arrived : 8
+--> Event 586 starts.
+ Number of Scintillation Photons in previous event: 5026
+Number of Scintillation photons produced in this event : 5180
+photon arrived : 13
+--> Event 587 starts.
+ Number of Scintillation Photons in previous event: 5180
+Number of Scintillation photons produced in this event : 8275
+photon arrived : 11
+--> Event 588 starts.
+ Number of Scintillation Photons in previous event: 8275
+Number of Scintillation photons produced in this event : 5223
+photon arrived : 12
+--> Event 589 starts.
+ Number of Scintillation Photons in previous event: 5223
+Number of Scintillation photons produced in this event : 8248
+photon arrived : 24
+--> Event 590 starts.
+ Number of Scintillation Photons in previous event: 8248
+Number of Scintillation photons produced in this event : 4178
+photon arrived : 9
+--> Event 591 starts.
+ Number of Scintillation Photons in previous event: 4178
+Number of Scintillation photons produced in this event : 5218
+photon arrived : 5
+--> Event 592 starts.
+ Number of Scintillation Photons in previous event: 5218
+Number of Scintillation photons produced in this event : 4430
+photon arrived : 4
+--> Event 593 starts.
+ Number of Scintillation Photons in previous event: 4430
+Number of Scintillation photons produced in this event : 4685
+photon arrived : 4
+--> Event 594 starts.
+ Number of Scintillation Photons in previous event: 4685
+Number of Scintillation photons produced in this event : 4830
+photon arrived : 7
+--> Event 595 starts.
+ Number of Scintillation Photons in previous event: 4830
+Number of Scintillation photons produced in this event : 4901
+photon arrived : 6
+--> Event 596 starts.
+ Number of Scintillation Photons in previous event: 4901
+Number of Scintillation photons produced in this event : 4543
+photon arrived : 11
+--> Event 597 starts.
+ Number of Scintillation Photons in previous event: 4543
+Number of Scintillation photons produced in this event : 5075
+photon arrived : 3
+--> Event 598 starts.
+ Number of Scintillation Photons in previous event: 5075
+Number of Scintillation photons produced in this event : 5226
+photon arrived : 8
+--> Event 599 starts.
+ Number of Scintillation Photons in previous event: 5226
+Number of Scintillation photons produced in this event : 5904
+photon arrived : 11
+--> Event 600 starts.
+ Number of Scintillation Photons in previous event: 5904
+Number of Scintillation photons produced in this event : 4646
+photon arrived : 14
+--> Event 601 starts.
+ Number of Scintillation Photons in previous event: 4646
+Number of Scintillation photons produced in this event : 4723
+photon arrived : 7
+--> Event 602 starts.
+ Number of Scintillation Photons in previous event: 4723
+Number of Scintillation photons produced in this event : 6316
+photon arrived : 10
+--> Event 603 starts.
+ Number of Scintillation Photons in previous event: 6316
+Number of Scintillation photons produced in this event : 6468
+photon arrived : 13
+--> Event 604 starts.
+ Number of Scintillation Photons in previous event: 6468
+Number of Scintillation photons produced in this event : 4320
+photon arrived : 6
+--> Event 605 starts.
+ Number of Scintillation Photons in previous event: 4320
+Number of Scintillation photons produced in this event : 4707
+photon arrived : 4
+--> Event 606 starts.
+ Number of Scintillation Photons in previous event: 4707
+Number of Scintillation photons produced in this event : 5530
+photon arrived : 9
+--> Event 607 starts.
+ Number of Scintillation Photons in previous event: 5530
+Number of Scintillation photons produced in this event : 4770
+photon arrived : 10
+--> Event 608 starts.
+ Number of Scintillation Photons in previous event: 4770
+Number of Scintillation photons produced in this event : 6129
+photon arrived : 7
+--> Event 609 starts.
+ Number of Scintillation Photons in previous event: 6129
+Number of Scintillation photons produced in this event : 5475
+photon arrived : 7
+--> Event 610 starts.
+ Number of Scintillation Photons in previous event: 5475
+Number of Scintillation photons produced in this event : 5014
+photon arrived : 11
+--> Event 611 starts.
+ Number of Scintillation Photons in previous event: 5014
+Number of Scintillation photons produced in this event : 4736
+photon arrived : 8
+--> Event 612 starts.
+ Number of Scintillation Photons in previous event: 4736
+Number of Scintillation photons produced in this event : 4953
+photon arrived : 10
+--> Event 613 starts.
+ Number of Scintillation Photons in previous event: 4953
+Number of Scintillation photons produced in this event : 7409
+photon arrived : 13
+--> Event 614 starts.
+ Number of Scintillation Photons in previous event: 7409
+Number of Scintillation photons produced in this event : 6127
+photon arrived : 16
+--> Event 615 starts.
+ Number of Scintillation Photons in previous event: 6127
+Number of Scintillation photons produced in this event : 5242
+photon arrived : 10
+--> Event 616 starts.
+ Number of Scintillation Photons in previous event: 5242
+Number of Scintillation photons produced in this event : 5982
+photon arrived : 9
+--> Event 617 starts.
+ Number of Scintillation Photons in previous event: 5982
+Number of Scintillation photons produced in this event : 10700
+photon arrived : 23
+--> Event 618 starts.
+ Number of Scintillation Photons in previous event: 10700
+Number of Scintillation photons produced in this event : 4891
+photon arrived : 3
+--> Event 619 starts.
+ Number of Scintillation Photons in previous event: 4891
+Number of Scintillation photons produced in this event : 4775
+photon arrived : 4
+--> Event 620 starts.
+ Number of Scintillation Photons in previous event: 4775
+Number of Scintillation photons produced in this event : 4790
+photon arrived : 8
+--> Event 621 starts.
+ Number of Scintillation Photons in previous event: 4790
+Number of Scintillation photons produced in this event : 4826
+photon arrived : 6
+--> Event 622 starts.
+ Number of Scintillation Photons in previous event: 4826
+Number of Scintillation photons produced in this event : 5682
+photon arrived : 12
+--> Event 623 starts.
+ Number of Scintillation Photons in previous event: 5682
+Number of Scintillation photons produced in this event : 6583
+photon arrived : 8
+--> Event 624 starts.
+ Number of Scintillation Photons in previous event: 6583
+Number of Scintillation photons produced in this event : 4327
+photon arrived : 4
+--> Event 625 starts.
+ Number of Scintillation Photons in previous event: 4327
+Number of Scintillation photons produced in this event : 4812
+photon arrived : 14
+--> Event 626 starts.
+ Number of Scintillation Photons in previous event: 4812
+Number of Scintillation photons produced in this event : 4465
+photon arrived : 5
+--> Event 627 starts.
+ Number of Scintillation Photons in previous event: 4465
+Number of Scintillation photons produced in this event : 6897
+photon arrived : 5
+--> Event 628 starts.
+ Number of Scintillation Photons in previous event: 6897
+Number of Scintillation photons produced in this event : 4564
+photon arrived : 6
+--> Event 629 starts.
+ Number of Scintillation Photons in previous event: 4564
+Number of Scintillation photons produced in this event : 4031
+photon arrived : 8
+--> Event 630 starts.
+ Number of Scintillation Photons in previous event: 4031
+Number of Scintillation photons produced in this event : 5446
+photon arrived : 7
+--> Event 631 starts.
+ Number of Scintillation Photons in previous event: 5446
+Number of Scintillation photons produced in this event : 4735
+photon arrived : 4
+--> Event 632 starts.
+ Number of Scintillation Photons in previous event: 4735
+Number of Scintillation photons produced in this event : 5006
+photon arrived : 7
+--> Event 633 starts.
+ Number of Scintillation Photons in previous event: 5006
+Number of Scintillation photons produced in this event : 6011
+photon arrived : 6
+--> Event 634 starts.
+ Number of Scintillation Photons in previous event: 6011
+Number of Scintillation photons produced in this event : 5181
+photon arrived : 4
+--> Event 635 starts.
+ Number of Scintillation Photons in previous event: 5181
+Number of Scintillation photons produced in this event : 6085
+photon arrived : 16
+--> Event 636 starts.
+ Number of Scintillation Photons in previous event: 6085
+Number of Scintillation photons produced in this event : 3959
+photon arrived : 13
+--> Event 637 starts.
+ Number of Scintillation Photons in previous event: 3959
+Number of Scintillation photons produced in this event : 5886
+photon arrived : 5
+--> Event 638 starts.
+ Number of Scintillation Photons in previous event: 5886
+Number of Scintillation photons produced in this event : 5074
+photon arrived : 3
+--> Event 639 starts.
+ Number of Scintillation Photons in previous event: 5074
+Number of Scintillation photons produced in this event : 5182
+photon arrived : 5
+--> Event 640 starts.
+ Number of Scintillation Photons in previous event: 5182
+Number of Scintillation photons produced in this event : 4524
+photon arrived : 5
+--> Event 641 starts.
+ Number of Scintillation Photons in previous event: 4524
+Number of Scintillation photons produced in this event : 4340
+photon arrived : 5
+--> Event 642 starts.
+ Number of Scintillation Photons in previous event: 4340
+Number of Scintillation photons produced in this event : 18489
+photon arrived : 35
+--> Event 643 starts.
+ Number of Scintillation Photons in previous event: 18489
+Number of Scintillation photons produced in this event : 6103
+photon arrived : 7
+--> Event 644 starts.
+ Number of Scintillation Photons in previous event: 6103
+Number of Scintillation photons produced in this event : 4789
+photon arrived : 7
+--> Event 645 starts.
+ Number of Scintillation Photons in previous event: 4789
+Number of Scintillation photons produced in this event : 5177
+photon arrived : 8
+--> Event 646 starts.
+ Number of Scintillation Photons in previous event: 5177
+Number of Scintillation photons produced in this event : 6584
+photon arrived : 11
+--> Event 647 starts.
+ Number of Scintillation Photons in previous event: 6584
+Number of Scintillation photons produced in this event : 4506
+photon arrived : 3
+--> Event 648 starts.
+ Number of Scintillation Photons in previous event: 4506
+Number of Scintillation photons produced in this event : 4976
+photon arrived : 6
+--> Event 649 starts.
+ Number of Scintillation Photons in previous event: 4976
+Number of Scintillation photons produced in this event : 5850
+photon arrived : 9
+--> Event 650 starts.
+ Number of Scintillation Photons in previous event: 5850
+Number of Scintillation photons produced in this event : 4860
+photon arrived : 15
+--> Event 651 starts.
+ Number of Scintillation Photons in previous event: 4860
+Number of Scintillation photons produced in this event : 4432
+photon arrived : 8
+--> Event 652 starts.
+ Number of Scintillation Photons in previous event: 4432
+Number of Scintillation photons produced in this event : 4182
+photon arrived : 9
+--> Event 653 starts.
+ Number of Scintillation Photons in previous event: 4182
+Number of Scintillation photons produced in this event : 5937
+photon arrived : 8
+--> Event 654 starts.
+ Number of Scintillation Photons in previous event: 5937
+Number of Scintillation photons produced in this event : 4884
+photon arrived : 8
+--> Event 655 starts.
+ Number of Scintillation Photons in previous event: 4884
+Number of Scintillation photons produced in this event : 4939
+photon arrived : 8
+--> Event 656 starts.
+ Number of Scintillation Photons in previous event: 4939
+Number of Scintillation photons produced in this event : 8488
+photon arrived : 11
+--> Event 657 starts.
+ Number of Scintillation Photons in previous event: 8488
+Number of Scintillation photons produced in this event : 5662
+photon arrived : 12
+--> Event 658 starts.
+ Number of Scintillation Photons in previous event: 5662
+Number of Scintillation photons produced in this event : 6077
+photon arrived : 10
+--> Event 659 starts.
+ Number of Scintillation Photons in previous event: 6077
+Number of Scintillation photons produced in this event : 9768
+photon arrived : 21
+--> Event 660 starts.
+ Number of Scintillation Photons in previous event: 9768
+Number of Scintillation photons produced in this event : 5433
+photon arrived : 7
+--> Event 661 starts.
+ Number of Scintillation Photons in previous event: 5433
+Number of Scintillation photons produced in this event : 4358
+photon arrived : 5
+--> Event 662 starts.
+ Number of Scintillation Photons in previous event: 4358
+Number of Scintillation photons produced in this event : 4785
+photon arrived : 9
+--> Event 663 starts.
+ Number of Scintillation Photons in previous event: 4785
+Number of Scintillation photons produced in this event : 5705
+photon arrived : 4
+--> Event 664 starts.
+ Number of Scintillation Photons in previous event: 5705
+Number of Scintillation photons produced in this event : 4497
+photon arrived : 12
+--> Event 665 starts.
+ Number of Scintillation Photons in previous event: 4497
+Number of Scintillation photons produced in this event : 5105
+photon arrived : 6
+--> Event 666 starts.
+ Number of Scintillation Photons in previous event: 5105
+Number of Scintillation photons produced in this event : 5409
+photon arrived : 9
+--> Event 667 starts.
+ Number of Scintillation Photons in previous event: 5409
+Number of Scintillation photons produced in this event : 9202
+photon arrived : 10
+--> Event 668 starts.
+ Number of Scintillation Photons in previous event: 9202
+Number of Scintillation photons produced in this event : 10469
+photon arrived : 20
+--> Event 669 starts.
+ Number of Scintillation Photons in previous event: 10469
+Number of Scintillation photons produced in this event : 4619
+photon arrived : 8
+--> Event 670 starts.
+ Number of Scintillation Photons in previous event: 4619
+Number of Scintillation photons produced in this event : 5273
+photon arrived : 8
+--> Event 671 starts.
+ Number of Scintillation Photons in previous event: 5273
+Number of Scintillation photons produced in this event : 4818
+photon arrived : 7
+--> Event 672 starts.
+ Number of Scintillation Photons in previous event: 4818
+Number of Scintillation photons produced in this event : 4474
+photon arrived : 9
+--> Event 673 starts.
+ Number of Scintillation Photons in previous event: 4474
+Number of Scintillation photons produced in this event : 4831
+photon arrived : 4
+--> Event 674 starts.
+ Number of Scintillation Photons in previous event: 4831
+Number of Scintillation photons produced in this event : 4810
+photon arrived : 9
+--> Event 675 starts.
+ Number of Scintillation Photons in previous event: 4810
+Number of Scintillation photons produced in this event : 11863
+photon arrived : 21
+--> Event 676 starts.
+ Number of Scintillation Photons in previous event: 11863
+Number of Scintillation photons produced in this event : 7440
+photon arrived : 10
+--> Event 677 starts.
+ Number of Scintillation Photons in previous event: 7440
+Number of Scintillation photons produced in this event : 4298
+photon arrived : 6
+--> Event 678 starts.
+ Number of Scintillation Photons in previous event: 4298
+Number of Scintillation photons produced in this event : 5247
+photon arrived : 10
+--> Event 679 starts.
+ Number of Scintillation Photons in previous event: 5247
+Number of Scintillation photons produced in this event : 4808
+photon arrived : 8
+--> Event 680 starts.
+ Number of Scintillation Photons in previous event: 4808
+Number of Scintillation photons produced in this event : 6263
+photon arrived : 8
+--> Event 681 starts.
+ Number of Scintillation Photons in previous event: 6263
+Number of Scintillation photons produced in this event : 5071
+photon arrived : 7
+--> Event 682 starts.
+ Number of Scintillation Photons in previous event: 5071
+Number of Scintillation photons produced in this event : 6770
+photon arrived : 13
+--> Event 683 starts.
+ Number of Scintillation Photons in previous event: 6770
+Number of Scintillation photons produced in this event : 4159
+photon arrived : 6
+--> Event 684 starts.
+ Number of Scintillation Photons in previous event: 4159
+Number of Scintillation photons produced in this event : 6298
+photon arrived : 9
+--> Event 685 starts.
+ Number of Scintillation Photons in previous event: 6298
+Number of Scintillation photons produced in this event : 3980
+photon arrived : 6
+--> Event 686 starts.
+ Number of Scintillation Photons in previous event: 3980
+Number of Scintillation photons produced in this event : 6119
+photon arrived : 5
+--> Event 687 starts.
+ Number of Scintillation Photons in previous event: 6119
+Number of Scintillation photons produced in this event : 4388
+photon arrived : 5
+--> Event 688 starts.
+ Number of Scintillation Photons in previous event: 4388
+Number of Scintillation photons produced in this event : 7432
+photon arrived : 17
+--> Event 689 starts.
+ Number of Scintillation Photons in previous event: 7432
+Number of Scintillation photons produced in this event : 4498
+photon arrived : 5
+--> Event 690 starts.
+ Number of Scintillation Photons in previous event: 4498
+Number of Scintillation photons produced in this event : 6533
+photon arrived : 17
+--> Event 691 starts.
+ Number of Scintillation Photons in previous event: 6533
+Number of Scintillation photons produced in this event : 4615
+photon arrived : 6
+--> Event 692 starts.
+ Number of Scintillation Photons in previous event: 4615
+Number of Scintillation photons produced in this event : 6383
+photon arrived : 6
+--> Event 693 starts.
+ Number of Scintillation Photons in previous event: 6383
+Number of Scintillation photons produced in this event : 4661
+photon arrived : 7
+--> Event 694 starts.
+ Number of Scintillation Photons in previous event: 4661
+Number of Scintillation photons produced in this event : 4666
+photon arrived : 9
+--> Event 695 starts.
+ Number of Scintillation Photons in previous event: 4666
+Number of Scintillation photons produced in this event : 8092
+photon arrived : 5
+--> Event 696 starts.
+ Number of Scintillation Photons in previous event: 8092
+Number of Scintillation photons produced in this event : 4619
+photon arrived : 6
+--> Event 697 starts.
+ Number of Scintillation Photons in previous event: 4619
+Number of Scintillation photons produced in this event : 6549
+photon arrived : 13
+--> Event 698 starts.
+ Number of Scintillation Photons in previous event: 6549
+Number of Scintillation photons produced in this event : 3752
+photon arrived : 7
+--> Event 699 starts.
+ Number of Scintillation Photons in previous event: 3752
+Number of Scintillation photons produced in this event : 4435
+photon arrived : 9
+--> Event 700 starts.
+ Number of Scintillation Photons in previous event: 4435
+Number of Scintillation photons produced in this event : 5664
+photon arrived : 13
+--> Event 701 starts.
+ Number of Scintillation Photons in previous event: 5664
+Number of Scintillation photons produced in this event : 4234
+photon arrived : 4
+--> Event 702 starts.
+ Number of Scintillation Photons in previous event: 4234
+Number of Scintillation photons produced in this event : 4298
+photon arrived : 7
+--> Event 703 starts.
+ Number of Scintillation Photons in previous event: 4298
+Number of Scintillation photons produced in this event : 7036
+photon arrived : 10
+--> Event 704 starts.
+ Number of Scintillation Photons in previous event: 7036
+Number of Scintillation photons produced in this event : 6013
+photon arrived : 12
+--> Event 705 starts.
+ Number of Scintillation Photons in previous event: 6013
+Number of Scintillation photons produced in this event : 4752
+photon arrived : 8
+--> Event 706 starts.
+ Number of Scintillation Photons in previous event: 4752
+Number of Scintillation photons produced in this event : 6236
+photon arrived : 12
+--> Event 707 starts.
+ Number of Scintillation Photons in previous event: 6236
+Number of Scintillation photons produced in this event : 4923
+photon arrived : 4
+--> Event 708 starts.
+ Number of Scintillation Photons in previous event: 4923
+Number of Scintillation photons produced in this event : 4684
+photon arrived : 7
+--> Event 709 starts.
+ Number of Scintillation Photons in previous event: 4684
+Number of Scintillation photons produced in this event : 8422
+photon arrived : 18
+--> Event 710 starts.
+ Number of Scintillation Photons in previous event: 8422
+Number of Scintillation photons produced in this event : 5590
+photon arrived : 5
+--> Event 711 starts.
+ Number of Scintillation Photons in previous event: 5590
+Number of Scintillation photons produced in this event : 4684
+photon arrived : 6
+--> Event 712 starts.
+ Number of Scintillation Photons in previous event: 4684
+Number of Scintillation photons produced in this event : 4839
+photon arrived : 12
+--> Event 713 starts.
+ Number of Scintillation Photons in previous event: 4839
+Number of Scintillation photons produced in this event : 5572
+photon arrived : 8
+--> Event 714 starts.
+ Number of Scintillation Photons in previous event: 5572
+Number of Scintillation photons produced in this event : 4460
+photon arrived : 5
+--> Event 715 starts.
+ Number of Scintillation Photons in previous event: 4460
+Number of Scintillation photons produced in this event : 5545
+photon arrived : 8
+--> Event 716 starts.
+ Number of Scintillation Photons in previous event: 5545
+Number of Scintillation photons produced in this event : 5250
+photon arrived : 8
+--> Event 717 starts.
+ Number of Scintillation Photons in previous event: 5250
+Number of Scintillation photons produced in this event : 5884
+photon arrived : 6
+--> Event 718 starts.
+ Number of Scintillation Photons in previous event: 5884
+Number of Scintillation photons produced in this event : 4143
+photon arrived : 2
+--> Event 719 starts.
+ Number of Scintillation Photons in previous event: 4143
+Number of Scintillation photons produced in this event : 4241
+photon arrived : 8
+--> Event 720 starts.
+ Number of Scintillation Photons in previous event: 4241
+Number of Scintillation photons produced in this event : 4422
+photon arrived : 5
+--> Event 721 starts.
+ Number of Scintillation Photons in previous event: 4422
+Number of Scintillation photons produced in this event : 4656
+photon arrived : 6
+--> Event 722 starts.
+ Number of Scintillation Photons in previous event: 4656
+Number of Scintillation photons produced in this event : 5165
+photon arrived : 6
+--> Event 723 starts.
+ Number of Scintillation Photons in previous event: 5165
+Number of Scintillation photons produced in this event : 4376
+photon arrived : 7
+--> Event 724 starts.
+ Number of Scintillation Photons in previous event: 4376
+Number of Scintillation photons produced in this event : 3990
+photon arrived : 12
+--> Event 725 starts.
+ Number of Scintillation Photons in previous event: 3990
+Number of Scintillation photons produced in this event : 7004
+photon arrived : 17
+--> Event 726 starts.
+ Number of Scintillation Photons in previous event: 7004
+Number of Scintillation photons produced in this event : 4767
+photon arrived : 10
+--> Event 727 starts.
+ Number of Scintillation Photons in previous event: 4767
+Number of Scintillation photons produced in this event : 4869
+photon arrived : 12
+--> Event 728 starts.
+ Number of Scintillation Photons in previous event: 4869
+Number of Scintillation photons produced in this event : 6028
+photon arrived : 12
+--> Event 729 starts.
+ Number of Scintillation Photons in previous event: 6028
+Number of Scintillation photons produced in this event : 4792
+photon arrived : 8
+--> Event 730 starts.
+ Number of Scintillation Photons in previous event: 4792
+Number of Scintillation photons produced in this event : 7260
+photon arrived : 22
+--> Event 731 starts.
+ Number of Scintillation Photons in previous event: 7260
+Number of Scintillation photons produced in this event : 6735
+photon arrived : 13
+--> Event 732 starts.
+ Number of Scintillation Photons in previous event: 6735
+Number of Scintillation photons produced in this event : 4282
+photon arrived : 6
+--> Event 733 starts.
+ Number of Scintillation Photons in previous event: 4282
+Number of Scintillation photons produced in this event : 4621
+photon arrived : 11
+--> Event 734 starts.
+ Number of Scintillation Photons in previous event: 4621
+Number of Scintillation photons produced in this event : 5718
+photon arrived : 18
+--> Event 735 starts.
+ Number of Scintillation Photons in previous event: 5718
+Number of Scintillation photons produced in this event : 4722
+photon arrived : 10
+--> Event 736 starts.
+ Number of Scintillation Photons in previous event: 4722
+Number of Scintillation photons produced in this event : 4632
+photon arrived : 7
+--> Event 737 starts.
+ Number of Scintillation Photons in previous event: 4632
+Number of Scintillation photons produced in this event : 4597
+photon arrived : 6
+--> Event 738 starts.
+ Number of Scintillation Photons in previous event: 4597
+Number of Scintillation photons produced in this event : 4334
+photon arrived : 5
+--> Event 739 starts.
+ Number of Scintillation Photons in previous event: 4334
+Number of Scintillation photons produced in this event : 4089
+photon arrived : 4
+--> Event 740 starts.
+ Number of Scintillation Photons in previous event: 4089
+Number of Scintillation photons produced in this event : 6491
+photon arrived : 4
+--> Event 741 starts.
+ Number of Scintillation Photons in previous event: 6491
+Number of Scintillation photons produced in this event : 4369
+photon arrived : 10
+--> Event 742 starts.
+ Number of Scintillation Photons in previous event: 4369
+Number of Scintillation photons produced in this event : 4900
+photon arrived : 8
+--> Event 743 starts.
+ Number of Scintillation Photons in previous event: 4900
+Number of Scintillation photons produced in this event : 4297
+photon arrived : 3
+--> Event 744 starts.
+ Number of Scintillation Photons in previous event: 4297
+Number of Scintillation photons produced in this event : 4718
+photon arrived : 7
+--> Event 745 starts.
+ Number of Scintillation Photons in previous event: 4718
+Number of Scintillation photons produced in this event : 7571
+photon arrived : 5
+--> Event 746 starts.
+ Number of Scintillation Photons in previous event: 7571
+Number of Scintillation photons produced in this event : 5516
+photon arrived : 12
+--> Event 747 starts.
+ Number of Scintillation Photons in previous event: 5516
+Number of Scintillation photons produced in this event : 4429
+photon arrived : 6
+--> Event 748 starts.
+ Number of Scintillation Photons in previous event: 4429
+Number of Scintillation photons produced in this event : 4677
+photon arrived : 6
+--> Event 749 starts.
+ Number of Scintillation Photons in previous event: 4677
+Number of Scintillation photons produced in this event : 6191
+photon arrived : 12
+--> Event 750 starts.
+ Number of Scintillation Photons in previous event: 6191
+Number of Scintillation photons produced in this event : 5444
+photon arrived : 8
+--> Event 751 starts.
+ Number of Scintillation Photons in previous event: 5444
+Number of Scintillation photons produced in this event : 5139
+photon arrived : 11
+--> Event 752 starts.
+ Number of Scintillation Photons in previous event: 5139
+Number of Scintillation photons produced in this event : 8079
+photon arrived : 9
+--> Event 753 starts.
+ Number of Scintillation Photons in previous event: 8079
+Number of Scintillation photons produced in this event : 5369
+photon arrived : 13
+--> Event 754 starts.
+ Number of Scintillation Photons in previous event: 5369
+Number of Scintillation photons produced in this event : 4608
+photon arrived : 8
+--> Event 755 starts.
+ Number of Scintillation Photons in previous event: 4608
+Number of Scintillation photons produced in this event : 12672
+photon arrived : 20
+--> Event 756 starts.
+ Number of Scintillation Photons in previous event: 12672
+Number of Scintillation photons produced in this event : 4408
+photon arrived : 14
+--> Event 757 starts.
+ Number of Scintillation Photons in previous event: 4408
+Number of Scintillation photons produced in this event : 4836
+photon arrived : 6
+--> Event 758 starts.
+ Number of Scintillation Photons in previous event: 4836
+Number of Scintillation photons produced in this event : 5293
+photon arrived : 10
+--> Event 759 starts.
+ Number of Scintillation Photons in previous event: 5293
+Number of Scintillation photons produced in this event : 7303
+photon arrived : 14
+--> Event 760 starts.
+ Number of Scintillation Photons in previous event: 7303
+Number of Scintillation photons produced in this event : 5387
+photon arrived : 6
+--> Event 761 starts.
+ Number of Scintillation Photons in previous event: 5387
+Number of Scintillation photons produced in this event : 5044
+photon arrived : 9
+--> Event 762 starts.
+ Number of Scintillation Photons in previous event: 5044
+Number of Scintillation photons produced in this event : 12279
+photon arrived : 16
+--> Event 763 starts.
+ Number of Scintillation Photons in previous event: 12279
+Number of Scintillation photons produced in this event : 4676
+photon arrived : 4
+--> Event 764 starts.
+ Number of Scintillation Photons in previous event: 4676
+Number of Scintillation photons produced in this event : 4459
+photon arrived : 7
+--> Event 765 starts.
+ Number of Scintillation Photons in previous event: 4459
+Number of Scintillation photons produced in this event : 4697
+photon arrived : 11
+--> Event 766 starts.
+ Number of Scintillation Photons in previous event: 4697
+Number of Scintillation photons produced in this event : 4376
+photon arrived : 12
+--> Event 767 starts.
+ Number of Scintillation Photons in previous event: 4376
+Number of Scintillation photons produced in this event : 4544
+photon arrived : 11
+--> Event 768 starts.
+ Number of Scintillation Photons in previous event: 4544
+Number of Scintillation photons produced in this event : 4343
+photon arrived : 7
+--> Event 769 starts.
+ Number of Scintillation Photons in previous event: 4343
+Number of Scintillation photons produced in this event : 4207
+photon arrived : 8
+--> Event 770 starts.
+ Number of Scintillation Photons in previous event: 4207
+Number of Scintillation photons produced in this event : 4923
+photon arrived : 11
+--> Event 771 starts.
+ Number of Scintillation Photons in previous event: 4923
+Number of Scintillation photons produced in this event : 5451
+photon arrived : 6
+--> Event 772 starts.
+ Number of Scintillation Photons in previous event: 5451
+Number of Scintillation photons produced in this event : 5289
+photon arrived : 12
+--> Event 773 starts.
+ Number of Scintillation Photons in previous event: 5289
+Number of Scintillation photons produced in this event : 5317
+photon arrived : 5
+--> Event 774 starts.
+ Number of Scintillation Photons in previous event: 5317
+Number of Scintillation photons produced in this event : 4724
+photon arrived : 5
+--> Event 775 starts.
+ Number of Scintillation Photons in previous event: 4724
+Number of Scintillation photons produced in this event : 6096
+photon arrived : 16
+--> Event 776 starts.
+ Number of Scintillation Photons in previous event: 6096
+Number of Scintillation photons produced in this event : 4551
+photon arrived : 3
+--> Event 777 starts.
+ Number of Scintillation Photons in previous event: 4551
+Number of Scintillation photons produced in this event : 5344
+photon arrived : 11
+--> Event 778 starts.
+ Number of Scintillation Photons in previous event: 5344
+Number of Scintillation photons produced in this event : 4429
+photon arrived : 10
+--> Event 779 starts.
+ Number of Scintillation Photons in previous event: 4429
+Number of Scintillation photons produced in this event : 6613
+photon arrived : 9
+--> Event 780 starts.
+ Number of Scintillation Photons in previous event: 6613
+Number of Scintillation photons produced in this event : 5501
+photon arrived : 10
+--> Event 781 starts.
+ Number of Scintillation Photons in previous event: 5501
+Number of Scintillation photons produced in this event : 9136
+photon arrived : 12
+--> Event 782 starts.
+ Number of Scintillation Photons in previous event: 9136
+Number of Scintillation photons produced in this event : 4627
+photon arrived : 3
+--> Event 783 starts.
+ Number of Scintillation Photons in previous event: 4627
+Number of Scintillation photons produced in this event : 4638
+photon arrived : 16
+--> Event 784 starts.
+ Number of Scintillation Photons in previous event: 4638
+Number of Scintillation photons produced in this event : 5563
+photon arrived : 12
+--> Event 785 starts.
+ Number of Scintillation Photons in previous event: 5563
+Number of Scintillation photons produced in this event : 4171
+photon arrived : 11
+--> Event 786 starts.
+ Number of Scintillation Photons in previous event: 4171
+Number of Scintillation photons produced in this event : 4399
+photon arrived : 11
+--> Event 787 starts.
+ Number of Scintillation Photons in previous event: 4399
+Number of Scintillation photons produced in this event : 4470
+photon arrived : 8
+--> Event 788 starts.
+ Number of Scintillation Photons in previous event: 4470
+Number of Scintillation photons produced in this event : 4782
+photon arrived : 10
+--> Event 789 starts.
+ Number of Scintillation Photons in previous event: 4782
+Number of Scintillation photons produced in this event : 4363
+photon arrived : 7
+--> Event 790 starts.
+ Number of Scintillation Photons in previous event: 4363
+Number of Scintillation photons produced in this event : 4653
+photon arrived : 5
+--> Event 791 starts.
+ Number of Scintillation Photons in previous event: 4653
+Number of Scintillation photons produced in this event : 6824
+photon arrived : 14
+--> Event 792 starts.
+ Number of Scintillation Photons in previous event: 6824
+Number of Scintillation photons produced in this event : 4771
+photon arrived : 4
+--> Event 793 starts.
+ Number of Scintillation Photons in previous event: 4771
+Number of Scintillation photons produced in this event : 5316
+photon arrived : 10
+--> Event 794 starts.
+ Number of Scintillation Photons in previous event: 5316
+Number of Scintillation photons produced in this event : 5345
+photon arrived : 9
+--> Event 795 starts.
+ Number of Scintillation Photons in previous event: 5345
+Number of Scintillation photons produced in this event : 5482
+photon arrived : 11
+--> Event 796 starts.
+ Number of Scintillation Photons in previous event: 5482
+Number of Scintillation photons produced in this event : 9754
+photon arrived : 20
+--> Event 797 starts.
+ Number of Scintillation Photons in previous event: 9754
+Number of Scintillation photons produced in this event : 4823
+photon arrived : 7
+--> Event 798 starts.
+ Number of Scintillation Photons in previous event: 4823
+Number of Scintillation photons produced in this event : 4167
+photon arrived : 8
+--> Event 799 starts.
+ Number of Scintillation Photons in previous event: 4167
+Number of Scintillation photons produced in this event : 5680
+photon arrived : 13
+--> Event 800 starts.
+ Number of Scintillation Photons in previous event: 5680
+Number of Scintillation photons produced in this event : 4564
+photon arrived : 5
+--> Event 801 starts.
+ Number of Scintillation Photons in previous event: 4564
+Number of Scintillation photons produced in this event : 6494
+photon arrived : 9
+--> Event 802 starts.
+ Number of Scintillation Photons in previous event: 6494
+Number of Scintillation photons produced in this event : 5019
+photon arrived : 8
+--> Event 803 starts.
+ Number of Scintillation Photons in previous event: 5019
+Number of Scintillation photons produced in this event : 4416
+photon arrived : 3
+--> Event 804 starts.
+ Number of Scintillation Photons in previous event: 4416

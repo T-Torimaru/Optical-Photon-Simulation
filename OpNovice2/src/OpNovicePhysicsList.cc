@@ -188,6 +188,11 @@ void OpNovicePhysicsList::ConstructEM()
       pmanager->AddProcess(new G4eIonisation(),       -1, 2, 2);
       pmanager->AddProcess(new G4eBremsstrahlung(),   -1, 3, 3);
 
+      G4StepLimiter* stepLimiter = new G4StepLimiter();
+      G4UserSpecialCuts* userCuts = new G4UserSpecialCuts();
+      pmanager->AddDiscreteProcess(stepLimiter);
+      pmanager->AddDiscreteProcess(userCuts);
+
     } else if (particleName == "e+") {
     //positron
       // Construct processes for positron
